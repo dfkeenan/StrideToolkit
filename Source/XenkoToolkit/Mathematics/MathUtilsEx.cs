@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -71,5 +72,15 @@ namespace XenkoToolkit.Mathematics
 
             return result;
         }
+
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int CeilingToInt(this float value) => (int)Math.Ceiling(value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int FloorToInt(this float value) => (int)Math.Floor(value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int RoundToInt(this float value) => (int)Math.Round(value);
     }
 }
