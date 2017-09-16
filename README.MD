@@ -1,6 +1,6 @@
 # THIS AIN'T READY YO!!
 
-This repository is mostly an empty shell.  NuGet package will not be pushed to Nuget.org until a reasonable amount of functionality has been implmented and somewhat tested.
+This repository is mostly an empty shell.  NuGet package will not be pushed to Nuget.org until a reasonable amount of functionality has been implemented and somewhat tested.
 
 # Xenko Toolkit
 
