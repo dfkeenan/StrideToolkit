@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XenkoToolkit.Mathematics;
 
 namespace XenkoToolkit.Engine
 {
@@ -57,7 +58,14 @@ namespace XenkoToolkit.Engine
         //    return cameraSlot?.Camera;
         //}
 
-
+        /// <summary>
+        /// Converts the world position to clip space coordinates relative to camera.
+        /// </summary>
+        /// <param name="cameraComponent"></param>
+        /// <param name="position"></param>
+        /// <returns>
+        /// The position in clip space
+        /// </returns>
         public static Vector3 WorldToClip(this CameraComponent cameraComponent, Vector3 position)
         {
             if (cameraComponent == null)
@@ -70,7 +78,7 @@ namespace XenkoToolkit.Engine
         }
 
         /// <summary>
-        /// Converts the position to screen space coordinates relative to camera.
+        /// Converts the world position to screen space coordinates relative to camera.
         /// </summary>
         /// <param name="cameraComponent"></param>
         /// <param name="position"></param>
@@ -88,7 +96,63 @@ namespace XenkoToolkit.Engine
             };
 
             return screenSpace;
+        }        
+
+        /// <summary>
+        /// Converts the screen position to a <see cref="RaySegment"/> in world coordinates.
+        /// </summary>
+        /// <param name="cameraComponent"></param>
+        /// <param name="position"></param>
+        /// <returns>ReaySegment, starting at near plain and ending at the far plain.</returns>
+        public static RaySegment ScreenToWorldRaySegment(this CameraComponent cameraComponent, Vector2 position)
+        {
+            if (cameraComponent == null)
+            {
+                throw new ArgumentNullException(nameof(cameraComponent));
+            }
+
+            Matrix inverseViewProjection = Matrix.Invert(cameraComponent.ViewProjectionMatrix);
+
+            Vector3 clipSpace;
+            clipSpace.X = position.X * 2f - 1f;
+            clipSpace.Y = 1f - position.Y * 2f;
+
+            clipSpace.Z = 0f;
+            var near = Vector3.TransformCoordinate(clipSpace, inverseViewProjection);
+
+            clipSpace.Z = 1f;
+            var far = Vector3.TransformCoordinate(clipSpace, inverseViewProjection);
+
+            return new RaySegment(near, far);
         }
 
+        /// <summary>
+        /// Converts the screen position to a point in world coordinates.
+        /// </summary>
+        /// <param name="cameraComponent"></param>
+        /// <param name="position">The screen position in normalized X, Y coordinates. Top-left is (0,0), bottom-right is (1,1)</param>
+        /// <param name="plane">How far from the cameras near plane. 0 is the near plane, 1 is the far plane.</param>
+        /// <returns>Position in world coordinates.</returns>
+        public static Vector3 ScreenToWorldPoint(this CameraComponent cameraComponent, Vector2 position, float plane = 0)
+        {
+            if (cameraComponent == null)
+            {
+                throw new ArgumentNullException(nameof(cameraComponent));
+            }
+
+            Matrix inverseViewProjection = Matrix.Invert(cameraComponent.ViewProjectionMatrix);
+
+            Vector3 clipSpace;
+            clipSpace.X = position.X * 2f - 1f;
+            clipSpace.Y = 1f - position.Y * 2f;
+
+            clipSpace.Z = 0f;
+            var near = Vector3.TransformCoordinate(clipSpace, inverseViewProjection);
+
+            clipSpace.Z = 1f;
+            var far = Vector3.TransformCoordinate(clipSpace, inverseViewProjection);
+
+            return Vector3.Lerp(near, far, plane);
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace XenkoToolkit.Engine
         /// Gets the elapsed total seconds since last update.
         /// </summary>
         /// <param name="game">The game.</param>
-        /// <returns>Update elapsed total seconds.</returns>
+        /// <returns>Elapsed update time in seconds.</returns>
         public static float GetDeltaTime(IGame game)
         {
             if (game == null)

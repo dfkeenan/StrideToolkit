@@ -384,6 +384,8 @@
     <Compile Include="Engine\EntityExtensions.cs" />
     <Compile Include="Engine\GameExtensions.cs" />
     <Compile Include="Mathematics\MathUtilsEx.cs" />
+    <Compile Include="Mathematics\RaySegment.cs" />
+    <Compile Include="Physics\SimulationExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -402,6 +404,6 @@
   </Target>
   -->
   <Target Name="AfterBuild" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <Exec WorkingDirectory="$(MSBuildThisFileDirectory)..\..\Build" Command='Nuget.exe pack "$(ProjectPath)" -Properties Configuration=$(Configuration);Platform=$(Platform) -OutputDirectory "..\Source\Packages"' />
+    <Exec WorkingDirectory="$(MSBuildThisFileDirectory)..\..\Build" Command="Nuget.exe pack &quot;$(ProjectPath)&quot; -Properties Configuration=$(Configuration);Platform=$(Platform) -OutputDirectory &quot;..\Source\Packages&quot;" />
   </Target>
 </Project>
