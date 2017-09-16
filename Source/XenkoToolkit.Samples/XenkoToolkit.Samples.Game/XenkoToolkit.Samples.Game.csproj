@@ -109,7 +109,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicCameraController.cs" />
+    <Compile Include="CameraExtensionScript.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\XenkoToolkit\XenkoToolkit.csproj">
+      <Project>{32ae5bf6-59f6-454f-93f5-57f60f194971}</Project>
+      <Name>XenkoToolkit</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SiliconStudioPackageProps)" Condition="Exists('$(SiliconStudioPackageProps)')" />

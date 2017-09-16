@@ -43,6 +43,9 @@ Hierarchy:
                         Id: 2e16e924-b7a1-4f37-83b8-5496a93e6868
                         Model: f1528d4d-7249-4f8d-8667-33196f459041:Sphere
                         Materials: {}
+                    a16c057f160b641b8de9b91f8fc3767b: !XenkoToolkit.Samples.CameraExtensionScript,XenkoToolkit.Samples.Game
+                        Id: 5e44386e-f61c-4559-9e73-a66a075d20f0
+                        MainCamera: ref!! df0353c9-a5f8-4a6f-b2da-73140df3a6da
         -   Entity:
                 Id: 623802ba-94a0-47da-be27-72e765d6e3c6
                 Name: Camera
