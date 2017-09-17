@@ -112,5 +112,30 @@ namespace XenkoToolkit.Mathematics
         {
             return Color.Lerp(start, end, Easing.Ease(amount, easingFunction));
         }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Interpolate(ref Vector2 start, ref Vector2 end, float amount, EasingFunction easingFunction, out Vector2 result)
+        {
+            Vector2.Lerp(ref start, ref end, Easing.Ease(amount, easingFunction), out result);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Interpolate(ref Vector3 start, ref Vector3 end, float amount, EasingFunction easingFunction, out Vector3 result)
+        {
+            Vector3.Lerp(ref start, ref end, Easing.Ease(amount, easingFunction), out result);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Interpolate(ref Vector4 start, ref Vector4 end, float amount, EasingFunction easingFunction, out Vector4 result)
+        {
+            Vector4.Lerp(ref start, ref end, Easing.Ease(amount, easingFunction), out result);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Interpolate(ref Color start, ref Color end, float amount, EasingFunction easingFunction, out Color result)
+        {
+            Color.Lerp(ref start, ref end, Easing.Ease(amount, easingFunction), out result);
+        }
+        
     }
 }
