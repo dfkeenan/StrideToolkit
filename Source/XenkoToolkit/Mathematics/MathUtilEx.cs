@@ -11,8 +11,17 @@ namespace XenkoToolkit.Mathematics
     /// <summary>
     /// More common utility methods for math operations.
     /// </summary>
-    public static class MathUtilsEx
+    public static class MathUtilEx
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int CeilingToInt(this float value) => (int)Math.Ceiling(value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int FloorToInt(this float value) => (int)Math.Floor(value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int RoundToInt(this float value) => (int)Math.Round(value);
+
         /// <summary>
         /// Orthonormalizes 2 vectors.
         /// </summary>
@@ -75,12 +84,33 @@ namespace XenkoToolkit.Mathematics
 
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int CeilingToInt(this float value) => (int)Math.Ceiling(value);
+        public static float Interpolate(float start, float end, float amount, EasingFunction easingFunction)
+        {
+            return MathUtil.Lerp(start, end, Easing.Ease(amount, easingFunction));
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int FloorToInt(this float value) => (int)Math.Floor(value);
+        public static Vector2 Interpolate(Vector2 start, Vector2 end, float amount, EasingFunction easingFunction)
+        {
+            return Vector2.Lerp(start, end, Easing.Ease(amount, easingFunction));
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RoundToInt(this float value) => (int)Math.Round(value);
+        public static Vector3 Interpolate(Vector3 start, Vector3 end, float amount, EasingFunction easingFunction)
+        {
+            return Vector3.Lerp(start, end, Easing.Ease(amount, easingFunction));
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector4 Interpolate(Vector4 start, Vector4 end, float amount, EasingFunction easingFunction)
+        {
+            return Vector4.Lerp(start, end, Easing.Ease(amount, easingFunction));
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Color Interpolate(Color start, Color end, float amount, EasingFunction easingFunction)
+        {
+            return Color.Lerp(start, end, Easing.Ease(amount, easingFunction));
+        }
     }
 }

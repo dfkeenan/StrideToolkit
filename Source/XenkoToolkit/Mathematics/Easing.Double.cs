@@ -14,67 +14,67 @@ namespace XenkoToolkit.Mathematics
         /// <summary>
         /// Interpolate using the specified function.
         /// </summary>
-        public static double Interpolate(double p, EasingFunctions function)
+        public static double Ease(double amount, EasingFunction function)
         {
             switch (function)
             {
                 default:
-                case EasingFunctions.Linear: return Linear(p);
-                case EasingFunctions.QuadraticEaseOut: return QuadraticEaseOut(p);
-                case EasingFunctions.QuadraticEaseIn: return QuadraticEaseIn(p);
-                case EasingFunctions.QuadraticEaseInOut: return QuadraticEaseInOut(p);
-                case EasingFunctions.CubicEaseIn: return CubicEaseIn(p);
-                case EasingFunctions.CubicEaseOut: return CubicEaseOut(p);
-                case EasingFunctions.CubicEaseInOut: return CubicEaseInOut(p);
-                case EasingFunctions.QuarticEaseIn: return QuarticEaseIn(p);
-                case EasingFunctions.QuarticEaseOut: return QuarticEaseOut(p);
-                case EasingFunctions.QuarticEaseInOut: return QuarticEaseInOut(p);
-                case EasingFunctions.QuinticEaseIn: return QuinticEaseIn(p);
-                case EasingFunctions.QuinticEaseOut: return QuinticEaseOut(p);
-                case EasingFunctions.QuinticEaseInOut: return QuinticEaseInOut(p);
-                case EasingFunctions.SineEaseIn: return SineEaseIn(p);
-                case EasingFunctions.SineEaseOut: return SineEaseOut(p);
-                case EasingFunctions.SineEaseInOut: return SineEaseInOut(p);
-                case EasingFunctions.CircularEaseIn: return CircularEaseIn(p);
-                case EasingFunctions.CircularEaseOut: return CircularEaseOut(p);
-                case EasingFunctions.CircularEaseInOut: return CircularEaseInOut(p);
-                case EasingFunctions.ExponentialEaseIn: return ExponentialEaseIn(p);
-                case EasingFunctions.ExponentialEaseOut: return ExponentialEaseOut(p);
-                case EasingFunctions.ExponentialEaseInOut: return ExponentialEaseInOut(p);
-                case EasingFunctions.ElasticEaseIn: return ElasticEaseIn(p);
-                case EasingFunctions.ElasticEaseOut: return ElasticEaseOut(p);
-                case EasingFunctions.ElasticEaseInOut: return ElasticEaseInOut(p);
-                case EasingFunctions.BackEaseIn: return BackEaseIn(p);
-                case EasingFunctions.BackEaseOut: return BackEaseOut(p);
-                case EasingFunctions.BackEaseInOut: return BackEaseInOut(p);
-                case EasingFunctions.BounceEaseIn: return BounceEaseIn(p);
-                case EasingFunctions.BounceEaseOut: return BounceEaseOut(p);
-                case EasingFunctions.BounceEaseInOut: return BounceEaseInOut(p);
+                case EasingFunction.Linear: return Linear(amount);
+                case EasingFunction.QuadraticEaseOut: return QuadraticEaseOut(amount);
+                case EasingFunction.QuadraticEaseIn: return QuadraticEaseIn(amount);
+                case EasingFunction.QuadraticEaseInOut: return QuadraticEaseInOut(amount);
+                case EasingFunction.CubicEaseIn: return CubicEaseIn(amount);
+                case EasingFunction.CubicEaseOut: return CubicEaseOut(amount);
+                case EasingFunction.CubicEaseInOut: return CubicEaseInOut(amount);
+                case EasingFunction.QuarticEaseIn: return QuarticEaseIn(amount);
+                case EasingFunction.QuarticEaseOut: return QuarticEaseOut(amount);
+                case EasingFunction.QuarticEaseInOut: return QuarticEaseInOut(amount);
+                case EasingFunction.QuinticEaseIn: return QuinticEaseIn(amount);
+                case EasingFunction.QuinticEaseOut: return QuinticEaseOut(amount);
+                case EasingFunction.QuinticEaseInOut: return QuinticEaseInOut(amount);
+                case EasingFunction.SineEaseIn: return SineEaseIn(amount);
+                case EasingFunction.SineEaseOut: return SineEaseOut(amount);
+                case EasingFunction.SineEaseInOut: return SineEaseInOut(amount);
+                case EasingFunction.CircularEaseIn: return CircularEaseIn(amount);
+                case EasingFunction.CircularEaseOut: return CircularEaseOut(amount);
+                case EasingFunction.CircularEaseInOut: return CircularEaseInOut(amount);
+                case EasingFunction.ExponentialEaseIn: return ExponentialEaseIn(amount);
+                case EasingFunction.ExponentialEaseOut: return ExponentialEaseOut(amount);
+                case EasingFunction.ExponentialEaseInOut: return ExponentialEaseInOut(amount);
+                case EasingFunction.ElasticEaseIn: return ElasticEaseIn(amount);
+                case EasingFunction.ElasticEaseOut: return ElasticEaseOut(amount);
+                case EasingFunction.ElasticEaseInOut: return ElasticEaseInOut(amount);
+                case EasingFunction.BackEaseIn: return BackEaseIn(amount);
+                case EasingFunction.BackEaseOut: return BackEaseOut(amount);
+                case EasingFunction.BackEaseInOut: return BackEaseInOut(amount);
+                case EasingFunction.BounceEaseIn: return BounceEaseIn(amount);
+                case EasingFunction.BounceEaseOut: return BounceEaseOut(amount);
+                case EasingFunction.BounceEaseInOut: return BounceEaseInOut(amount);
             }
         }
 
         /// <summary>
         /// Modeled after the line y = x
         /// </summary>
-        public static double Linear(double p)
+        public static double Linear(double amount)
         {
-            return p;
+            return amount;
         }
 
         /// <summary>
         /// Modeled after the parabola y = x^2
         /// </summary>
-        public static double QuadraticEaseIn(double p)
+        public static double QuadraticEaseIn(double amount)
         {
-            return p * p;
+            return amount * amount;
         }
 
         /// <summary>
         /// Modeled after the parabola y = -x^2 + 2x
         /// </summary>
-        public static double QuadraticEaseOut(double p)
+        public static double QuadraticEaseOut(double amount)
         {
-            return -(p * (p - 2));
+            return -(amount * (amount - 2));
         }
 
         /// <summary>
@@ -82,32 +82,32 @@ namespace XenkoToolkit.Mathematics
         /// y = (1/2)((2x)^2)             ; [0, 0.5]
         /// y = -(1/2)((2x-1)*(2x-3) - 1) ; [0.5, 1]
         /// </summary>
-        public static double QuadraticEaseInOut(double p)
+        public static double QuadraticEaseInOut(double amount)
         {
-            if (p < 0.5)
+            if (amount < 0.5)
             {
-                return 2 * p * p;
+                return 2 * amount * amount;
             }
             else
             {
-                return (-2 * p * p) + (4 * p) - 1;
+                return (-2 * amount * amount) + (4 * amount) - 1;
             }
         }
 
         /// <summary>
         /// Modeled after the cubic y = x^3
         /// </summary>
-        public static double CubicEaseIn(double p)
+        public static double CubicEaseIn(double amount)
         {
-            return p * p * p;
+            return amount * amount * amount;
         }
 
         /// <summary>
         /// Modeled after the cubic y = (x - 1)^3 + 1
         /// </summary>
-        public static double CubicEaseOut(double p)
+        public static double CubicEaseOut(double amount)
         {
-            double f = (p - 1);
+            double f = (amount - 1);
             return f * f * f + 1;
         }
 
@@ -116,15 +116,15 @@ namespace XenkoToolkit.Mathematics
         /// y = (1/2)((2x)^3)       ; [0, 0.5]
         /// y = (1/2)((2x-2)^3 + 2) ; [0.5, 1]
         /// </summary>
-        public static double CubicEaseInOut(double p)
+        public static double CubicEaseInOut(double amount)
         {
-            if (p < 0.5)
+            if (amount < 0.5)
             {
-                return 4 * p * p * p;
+                return 4 * amount * amount * amount;
             }
             else
             {
-                double f = ((2 * p) - 2);
+                double f = ((2 * amount) - 2);
                 return 0.5 * f * f * f + 1;
             }
         }
@@ -132,18 +132,18 @@ namespace XenkoToolkit.Mathematics
         /// <summary>
         /// Modeled after the quartic x^4
         /// </summary>
-        public static double QuarticEaseIn(double p)
+        public static double QuarticEaseIn(double amount)
         {
-            return p * p * p * p;
+            return amount * amount * amount * amount;
         }
 
         /// <summary>
         /// Modeled after the quartic y = 1 - (x - 1)^4
         /// </summary>
-        public static double QuarticEaseOut(double p)
+        public static double QuarticEaseOut(double amount)
         {
-            double f = (p - 1);
-            return f * f * f * (1 - p) + 1;
+            double f = (amount - 1);
+            return f * f * f * (1 - amount) + 1;
         }
 
         /// <summary>
@@ -151,15 +151,15 @@ namespace XenkoToolkit.Mathematics
         // y = (1/2)((2x)^4)        ; [0, 0.5]
         // y = -(1/2)((2x-2)^4 - 2) ; [0.5, 1]
         /// </summary>
-        public static double QuarticEaseInOut(double p)
+        public static double QuarticEaseInOut(double amount)
         {
-            if (p < 0.5)
+            if (amount < 0.5)
             {
-                return 8 * p * p * p * p;
+                return 8 * amount * amount * amount * amount;
             }
             else
             {
-                double f = (p - 1);
+                double f = (amount - 1);
                 return -8 * f * f * f * f + 1;
             }
         }
@@ -167,17 +167,17 @@ namespace XenkoToolkit.Mathematics
         /// <summary>
         /// Modeled after the quintic y = x^5
         /// </summary>
-        public static double QuinticEaseIn(double p)
+        public static double QuinticEaseIn(double amount)
         {
-            return p * p * p * p * p;
+            return amount * amount * amount * amount * amount;
         }
 
         /// <summary>
         /// Modeled after the quintic y = (x - 1)^5 + 1
         /// </summary>
-        public static double QuinticEaseOut(double p)
+        public static double QuinticEaseOut(double amount)
         {
-            double f = (p - 1);
+            double f = (amount - 1);
             return f * f * f * f * f + 1;
         }
 
@@ -186,15 +186,15 @@ namespace XenkoToolkit.Mathematics
         /// y = (1/2)((2x)^5)       ; [0, 0.5]
         /// y = (1/2)((2x-2)^5 + 2) ; [0.5, 1]
         /// </summary>
-        public static double QuinticEaseInOut(double p)
+        public static double QuinticEaseInOut(double amount)
         {
-            if (p < 0.5)
+            if (amount < 0.5)
             {
-                return 16 * p * p * p * p * p;
+                return 16 * amount * amount * amount * amount * amount;
             }
             else
             {
-                double f = ((2 * p) - 2);
+                double f = ((2 * amount) - 2);
                 return 0.5 * f * f * f * f * f + 1;
             }
         }
@@ -202,41 +202,41 @@ namespace XenkoToolkit.Mathematics
         /// <summary>
         /// Modeled after quarter-cycle of sine wave
         /// </summary>
-        public static double SineEaseIn(double p)
+        public static double SineEaseIn(double amount)
         {
-            return Math.Sin((p - 1) * PiOverTwo) + 1;
+            return Math.Sin((amount - 1) * PiOverTwo) + 1;
         }
 
         /// <summary>
         /// Modeled after quarter-cycle of sine wave (different phase)
         /// </summary>
-        public static double SineEaseOut(double p)
+        public static double SineEaseOut(double amount)
         {
-            return Math.Sin(p * PiOverTwo);
+            return Math.Sin(amount * PiOverTwo);
         }
 
         /// <summary>
         /// Modeled after half sine wave
         /// </summary>
-        public static double SineEaseInOut(double p)
+        public static double SineEaseInOut(double amount)
         {
-            return 0.5 * (1 - Math.Cos(p * Math.PI));
+            return 0.5 * (1 - Math.Cos(amount * Math.PI));
         }
 
         /// <summary>
         /// Modeled after shifted quadrant IV of unit circle
         /// </summary>
-        public static double CircularEaseIn(double p)
+        public static double CircularEaseIn(double amount)
         {
-            return 1 - Math.Sqrt(1 - (p * p));
+            return 1 - Math.Sqrt(1 - (amount * amount));
         }
 
         /// <summary>
         /// Modeled after shifted quadrant II of unit circle
         /// </summary>
-        public static double CircularEaseOut(double p)
+        public static double CircularEaseOut(double amount)
         {
-            return Math.Sqrt((2 - p) * p);
+            return Math.Sqrt((2 - amount) * amount);
         }
 
         /// <summary>	
@@ -244,32 +244,32 @@ namespace XenkoToolkit.Mathematics
         /// y = (1/2)(1 - Math.Sqrt(1 - 4x^2))           ; [0, 0.5]
         /// y = (1/2)(Math.Sqrt(-(2x - 3)*(2x - 1)) + 1) ; [0.5, 1]
         /// </summary>
-        public static double CircularEaseInOut(double p)
+        public static double CircularEaseInOut(double amount)
         {
-            if (p < 0.5)
+            if (amount < 0.5)
             {
-                return 0.5 * (1 - Math.Sqrt(1 - 4 * (p * p)));
+                return 0.5 * (1 - Math.Sqrt(1 - 4 * (amount * amount)));
             }
             else
             {
-                return 0.5 * (Math.Sqrt(-((2 * p) - 3) * ((2 * p) - 1)) + 1);
+                return 0.5 * (Math.Sqrt(-((2 * amount) - 3) * ((2 * amount) - 1)) + 1);
             }
         }
 
         /// <summary>
         /// Modeled after the exponential function y = 2^(10(x - 1))
         /// </summary>
-        public static double ExponentialEaseIn(double p)
+        public static double ExponentialEaseIn(double amount)
         {
-            return (p == 0.0) ? p : Math.Pow(2, 10 * (p - 1));
+            return (amount == 0.0) ? amount : Math.Pow(2, 10 * (amount - 1));
         }
 
         /// <summary>
         /// Modeled after the exponential function y = -2^(-10x) + 1
         /// </summary>
-        public static double ExponentialEaseOut(double p)
+        public static double ExponentialEaseOut(double amount)
         {
-            return (p == 1.0) ? p : 1 - Math.Pow(2, -10 * p);
+            return (amount == 1.0) ? amount : 1 - Math.Pow(2, -10 * amount);
         }
 
         /// <summary>
@@ -277,34 +277,34 @@ namespace XenkoToolkit.Mathematics
         /// y = (1/2)2^(10(2x - 1))         ; [0,0.5)
         /// y = -(1/2)*2^(-10(2x - 1))) + 1 ; [0.5,1]
         /// </summary>
-        public static double ExponentialEaseInOut(double p)
+        public static double ExponentialEaseInOut(double amount)
         {
-            if (p == 0.0 || p == 1.0) return p;
+            if (amount == 0.0 || amount == 1.0) return amount;
 
-            if (p < 0.5)
+            if (amount < 0.5)
             {
-                return 0.5 * Math.Pow(2, (20 * p) - 10);
+                return 0.5 * Math.Pow(2, (20 * amount) - 10);
             }
             else
             {
-                return -0.5 * Math.Pow(2, (-20 * p) + 10) + 1;
+                return -0.5 * Math.Pow(2, (-20 * amount) + 10) + 1;
             }
         }
 
         /// <summary>
         /// Modeled after the damped sine wave y = sin(13pi/2*x)*Math.Pow(2, 10 * (x - 1))
         /// </summary>
-        public static double ElasticEaseIn(double p)
+        public static double ElasticEaseIn(double amount)
         {
-            return Math.Sin(13 * PiOverTwo * p) * Math.Pow(2, 10 * (p - 1));
+            return Math.Sin(13 * PiOverTwo * amount) * Math.Pow(2, 10 * (amount - 1));
         }
 
         /// <summary>
         /// Modeled after the damped sine wave y = sin(-13pi/2*(x + 1))*Math.Pow(2, -10x) + 1
         /// </summary>
-        public static double ElasticEaseOut(double p)
+        public static double ElasticEaseOut(double amount)
         {
-            return Math.Sin(-13 * PiOverTwo * (p + 1)) * Math.Pow(2, -10 * p) + 1;
+            return Math.Sin(-13 * PiOverTwo * (amount + 1)) * Math.Pow(2, -10 * amount) + 1;
         }
 
         /// <summary>
@@ -312,32 +312,32 @@ namespace XenkoToolkit.Mathematics
         /// y = (1/2)*sin(13pi/2*(2*x))*Math.Pow(2, 10 * ((2*x) - 1))      ; [0,0.5]
         /// y = (1/2)*(sin(-13pi/2*((2x-1)+1))*Math.Pow(2,-10(2*x-1)) + 2) ; [0.5, 1]
         /// </summary>
-        public static double ElasticEaseInOut(double p)
+        public static double ElasticEaseInOut(double amount)
         {
-            if (p < 0.5)
+            if (amount < 0.5)
             {
-                return 0.5 * Math.Sin(13 * PiOverTwo * (2 * p)) * Math.Pow(2, 10 * ((2 * p) - 1));
+                return 0.5 * Math.Sin(13 * PiOverTwo * (2 * amount)) * Math.Pow(2, 10 * ((2 * amount) - 1));
             }
             else
             {
-                return 0.5 * (Math.Sin(-13 * PiOverTwo * ((2 * p - 1) + 1)) * Math.Pow(2, -10 * (2 * p - 1)) + 2);
+                return 0.5 * (Math.Sin(-13 * PiOverTwo * ((2 * amount - 1) + 1)) * Math.Pow(2, -10 * (2 * amount - 1)) + 2);
             }
         }
 
         /// <summary>
         /// Modeled after the overshooting cubic y = x^3-x*sin(x*pi)
         /// </summary>
-        public static double BackEaseIn(double p)
+        public static double BackEaseIn(double amount)
         {
-            return p * p * p - p * Math.Sin(p * Math.PI);
+            return amount * amount * amount - amount * Math.Sin(amount * Math.PI);
         }
 
         /// <summary>
         /// Modeled after overshooting cubic y = 1-((1-x)^3-(1-x)*sin((1-x)*pi))
         /// </summary>	
-        public static double BackEaseOut(double p)
+        public static double BackEaseOut(double amount)
         {
-            double f = (1 - p);
+            double f = (1 - amount);
             return 1 - (f * f * f - f * Math.Sin(f * Math.PI));
         }
 
@@ -346,60 +346,60 @@ namespace XenkoToolkit.Mathematics
         /// y = (1/2)*((2x)^3-(2x)*sin(2*x*pi))           ; [0, 0.5)
         /// y = (1/2)*(1-((1-x)^3-(1-x)*sin((1-x)*pi))+1) ; [0.5, 1]
         /// </summary>
-        public static double BackEaseInOut(double p)
+        public static double BackEaseInOut(double amount)
         {
-            if (p < 0.5)
+            if (amount < 0.5)
             {
-                double f = 2 * p;
+                double f = 2 * amount;
                 return 0.5 * (f * f * f - f * Math.Sin(f * Math.PI));
             }
             else
             {
-                double f = (1 - (2 * p - 1));
+                double f = (1 - (2 * amount - 1));
                 return 0.5 * (1 - (f * f * f - f * Math.Sin(f * Math.PI))) + 0.5;
             }
         }
 
         /// <summary>
         /// </summary>
-        public static double BounceEaseIn(double p)
+        public static double BounceEaseIn(double amount)
         {
-            return 1 - BounceEaseOut(1 - p);
+            return 1 - BounceEaseOut(1 - amount);
         }
 
         /// <summary>
         /// </summary>
-        public static double BounceEaseOut(double p)
+        public static double BounceEaseOut(double amount)
         {
-            if (p < 4 / 11.0)
+            if (amount < 4 / 11.0)
             {
-                return (121 * p * p) / 16.0;
+                return (121 * amount * amount) / 16.0;
             }
-            else if (p < 8 / 11.0)
+            else if (amount < 8 / 11.0)
             {
-                return (363 / 40.0 * p * p) - (99 / 10.0 * p) + 17 / 5.0;
+                return (363 / 40.0 * amount * amount) - (99 / 10.0 * amount) + 17 / 5.0;
             }
-            else if (p < 9 / 10.0)
+            else if (amount < 9 / 10.0)
             {
-                return (4356 / 361.0 * p * p) - (35442 / 1805.0 * p) + 16061 / 1805.0;
+                return (4356 / 361.0 * amount * amount) - (35442 / 1805.0 * amount) + 16061 / 1805.0;
             }
             else
             {
-                return (54 / 5.0 * p * p) - (513 / 25.0 * p) + 268 / 25.0;
+                return (54 / 5.0 * amount * amount) - (513 / 25.0 * amount) + 268 / 25.0;
             }
         }
 
         /// <summary>
         /// </summary>
-        public static double BounceEaseInOut(double p)
+        public static double BounceEaseInOut(double amount)
         {
-            if (p < 0.5)
+            if (amount < 0.5)
             {
-                return 0.5 * BounceEaseIn(p * 2);
+                return 0.5 * BounceEaseIn(amount * 2);
             }
             else
             {
-                return 0.5 * BounceEaseOut(p * 2 - 1) + 0.5;
+                return 0.5 * BounceEaseOut(amount * 2 - 1) + 0.5;
             }
         }
     }

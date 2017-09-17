@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XenkoToolkit.Mathematics
 {
-    public enum EasingFunctions
+    public enum EasingFunction
     {
         Linear,
         QuadraticEaseIn,
