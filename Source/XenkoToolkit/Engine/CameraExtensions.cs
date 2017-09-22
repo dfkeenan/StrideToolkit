@@ -11,7 +11,7 @@ using XenkoToolkit.Mathematics;
 namespace XenkoToolkit.Engine
 {
     /// <summary>
-    /// Extensions for <see cref="CameraComponent"/>
+    /// Extensions for <see cref="CameraComponent"/>.
     /// </summary>
     public static class CameraExtensions
     {
@@ -25,6 +25,7 @@ namespace XenkoToolkit.Engine
         ///// If there is more than 1 SceneCameraSlot and there is one with matching name it returns it.
         ///// If no matching SceneCameraSlot is found the first CameraComponent is Returned.
         ///// </remarks>
+        ///// <exception cref="ArgumentNullException">If the cameraComponent argument is null.</exception>
         //public static CameraComponent GetMainCamera(this SceneSystem sceneSystem, string mainCameraSlotName = "Main")
         //{
         //    if (sceneSystem == null)
@@ -64,8 +65,9 @@ namespace XenkoToolkit.Engine
         /// <param name="cameraComponent"></param>
         /// <param name="position"></param>
         /// <returns>
-        /// The position in clip space
+        /// The position in clip space.
         /// </returns>
+        /// <exception cref="ArgumentNullException">If the cameraComponent argument is null.</exception>
         public static Vector3 WorldToClip(this CameraComponent cameraComponent, Vector3 position)
         {
             if (cameraComponent == null)
@@ -83,8 +85,9 @@ namespace XenkoToolkit.Engine
         /// <param name="cameraComponent"></param>
         /// <param name="position"></param>
         /// <returns>
-        /// The screen position in normalized X, Y coordinates. Top-left is (0,0), bottom-right is (1,1)
+        /// The screen position in normalized X, Y coordinates. Top-left is (0,0), bottom-right is (1,1).
         /// </returns>
+        /// <exception cref="ArgumentNullException">If the cameraComponent argument is null.</exception>
         public static Vector2 WorldToScreen(this CameraComponent cameraComponent, Vector3 position)
         {
             var clipSpace = cameraComponent.WorldToClip(position);
@@ -96,7 +99,7 @@ namespace XenkoToolkit.Engine
             };
 
             return screenSpace;
-        }        
+        }
 
         /// <summary>
         /// Converts the screen position to a <see cref="RaySegment"/> in world coordinates.
@@ -104,6 +107,7 @@ namespace XenkoToolkit.Engine
         /// <param name="cameraComponent"></param>
         /// <param name="position"></param>
         /// <returns>ReaySegment, starting at near plain and ending at the far plain.</returns>
+        /// <exception cref="ArgumentNullException">If the cameraComponent argument is null.</exception>
         public static RaySegment ScreenToWorldRaySegment(this CameraComponent cameraComponent, Vector2 position)
         {
             if (cameraComponent == null)
@@ -130,9 +134,10 @@ namespace XenkoToolkit.Engine
         /// Converts the screen position to a point in world coordinates.
         /// </summary>
         /// <param name="cameraComponent"></param>
-        /// <param name="position">The screen position in normalized X, Y coordinates. Top-left is (0,0), bottom-right is (1,1)</param>
+        /// <param name="position">The screen position in normalized X, Y coordinates. Top-left is (0,0), bottom-right is (1,1).</param>
         /// <param name="plane">How far from the cameras near plane. 0 is the near plane, 1 is the far plane.</param>
         /// <returns>Position in world coordinates.</returns>
+        /// <exception cref="ArgumentNullException">If the cameraComponent argument is null.</exception>
         public static Vector3 ScreenToWorldPoint(this CameraComponent cameraComponent, Vector2 position, float plane = 0)
         {
             if (cameraComponent == null)

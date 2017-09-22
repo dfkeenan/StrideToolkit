@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace XenkoToolkit.Engine
 {
     /// <summary>
-    /// Extensions for <see cref="Entity"/>
+    /// Extensions for <see cref="Entity"/>.
     /// </summary>
     public static class EntityExtensions
     {

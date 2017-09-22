@@ -9,6 +9,9 @@ using XenkoToolkit.Mathematics;
 
 namespace XenkoToolkit.Physics
 {
+    /// <summary>
+    /// Extensions for <see cref="SimulationExtensions"/>
+    /// </summary>
     public static class SimulationExtensions
     {
         /// <summary>
@@ -16,7 +19,8 @@ namespace XenkoToolkit.Physics
         /// </summary>
         /// <param name="simulation">Physics simulation.</param>
         /// <param name="raySegment">Ray.</param>
-        /// <returns></returns>
+        /// <returns>The hit results.</returns>
+        /// <exception cref="ArgumentNullException">If the simulation argument is null.</exception>
         public static HitResult Raycast(this Simulation simulation, RaySegment raySegment)
         {
             if (simulation == null)
@@ -34,7 +38,8 @@ namespace XenkoToolkit.Physics
         /// <param name="raySegment">Ray.</param>
         /// <param name="collisionFilterGroups">The collision group of this shape sweep</param>
         /// <param name="collisionFilterGroupFlags">The collision group that this shape sweep can collide with</param>
-        /// <returns>The list with hit results.</returns>
+        /// <returns>The hit results.</returns>
+        /// <exception cref="ArgumentNullException">If the simulation argument is null.</exception>
         public static HitResult Raycast(this Simulation simulation, RaySegment raySegment, CollisionFilterGroups collisionFilterGroups, CollisionFilterGroupFlags collisionFilterGroupFlags)
         {
             if (simulation == null)
@@ -51,6 +56,7 @@ namespace XenkoToolkit.Physics
         /// <param name="simulation">Physics simulation.</param>
         /// <param name="raySegment">Ray.</param>
         /// <param name="resultsOutput">The list to fill with results.</param>
+        /// <exception cref="ArgumentNullException">If the simulation argument is null.</exception>
         public static void RaycastPenetrating(this Simulation simulation, RaySegment raySegment, IList<HitResult> resultsOutput)
         {
             if (simulation == null)
@@ -67,6 +73,7 @@ namespace XenkoToolkit.Physics
         /// <param name="simulation">Physics simulation.</param>
         /// <param name="raySegment">Ray.</param>
         /// <returns>The list with hit results.</returns>
+        /// <exception cref="ArgumentNullException">If the simulation argument is null.</exception>
         public static FastList<HitResult> RaycastPenetrating(this Simulation simulation, RaySegment raySegment)
         {
             if (simulation == null)
@@ -86,6 +93,7 @@ namespace XenkoToolkit.Physics
         /// <param name="resultsOutput">The list to fill with results.</param>
         /// <param name="collisionFilterGroups">The collision group of this shape sweep</param>
         /// <param name="collisionFilterGroupFlags">The collision group that this shape sweep can collide with</param>
+        /// <exception cref="ArgumentNullException">If the simulation argument is null.</exception>
         public static void RaycastPenetrating(this Simulation simulation, RaySegment raySegment, IList<HitResult> resultsOutput, CollisionFilterGroups collisionFilterGroups, CollisionFilterGroupFlags collisionFilterGroupFlags)
         {
             if (simulation == null)
@@ -104,6 +112,7 @@ namespace XenkoToolkit.Physics
         /// <param name="collisionFilterGroups">The collision group of this shape sweep</param>
         /// <param name="collisionFilterGroupFlags">The collision group that this shape sweep can collide with</param>
         /// <returns>The list with hit results.</returns>
+        /// <exception cref="ArgumentNullException">If the simulation argument is null.</exception>
         public static FastList<HitResult> RaycastPenetrating(this Simulation simulation, RaySegment raySegment, CollisionFilterGroups collisionFilterGroups, CollisionFilterGroupFlags collisionFilterGroupFlags)
         {
             if (simulation == null)

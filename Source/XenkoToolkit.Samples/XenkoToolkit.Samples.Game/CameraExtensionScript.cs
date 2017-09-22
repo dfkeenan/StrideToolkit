@@ -7,20 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XenkoToolkit.Engine;
+using XenkoToolkit.Mathematics;
 using XenkoToolkit.Physics;
 
 namespace XenkoToolkit.Samples
 {
     public class CameraExtensionScript : SyncScript
     {
-        private CameraComponent mainCamera;
+        private CameraComponent mainCam;
+        private string message;
 
-        public CameraComponent MainCamera { get => mainCamera; set => mainCamera = value; }
+        public CameraComponent MainCamera { get => mainCam; set => mainCam = value; }
 
         public override void Start()
         {
            // MainCamera = SceneSystem.GetMainCamera();
         }
+
+        
 
         public override void Update()
         {
@@ -29,15 +33,26 @@ namespace XenkoToolkit.Samples
 
             DebugText.Print($"ScreenToWorldRaySegment {MainCamera.ScreenToWorldRaySegment(Input.MousePosition)}", new Int2(20, 40));
 
-            
-            var simulation = this.GetSimulation();
+            if (Input.IsMouseButtonPressed(SiliconStudio.Xenko.Input.MouseButton.Left))
+            {
+                message = "";
 
-            var ray = mainCamera.ScreenToWorldRaySegment(Input.MousePosition);
+                var simulation = this.GetSimulation();
 
-            var hitResult = simulation.Raycast(ray);
+                var ray = mainCam.ScreenToWorldRaySegment(Input.MousePosition);
 
+                var hitResult = simulation.Raycast(ray);
+                if(hitResult.Succeeded)
+                {
+                    message = hitResult.Collider.Entity.Name;
+
+                    mainCam.Entity.Transform.Rotation = MathUtilEx.LookRotation(mainCam.Entity.Transform.Position, hitResult.Collider.Entity.Transform.Position, Vector3.UnitY);
+                }
+                DebugText.Print($"Clicked on {message}", new Int2(20, 60));
+            }
 
             //DebugText.Print($"Main {SceneSystem.GetMainCamera() != null}", new Int2(20, 40));
         }
     }
+
 }

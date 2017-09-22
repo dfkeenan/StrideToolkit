@@ -10,6 +10,16 @@ namespace XenkoToolkit.Collections
     {
         public static void AddRange<T>(this ICollection<T> collection, IEnumerable<T> values)
         {
+            if (collection == null)
+            {
+                throw new ArgumentNullException(nameof(collection));
+            }
+
+            if (values == null)
+            {
+                throw new ArgumentNullException(nameof(values));
+            }
+
             foreach (var item in values)
             {
                 collection.Add(item);
@@ -54,12 +64,33 @@ namespace XenkoToolkit.Collections
             }
         }
 
-        public static T Peek<T>(this IList<T> stack) => stack[stack.Count - 1];
+        public static T Peek<T>(this IList<T> stack)
+        {
+            if (stack == null)
+            {
+                throw new ArgumentNullException(nameof(stack));
+            }
 
-        public static void Push<T>(this IList<T> stack, T item) => stack.Add(item);
+            return stack[stack.Count - 1];
+        }
+
+        public static void Push<T>(this IList<T> stack, T item)
+        {
+            if (stack == null)
+            {
+                throw new ArgumentNullException(nameof(stack));
+            }
+
+            stack.Add(item);
+        }
 
         public static T Pop<T>(this IList<T> stack)
         {
+            if (stack == null)
+            {
+                throw new ArgumentNullException(nameof(stack));
+            }
+
             var item = stack[stack.Count - 1];
             stack.RemoveAt(stack.Count - 1);
             return item;
@@ -67,6 +98,11 @@ namespace XenkoToolkit.Collections
 
         public static T PopFront<T>(this IList<T> stack)
         {
+            if (stack == null)
+            {
+                throw new ArgumentNullException(nameof(stack));
+            }
+
             var item = stack[0];
             stack.RemoveAt(0);
             return item;
@@ -79,16 +115,30 @@ namespace XenkoToolkit.Collections
 
         public static IEnumerable<T> Concat<T>(this IEnumerable<T> first, params T[] second)
         {
+            if (first == null)
+            {
+                throw new ArgumentNullException(nameof(first));
+            }
+
+            if (second == null)
+            {
+                throw new ArgumentNullException(nameof(second));
+            }
+
             return Enumerable.Concat(first, second);
         }
 
         public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
         {
             if (source == null)
+            {
                 throw new ArgumentNullException(nameof(source));
+            }
 
             if (action == null)
+            {
                 throw new ArgumentNullException(nameof(action));
+            }
 
             foreach (var item in source)
             {
@@ -99,7 +149,14 @@ namespace XenkoToolkit.Collections
         public static void MergeInto<TKey, TValue>(this IDictionary<TKey, TValue> source, IDictionary<TKey, TValue> target)
         {
             if (source == null)
+            {
                 throw new ArgumentNullException(nameof(source));
+            }
+
+            if (target == null)
+            {
+                throw new ArgumentNullException(nameof(target));
+            }
 
             foreach (var item in source)
                 target[item.Key] = item.Value;
@@ -108,7 +165,9 @@ namespace XenkoToolkit.Collections
         public static TValue GetOrDefault<TKey,TValue>(this IDictionary<TKey, TValue> dicionary, TKey key, TValue defaultValue = default(TValue))
         {
             if (dicionary == null)
+            {
                 throw new ArgumentNullException(nameof(dicionary));
+            }
 
             TValue result = default(TValue);
 
@@ -123,11 +182,14 @@ namespace XenkoToolkit.Collections
         public static TValue GetOrAdd<TKey, TValue>(this IDictionary<TKey, TValue> dicionary, TKey key, Func<TKey, TValue> getValue)
         {
             if (dicionary == null)
+            {
                 throw new ArgumentNullException(nameof(dicionary));
+            }
 
             if (getValue == null)
+            {
                 throw new ArgumentNullException(nameof(getValue));
-
+            }
 
             TValue result = default(TValue);
 
@@ -142,11 +204,14 @@ namespace XenkoToolkit.Collections
         public static TValue GetOrAdd<TKey, TValue>(this IDictionary<TKey, TValue> dicionary, TKey key, Func<TKey, TValue> getValue, Func<TValue, bool> shouldAdd)
         {
             if (dicionary == null)
+            {
                 throw new ArgumentNullException(nameof(dicionary));
+            }
 
             if (getValue == null)
+            {
                 throw new ArgumentNullException(nameof(getValue));
-
+            }
 
             TValue result = default(TValue);
 
@@ -164,8 +229,9 @@ namespace XenkoToolkit.Collections
         public static int Increment<TKey>(this IDictionary<TKey, int> dicionary, TKey key)
         {
             if (dicionary == null)
+            {
                 throw new ArgumentNullException(nameof(dicionary));
-
+            }
 
             int result = default(int);
             dicionary[key] = dicionary.TryGetValue(key, out result) ? result += 1 : result = 1;

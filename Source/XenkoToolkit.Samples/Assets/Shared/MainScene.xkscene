@@ -46,6 +46,19 @@ Hierarchy:
                     a16c057f160b641b8de9b91f8fc3767b: !XenkoToolkit.Samples.CameraExtensionScript,XenkoToolkit.Samples.Game
                         Id: 5e44386e-f61c-4559-9e73-a66a075d20f0
                         MainCamera: ref!! df0353c9-a5f8-4a6f-b2da-73140df3a6da
+                    0c108cab79cc025ed2f8ed47ef4e358a: !StaticColliderComponent
+                        Id: 9474d1bb-5489-4c00-9246-a09cb2ba58e2
+                        CanSleep: true
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            d9a97d0b88c882fcbe9a502cb7f94359: !SphereColliderShapeDesc
+                                Is2D: false
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
         -   Entity:
                 Id: 623802ba-94a0-47da-be27-72e765d6e3c6
                 Name: Camera
