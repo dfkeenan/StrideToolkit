@@ -8,13 +8,19 @@ using SiliconStudio.Core.Mathematics;
 namespace XenkoToolkit.Mathematics
 {
     /// <summary>
-    /// Robert Penner's easing functions in C# http://www.robertpenner.com/easing/
+    /// A collection of easing functions.
     /// </summary>
+    /// <remarks>
+    /// These easing functions are based on Robert Penner's easing functions in C# http://www.robertpenner.com/easing/
+    /// </remarks>
     public static partial class Easing
     {
         /// <summary>
-        /// Interpolate using the specified function.
+        /// Performs easing using the specified function.
         /// </summary>
+        /// <param name="amount">The amount.</param>
+        /// <param name="function">The easing function to use.</param>
+        /// <returns>The amount eased using the specified function.</returns>
         public static float Ease(float amount, EasingFunction function)
         {
             switch (function)
@@ -55,34 +61,39 @@ namespace XenkoToolkit.Mathematics
         }
 
         /// <summary>
-        /// Modeled after the line y = x
+        /// Performs a linear easing.
         /// </summary>
+        /// <param name="amount">The amount.</param>
+        /// <returns>The amount eased.</returns>
+        /// <remarks>
+        /// Modeled after the line y = x
+        /// </remarks>
         public static float Linear(float amount)
         {
             return amount;
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after the parabola y = x^2
-        /// </summary>
+        /// </remarks>
         public static float QuadraticEaseIn(float amount)
         {
             return amount * amount;
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after the parabola y = -x^2 + 2x
-        /// </summary>
+        /// </remarks>
         public static float QuadraticEaseOut(float amount)
         {
             return -(amount * (amount - 2));
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after the piecewise quadratic
         /// y = (1/2)((2x)^2)             ; [0, 0.5]
         /// y = -(1/2)((2x-1)*(2x-3) - 1) ; [0.5, 1]
-        /// </summary>
+        /// </remarks>
         public static float QuadraticEaseInOut(float amount)
         {
             if (amount < 0.5f)
@@ -95,28 +106,28 @@ namespace XenkoToolkit.Mathematics
             }
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after the cubic y = x^3
-        /// </summary>
+        /// </remarks>
         public static float CubicEaseIn(float amount)
         {
             return amount * amount * amount;
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after the cubic y = (x - 1)^3 + 1
-        /// </summary>
+        /// </remarks>
         public static float CubicEaseOut(float amount)
         {
             float f = (amount - 1);
             return f * f * f + 1;
         }
 
-        /// <summary>	
+        /// <remarks>	
         /// Modeled after the piecewise cubic
         /// y = (1/2)((2x)^3)       ; [0, 0.5]
         /// y = (1/2)((2x-2)^3 + 2) ; [0.5, 1]
-        /// </summary>
+        /// </remarks>
         public static float CubicEaseInOut(float amount)
         {
             if (amount < 0.5f)
@@ -130,28 +141,28 @@ namespace XenkoToolkit.Mathematics
             }
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after the quartic x^4
-        /// </summary>
+        /// </remarks>
         public static float QuarticEaseIn(float amount)
         {
             return amount * amount * amount * amount;
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after the quartic y = 1 - (x - 1)^4
-        /// </summary>
+        /// </remarks>
         public static float QuarticEaseOut(float amount)
         {
             float f = (amount - 1);
             return f * f * f * (1 - amount) + 1;
         }
 
-        /// <summary>
+        /// <remarks>
         // Modeled after the piecewise quartic
         // y = (1/2)((2x)^4)        ; [0, 0.5]
         // y = -(1/2)((2x-2)^4 - 2) ; [0.5, 1]
-        /// </summary>
+        /// </remarks>
         public static float QuarticEaseInOut(float amount)
         {
             if (amount < 0.5f)
@@ -165,28 +176,28 @@ namespace XenkoToolkit.Mathematics
             }
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after the quintic y = x^5
-        /// </summary>
+        /// </remarks>
         public static float QuinticEaseIn(float amount)
         {
             return amount * amount * amount * amount * amount;
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after the quintic y = (x - 1)^5 + 1
-        /// </summary>
+        /// </remarks>
         public static float QuinticEaseOut(float amount)
         {
             float f = (amount - 1);
             return f * f * f * f * f + 1;
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after the piecewise quintic
         /// y = (1/2)((2x)^5)       ; [0, 0.5]
         /// y = (1/2)((2x-2)^5 + 2) ; [0.5, 1]
-        /// </summary>
+        /// </remarks>
         public static float QuinticEaseInOut(float amount)
         {
             if (amount < 0.5f)
@@ -200,51 +211,51 @@ namespace XenkoToolkit.Mathematics
             }
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after quarter-cycle of sine wave
-        /// </summary>
+        /// </remarks>
         public static float SineEaseIn(float amount)
         {
             return (float)Math.Sin((amount - 1) * MathUtil.PiOverTwo) + 1;
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after quarter-cycle of sine wave (different phase)
-        /// </summary>
+        /// </remarks>
         public static float SineEaseOut(float amount)
         {
             return (float)Math.Sin(amount * MathUtil.PiOverTwo);
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after half sine wave
-        /// </summary>
+        /// </remarks>
         public static float SineEaseInOut(float amount)
         {
             return 0.5f * (1 - (float)Math.Cos(amount * MathUtil.Pi));
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after shifted quadrant IV of unit circle
-        /// </summary>
+        /// </remarks>
         public static float CircularEaseIn(float amount)
         {
             return 1 - (float)Math.Sqrt(1 - (amount * amount));
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after shifted quadrant II of unit circle
-        /// </summary>
+        /// </remarks>
         public static float CircularEaseOut(float amount)
         {
             return (float)Math.Sqrt((2 - amount) * amount);
         }
 
-        /// <summary>	
+        /// <remarks>	
         /// Modeled after the piecewise circular function
         /// y = (1/2)(1 - Math.Sqrt(1 - 4x^2))           ; [0, 0.5]
         /// y = (1/2)(Math.Sqrt(-(2x - 3)*(2x - 1)) + 1) ; [0.5, 1]
-        /// </summary>
+        /// </remarks>
         public static float CircularEaseInOut(float amount)
         {
             if (amount < 0.5f)
@@ -257,27 +268,27 @@ namespace XenkoToolkit.Mathematics
             }
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after the exponential function y = 2^(10(x - 1))
-        /// </summary>
+        /// </remarks>
         public static float ExponentialEaseIn(float amount)
         {
             return (amount == 0.0f) ? amount : (float)Math.Pow(2, 10 * (amount - 1));
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after the exponential function y = -2^(-10x) + 1
-        /// </summary>
+        /// </remarks>
         public static float ExponentialEaseOut(float amount)
         {
             return (amount == 1.0f) ? amount : 1 - (float)Math.Pow(2, -10 * amount);
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after the piecewise exponential
         /// y = (1/2)2^(10(2x - 1))         ; [0,0.5]
         /// y = -(1/2)*2^(-10(2x - 1))) + 1 ; [0.5,1]
-        /// </summary>
+        /// </remarks>
         public static float ExponentialEaseInOut(float amount)
         {
             if (amount == 0.0 || amount == 1.0) return amount;
@@ -292,27 +303,27 @@ namespace XenkoToolkit.Mathematics
             }
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after the damped sine wave y = sin(13pi/2*x)*Math.Pow(2, 10 * (x - 1))
-        /// </summary>
+        /// </remarks>
         public static float ElasticEaseIn(float amount)
         {
             return (float)Math.Sin(13 * MathUtil.PiOverTwo * amount) * (float)Math.Pow(2, 10 * (amount - 1));
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after the damped sine wave y = sin(-13pi/2*(x + 1))*Math.Pow(2, -10x) + 1
-        /// </summary>
+        /// </remarks>
         public static float ElasticEaseOut(float amount)
         {
             return (float)Math.Sin(-13 * MathUtil.PiOverTwo * (amount + 1)) * (float)Math.Pow(2, -10 * amount) + 1;
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after the piecewise exponentially-damped sine wave:
         /// y = (1/2)*sin(13pi/2*(2*x))*Math.Pow(2, 10 * ((2*x) - 1))      ; [0,0.5]
         /// y = (1/2)*(sin(-13pi/2*((2x-1)+1))*Math.Pow(2,-10(2*x-1)) + 2) ; [0.5, 1]
-        /// </summary>
+        /// </remarks>
         public static float ElasticEaseInOut(float amount)
         {
             if (amount < 0.5f)
@@ -325,28 +336,28 @@ namespace XenkoToolkit.Mathematics
             }
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after the overshooting cubic y = x^3-x*sin(x*pi)
-        /// </summary>
+        /// </remarks>
         public static float BackEaseIn(float amount)
         {
             return amount * amount * amount - amount * (float)Math.Sin(amount * MathUtil.Pi);
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after overshooting cubic y = 1-((1-x)^3-(1-x)*sin((1-x)*pi))
-        /// </summary>	
+        /// </remarks>	
         public static float BackEaseOut(float amount)
         {
             float f = (1 - amount);
             return 1 - (f * f * f - f * (float)Math.Sin(f * MathUtil.Pi));
         }
 
-        /// <summary>
+        /// <remarks>
         /// Modeled after the piecewise overshooting cubic function:
         /// y = (1/2)*((2x)^3-(2x)*sin(2*x*pi))           ; [0, 0.5]
         /// y = (1/2)*(1-((1-x)^3-(1-x)*sin((1-x)*pi))+1) ; [0.5, 1]
-        /// </summary>
+        /// </remarks>
         public static float BackEaseInOut(float amount)
         {
             if (amount < 0.5f)
@@ -361,15 +372,15 @@ namespace XenkoToolkit.Mathematics
             }
         }
 
-        /// <summary>
-        /// </summary>
+        /// <remarks>
+        /// </remarks>
         public static float BounceEaseIn(float amount)
         {
             return 1 - BounceEaseOut(1 - amount);
         }
 
-        /// <summary>
-        /// </summary>
+        /// <remarks>
+        /// </remarks>
         public static float BounceEaseOut(float amount)
         {
             if (amount < 4 / 11.0f)
@@ -390,8 +401,8 @@ namespace XenkoToolkit.Mathematics
             }
         }
 
-        /// <summary>
-        /// </summary>
+        /// <remarks>
+        /// </remarks>
         public static float BounceEaseInOut(float amount)
         {
             if (amount < 0.5f)

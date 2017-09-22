@@ -13,14 +13,37 @@ namespace XenkoToolkit.Mathematics
     /// </summary>
     public static class MathUtilEx
     {
+        /// <summary>
+        /// Gets the smallest integer greater than or equal to the amount.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The smallest integer greater than or equal to the amount.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int CeilingToInt(this float value) => (int)Math.Ceiling(value);
 
+        /// <summary>
+        /// Gets largest integer less than or equal to the amount.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The largest integer less than or equal to the amount.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int FloorToInt(this float value) => (int)Math.Floor(value);
-
+        
+        /// <summary>
+        /// Gets the integer value nearest to the amount.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The integer value nearest to the amount.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int RoundToInt(this float value) => (int)Math.Round(value);
+
+        /// <summary>
+        /// Clamps the value between 0 and 1.
+        /// </summary>
+        /// <param name="value">The Value.</param>
+        /// <returns>Value clamped between 0 and 1.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float Clamp01(float value) => MathUtil.Clamp(0, 1, value);
 
         /// <summary>
         /// Orthonormalizes 2 vectors.
@@ -82,60 +105,158 @@ namespace XenkoToolkit.Mathematics
             return result;
         }
 
-
+        /// <summary>
+        /// Performs an interpolation between two values using an easing function.
+        /// </summary>
+        /// <param name="start">Start value.</param>
+        /// <param name="end">End value.</param>
+        /// <param name="amount">Value between 0 and 1 indicating the weight of <paramref name="end"/>.</param>
+        /// <param name="easingFunction">The function used to ease the interpolation.</param>
+        /// <param name="result">When the method completes, contains the interpolation of the two value.</param>
+        /// <remarks>
+        /// Passing <paramref name="amount"/> a value of 0 will cause <paramref name="start"/> to be returned; a value of 1 will cause <paramref name="end"/> to be returned. 
+        /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Interpolate(float start, float end, float amount, EasingFunction easingFunction)
         {
             return MathUtil.Lerp(start, end, Easing.Ease(amount, easingFunction));
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2 Interpolate(Vector2 start, Vector2 end, float amount, EasingFunction easingFunction)
-        {
-            return Vector2.Lerp(start, end, Easing.Ease(amount, easingFunction));
-        }
-
+        /// <summary>
+        /// Performs an interpolation between two vectors using an easing function.
+        /// </summary>
+        /// <param name="start">Start vector.</param>
+        /// <param name="end">End vector.</param>
+        /// <param name="amount">Value between 0 and 1 indicating the weight of <paramref name="end"/>.</param>
+        /// <param name="easingFunction">The function used to ease the interpolation.</param>
+        /// <param name="result">When the method completes, contains the interpolation of the two vectors.</param>
+        /// <remarks>
+        /// Passing <paramref name="amount"/> a value of 0 will cause <paramref name="start"/> to be returned; a value of 1 will cause <paramref name="end"/> to be returned. 
+        /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Interpolate(ref Vector2 start, ref Vector2 end, float amount, EasingFunction easingFunction, out Vector2 result)
         {
             Vector2.Lerp(ref start, ref end, Easing.Ease(amount, easingFunction), out result);
         }
 
+        /// <summary>
+        /// Performs an interpolation between two vectors using an easing function.
+        /// </summary>
+        /// <param name="start">Start vector.</param>
+        /// <param name="end">End vector.</param>
+        /// <param name="amount">Value between 0 and 1 indicating the weight of <paramref name="end"/>.</param>
+        /// <param name="easingFunction">The function used to ease the interpolation.</param>
+        /// <returns>The interpolation of the two vectors.</returns>
+        /// <remarks>
+        /// Passing <paramref name="amount"/> a value of 0 will cause <paramref name="start"/> to be returned; a value of 1 will cause <paramref name="end"/> to be returned. 
+        /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector3 Interpolate(Vector3 start, Vector3 end, float amount, EasingFunction easingFunction)
+        public static Vector2 Interpolate(Vector2 start, Vector2 end, float amount, EasingFunction easingFunction)
         {
-            return Vector3.Lerp(start, end, Easing.Ease(amount, easingFunction));
+            return Vector2.Lerp(start, end, Easing.Ease(amount, easingFunction));
         }
 
+        /// <summary>
+        /// Performs an interpolation between two vectors using an easing function.
+        /// </summary>
+        /// <param name="start">Start vector.</param>
+        /// <param name="end">End vector.</param>
+        /// <param name="amount">Value between 0 and 1 indicating the weight of <paramref name="end"/>.</param>
+        /// <param name="easingFunction">The function used to ease the interpolation.</param>
+        /// <param name="result">When the method completes, contains the interpolation of the two vectors.</param>
+        /// <remarks>
+        /// Passing <paramref name="amount"/> a value of 0 will cause <paramref name="start"/> to be returned; a value of 1 will cause <paramref name="end"/> to be returned. 
+        /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Interpolate(ref Vector3 start, ref Vector3 end, float amount, EasingFunction easingFunction, out Vector3 result)
         {
             Vector3.Lerp(ref start, ref end, Easing.Ease(amount, easingFunction), out result);
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector4 Interpolate(Vector4 start, Vector4 end, float amount, EasingFunction easingFunction)
-        {
-            return Vector4.Lerp(start, end, Easing.Ease(amount, easingFunction));
-        }
+        /// <summary>
+        /// Performs an interpolation between two vectors using an easing function.
+        /// </summary>
+        /// <param name="start">Start vector.</param>
+        /// <param name="end">End vector.</param>
+        /// <param name="amount">Value between 0 and 1 indicating the weight of <paramref name="end"/>.</param>
+        /// <param name="easingFunction">The function used to ease the interpolation.</param>
+        /// <returns>The interpolation of the two vectors.</returns>
+        /// <remarks>
+        /// Passing <paramref name="amount"/> a value of 0 will cause <paramref name="start"/> to be returned; a value of 1 will cause <paramref name="end"/> to be returned. 
+        /// </remarks>
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3 Interpolate(Vector3 start, Vector3 end, float amount, EasingFunction easingFunction)
+        {
+            return Vector3.Lerp(start, end, Easing.Ease(amount, easingFunction));
+        }
+        /// <summary>
+        /// Performs an interpolation between two vectors using an easing function.
+        /// </summary>
+        /// <param name="start">Start vector.</param>
+        /// <param name="end">End vector.</param>
+        /// <param name="amount">Value between 0 and 1 indicating the weight of <paramref name="end"/>.</param>
+        /// <param name="easingFunction">The function used to ease the interpolation.</param>
+        /// <param name="result">When the method completes, contains the interpolation of the two vectors.</param>
+        /// <remarks>
+        /// Passing <paramref name="amount"/> a value of 0 will cause <paramref name="start"/> to be returned; a value of 1 will cause <paramref name="end"/> to be returned. 
+        /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Interpolate(ref Vector4 start, ref Vector4 end, float amount, EasingFunction easingFunction, out Vector4 result)
         {
             Vector4.Lerp(ref start, ref end, Easing.Ease(amount, easingFunction), out result);
         }
 
+        /// <summary>
+        /// Performs an interpolation between two vectors using an easing function.
+        /// </summary>
+        /// <param name="start">Start vector.</param>
+        /// <param name="end">End vector.</param>
+        /// <param name="amount">Value between 0 and 1 indicating the weight of <paramref name="end"/>.</param>
+        /// <param name="easingFunction">The function used to ease the interpolation.</param>
+        /// <returns>The interpolation of the two vectors.</returns>
+        /// <remarks>
+        /// Passing <paramref name="amount"/> a value of 0 will cause <paramref name="start"/> to be returned; a value of 1 will cause <paramref name="end"/> to be returned. 
+        /// </remarks>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector4 Interpolate(Vector4 start, Vector4 end, float amount, EasingFunction easingFunction)
+        {
+            return Vector4.Lerp(start, end, Easing.Ease(amount, easingFunction));
+        }
+
+        /// <summary>
+        /// Performs an interpolation between two colors using an easing function.
+        /// </summary>
+        /// <param name="start">Start color.</param>
+        /// <param name="end">End color.</param>
+        /// <param name="amount">Value between 0 and 1 indicating the weight of <paramref name="end"/>.</param>
+        /// <param name="easingFunction">The function used to ease the interpolation.</param>
+        /// <param name="result">When the method completes, contains the interpolation of the two colors.</param>
+        /// <remarks>
+        /// Passing <paramref name="amount"/> a value of 0 will cause <paramref name="start"/> to be returned; a value of 1 will cause <paramref name="end"/> to be returned. 
+        /// </remarks>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Interpolate(ref Color start, ref Color end, float amount, EasingFunction easingFunction, out Color result)
+        {
+            Color.Lerp(ref start, ref end, Easing.Ease(amount, easingFunction), out result);
+        }
+
+        /// <summary>
+        /// Performs an interpolation between two colors using an easing function.
+        /// </summary>
+        /// <param name="start">Start color.</param>
+        /// <param name="end">End color.</param>
+        /// <param name="easingFunction">The function used to ease the interpolation.</param>
+        /// <param name="amount">Value between 0 and 1 indicating the weight of <paramref name="end"/>.</param>
+        /// <returns>The interpolation of the two colors.</returns>
+        /// <remarks>
+        /// Passing <paramref name="amount"/> a value of 0 will cause <paramref name="start"/> to be returned; a value of 1 will cause <paramref name="end"/> to be returned. 
+        /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Color Interpolate(Color start, Color end, float amount, EasingFunction easingFunction)
         {
             return Color.Lerp(start, end, Easing.Ease(amount, easingFunction));
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Interpolate(ref Color start, ref Color end, float amount, EasingFunction easingFunction, out Color result)
-        {
-            Color.Lerp(ref start, ref end, Easing.Ease(amount, easingFunction), out result);
-        }
-        
     }
 }
