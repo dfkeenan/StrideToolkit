@@ -1,0 +1,29 @@
+!Package
+Id: 1bff1995-374a-4a70-9932-07776ccfd12f
+SerializedVersion: {Assets: 0.0.4}
+Meta:
+    Name: XenkoToolkit
+    Version: 1.0.0.0
+    Authors: []
+    Owners: []
+    RootNamespace: XenkoToolkit
+    Dependencies:
+        -   Name: Xenko
+            Version: 2.1.0.3
+            RootAssets: []
+LocalDependencies: []
+Profiles:
+    -   Name: Shared
+        Platform: Shared
+        InheritProfiles: []
+        AssetFolders: []
+        OutputGroupDirectories: {}
+        ProjectReferences:
+            -   Id: 32ae5bf6-59f6-454f-93f5-57f60f194971
+                Location: XenkoToolkit.csproj
+                Type: Library
+ExplicitFolders: []
+Bundles: []
+TemplateFolders: []
+RootAssets: []
+

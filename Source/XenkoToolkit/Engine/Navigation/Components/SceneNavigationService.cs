@@ -15,11 +15,11 @@ namespace XenkoToolkit.Engine.Navigation.Components
 
         public Scene StartScene { get; set; }
         public bool KeepStartSceneLoaded { get; set; }
+        public bool IsNavigating { get; private set; }
 
         private readonly List<SceneHistoryItem> back = new List<SceneHistoryItem>();
         private readonly List<SceneHistoryItem> forward = new List<SceneHistoryItem>();
         private SceneHistoryItem currentItem = default(SceneHistoryItem);
-        private bool isNavigating = false;
 
 
         public override void Start()
@@ -81,9 +81,9 @@ namespace XenkoToolkit.Engine.Navigation.Components
 
         public async Task<bool> NavigateAsync(string url, bool keepLoaded = false, bool rememberCurrent = true)
         {
-            if (isNavigating) return false;
+            if (IsNavigating) return false;
 
-            isNavigating = true;
+            IsNavigating = true;
 
             if (!Content.Exists(url)) return false;
 
@@ -96,7 +96,7 @@ namespace XenkoToolkit.Engine.Navigation.Components
 
             Navigate(navTo, rememberCurrent);
 
-            isNavigating = false;
+            IsNavigating = false;
             return true;
         }
 
@@ -127,15 +127,17 @@ namespace XenkoToolkit.Engine.Navigation.Components
 
         public bool CanGoForward => forward.Count > 0;
 
+        
+
         public async Task<bool> GoBackAsync(bool rememberCurrent = true)
         {
-            if (isNavigating) return false;
+            if (IsNavigating) return false;
 
-            isNavigating = true;
+            IsNavigating = true;
 
             if (!CanGoBack)
             {
-                isNavigating = false;
+                IsNavigating = false;
                 return false;
             }
 
@@ -162,15 +164,15 @@ namespace XenkoToolkit.Engine.Navigation.Components
             SceneSystem.SceneInstance.RootScene.Children.Add(navTo.Scene);
 
             currentItem = navTo;
-            isNavigating = false;
+            IsNavigating = false;
             return true;
         }
 
         public async Task<bool> GoForwardAsync(bool rememberCurrent = true)
         {
-            if (isNavigating) return false;
+            if (IsNavigating) return false;
 
-            isNavigating = true;
+            IsNavigating = true;
 
             if (!CanGoForward) return false;
 
@@ -197,7 +199,7 @@ namespace XenkoToolkit.Engine.Navigation.Components
             SceneSystem.SceneInstance.RootScene.Children.Add(navTo.Scene);
 
             currentItem = navTo;
-            isNavigating = false;
+            IsNavigating = false;
             return true;
         }
 

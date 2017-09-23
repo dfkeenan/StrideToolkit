@@ -21,3 +21,10 @@ Hierarchy:
                         Page: aee6dbcf-1d67-46f7-9970-f3649adab5ac:Shared/NavigateBackUI
                         Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
                         Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                    507c801dcc293b40561e791d16b58a34: !XenkoToolkit.Engine.Navigation.Components.NavigationButtonHandler,XenkoToolkit
+                        Id: 5c5f8f84-2cef-40c9-a920-e4e47df72af0
+                        Page: null
+                        ButtonName: BackButton
+                        ButtonAction: !XenkoToolkit.Engine.Navigation.Components.NavigateBack,XenkoToolkit
+                            KeepLoaded: false
+                            RememberCurrent: true

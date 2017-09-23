@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace XenkoToolkit.UI
 {
-    [DataContract("TransitioningContentControl")]
-    [DebuggerDisplay("TransitioningContentControl - Name={Name}")]
-    public class TransitioningContentControl: ContentControl
-    {
+    //[DataContract("TransitioningContentControl")]
+    //[DebuggerDisplay("TransitioningContentControl - Name={Name}")]
+    //public class TransitioningContentControl: ContentControl
+    //{
 
-    }
+    //}
 }

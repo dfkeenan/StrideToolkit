@@ -34,11 +34,15 @@ namespace XenkoToolkit.Engine.Navigation.Components
             }
         }
 
-        private async void Button_Click(object sender, SiliconStudio.Xenko.UI.Events.RoutedEventArgs e)
+        private void Button_Click(object sender, SiliconStudio.Xenko.UI.Events.RoutedEventArgs e)
         {           
             var navService = Game.Services.GetService<ISceneNavigationService>();
 
-            await ButtonAction?.Handle(navService);
+            if(navService != null)
+            {
+                Script.AddTask(() => ButtonAction?.Handle(navService));
+            }
+
         }
 
         public override void Update()

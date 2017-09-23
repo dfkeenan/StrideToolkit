@@ -7,6 +7,7 @@ namespace XenkoToolkit.Engine.Navigation
     {
         bool CanGoBack { get; }
         bool CanGoForward { get; }
+        bool IsNavigating { get; }
 
         void ClearHistory();
         Task<bool> GoBackAsync(bool rememberCurrent = true);

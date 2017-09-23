@@ -18,3 +18,7 @@ Hierarchy:
                         Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}
+                    783f3292b4171dd552306881c970bdbe: !XenkoToolkit.Engine.Navigation.Components.SceneNavigationService,XenkoToolkit
+                        Id: b2c61938-2974-46cd-92be-7c1c539a4b18
+                        StartScene: 41f9f6f3-b5e9-40c7-8cf0-b79f5992d3b2:Scenes/Start/Scene
+                        KeepStartSceneLoaded: true
