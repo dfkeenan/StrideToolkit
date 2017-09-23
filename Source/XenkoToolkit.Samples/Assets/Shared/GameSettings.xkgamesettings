@@ -2,7 +2,7 @@
 Id: 5ed17b35-bb25-41db-a0ce-a02a946bd7cd
 SerializedVersion: {Xenko: 2.1.0.3}
 Tags: []
-DefaultScene: 153b8bf8-f076-4534-b948-20ef449520d2:MainScene
+DefaultScene: 482957e1-25f8-44d6-bb0f-28d2ba952ba5:Main Scene
 GraphicsCompositor: ebf7e738-f5d3-4cf7-9670-9ca9622c5187:GraphicsCompositor
 Defaults:
     - !SiliconStudio.Xenko.Audio.AudioEngineSettings,SiliconStudio.Xenko.Audio

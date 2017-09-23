@@ -11,6 +11,7 @@ Hierarchy:
         - ref!! 0105edaf-d5ee-4863-95eb-8ca13038a117
         - ref!! fced427e-24d0-4121-a4cb-a9c725b0dd16
         - ref!! 61b658d4-e7f0-43f8-a55e-c8041b75ef99
+        - ref!! ff8c22d8-d9ac-45f9-bcdd-9730bbd1a204
     Parts:
         -   Entity:
                 Id: 0105edaf-d5ee-4863-95eb-8ca13038a117
@@ -24,11 +25,11 @@ Hierarchy:
                         Children: {}
                     28a2f66188011badaa80bcfd2cd4e162: !BackgroundComponent
                         Id: 0fa97144-0063-4e4d-939b-4d8c1d939a14
-                        Texture: 8836af5d-3fc5-4326-87ca-9bcc1d0d6306:Skybox texture
+                        Texture: 8836af5d-3fc5-4326-87ca-9bcc1d0d6306:Shared/Skybox texture
                     e2ad5bc44819018a8216346fd171cab5: !LightComponent
                         Id: 8b195ca7-7ba8-45de-9f3d-c9da9f9a282f
                         Type: !LightSkybox
-                            Skybox: d39e6cd7-681e-40b6-9a45-4d94c4a9705a:Skybox
+                            Skybox: d39e6cd7-681e-40b6-9a45-4d94c4a9705a:Shared/Skybox
         -   Entity:
                 Id: 61b658d4-e7f0-43f8-a55e-c8041b75ef99
                 Name: Sphere
@@ -41,7 +42,7 @@ Hierarchy:
                         Children: {}
                     8d65aa609574fa86bdd279e357c3b3f5: !ModelComponent
                         Id: 2e16e924-b7a1-4f37-83b8-5496a93e6868
-                        Model: f1528d4d-7249-4f8d-8667-33196f459041:Sphere
+                        Model: f1528d4d-7249-4f8d-8667-33196f459041:Scenes/Camera And Transform/Sphere
                         Materials: {}
                     a16c057f160b641b8de9b91f8fc3767b: !XenkoToolkit.Samples.CameraExtensionScript,XenkoToolkit.Samples.Game
                         Id: 5e44386e-f61c-4559-9e73-a66a075d20f0
@@ -118,5 +119,31 @@ Hierarchy:
                         Children: {}
                     aee73716f0568cdb6cfb4d605685191b: !ModelComponent
                         Id: 45069c56-3d75-4d9e-82e6-f92076f4c32f
-                        Model: 6113d0e9-0f17-4204-80ba-f1c99d98756b:Ground
+                        Model: 6113d0e9-0f17-4204-80ba-f1c99d98756b:Scenes/Camera And Transform/Ground
                         Materials: {}
+        -   Entity:
+                Id: ff8c22d8-d9ac-45f9-bcdd-9730bbd1a204
+                Name: NavigateBack
+                Components:
+                    47f72b162f21adf1633cf05861fb2270: !TransformComponent
+                        Id: c60f1fe8-715a-447f-9285-374a64c703f6
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    e48e3c06dbd408953af574faf34cfb17: !UIComponent
+                        Id: a0b4ff1f-fb7e-4528-9792-710906b0a2d6
+                        Page: aee6dbcf-1d67-46f7-9970-f3649adab5ac:Shared/NavigateBackUI
+                        Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
+                        Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                    7158b9cf7672efd9ee85d8349afe543b: !XenkoToolkit.Samples.Core.NavigationButtonHandler,XenkoToolkit.Samples.Game
+                        Id: 6c932676-5866-4fd1-8aa6-1c50aa232af7
+                        Page: null
+                        ButtonName: BackButton
+                        ButtonAction: !XenkoToolkit.Samples.Core.NavigateBack,XenkoToolkit.Samples.Game
+                            KeepLoaded: false
+                            RememberCurrent: true
+            Base:
+                BasePartAsset: 2427c113-db4d-48b0-9173-ac736dbbe007:Shared/NavigateBack
+                BasePartId: fbf8fadd-c878-4e29-a6ea-abcc01a67c95
+                InstanceId: 8382d57e-d08b-47b1-87ec-de536053dbb7

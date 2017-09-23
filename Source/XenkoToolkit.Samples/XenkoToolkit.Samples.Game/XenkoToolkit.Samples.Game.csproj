@@ -110,7 +110,14 @@
   <ItemGroup>
     <Compile Include="BasicCameraController.cs" />
     <Compile Include="CameraExtensionScript.cs" />
+    <Compile Include="Core\INavigationButtonAction.cs" />
+    <Compile Include="Core\ISceneNavigationService.cs" />
+    <Compile Include="Core\NavigationButtonAction.cs" />
+    <Compile Include="Core\NavigateToScreen.cs" />
+    <Compile Include="Core\SceneNavigationService.cs" />
+    <Compile Include="MenuNavigation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Core\NavigationButtonHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\XenkoToolkit\XenkoToolkit.csproj">

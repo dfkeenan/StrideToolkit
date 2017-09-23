@@ -1,0 +1,24 @@
+!SceneAsset
+Id: 482957e1-25f8-44d6-bb0f-28d2ba952ba5
+SerializedVersion: {Xenko: 2.1.0.1}
+Tags: []
+ChildrenIds: []
+Offset: {X: 0.0, Y: 0.0, Z: 0.0}
+Hierarchy:
+    RootParts:
+        - ref!! 8744209e-7bfd-4fe3-9c84-cc5919e580f2
+    Parts:
+        -   Entity:
+                Id: 8744209e-7bfd-4fe3-9c84-cc5919e580f2
+                Name: Managers
+                Components:
+                    f7daab1896995ed7ce3bc660182ccb0e: !TransformComponent
+                        Id: d2cb0f2d-4921-4990-bb9d-c9e07c2c4fa5
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    b7ad7fb8e52d486c4eff2fc3940ecedb: !XenkoToolkit.Samples.Core.SceneNavigationService,XenkoToolkit.Samples.Game
+                        Id: 91856d86-9677-4076-a105-e1a8b483efcb
+                        StartScene: 41f9f6f3-b5e9-40c7-8cf0-b79f5992d3b2:Scenes/Start/Scene
+                        KeepStartSceneLoaded: true

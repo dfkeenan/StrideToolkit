@@ -1,0 +1,30 @@
+!PrefabAsset
+Id: 2427c113-db4d-48b0-9173-ac736dbbe007
+SerializedVersion: {Xenko: 2.1.0.1}
+Tags: []
+Hierarchy:
+    RootParts:
+        - ref!! fbf8fadd-c878-4e29-a6ea-abcc01a67c95
+    Parts:
+        -   Entity:
+                Id: fbf8fadd-c878-4e29-a6ea-abcc01a67c95
+                Name: NavigateBack
+                Components:
+                    47f72b162f21adf1633cf05861fb2270: !TransformComponent
+                        Id: 27f969f7-8ad3-40bd-8beb-9cadb1a61ac0
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    e48e3c06dbd408953af574faf34cfb17: !UIComponent
+                        Id: db5fdc5c-9ca2-42c8-9be8-27f223cf4495
+                        Page: aee6dbcf-1d67-46f7-9970-f3649adab5ac:Shared/NavigateBackUI
+                        Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
+                        Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                    7158b9cf7672efd9ee85d8349afe543b: !XenkoToolkit.Samples.Core.NavigationButtonHandler,XenkoToolkit.Samples.Game
+                        Id: dc3d601a-14df-4407-a924-089ec2c3c773
+                        Page: null
+                        ButtonName: BackButton
+                        ButtonAction: !XenkoToolkit.Samples.Core.NavigateBack,XenkoToolkit.Samples.Game
+                            KeepLoaded: false
+                            RememberCurrent: true

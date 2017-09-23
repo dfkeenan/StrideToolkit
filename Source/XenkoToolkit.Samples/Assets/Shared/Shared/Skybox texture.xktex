@@ -2,7 +2,7 @@
 Id: 8836af5d-3fc5-4326-87ca-9bcc1d0d6306
 SerializedVersion: {Xenko: 2.0.0.0}
 Tags: []
-Source: ../../Resources/skybox_texture_hdr.dds
+Source: ../../../Resources/skybox_texture_hdr.dds
 Type: !ColorTextureType
     UseSRgbSampling: false
     ColorKeyColor: {R: 255, G: 0, B: 255, A: 255}

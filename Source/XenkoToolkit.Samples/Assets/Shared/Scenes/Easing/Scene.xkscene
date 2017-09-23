@@ -1,0 +1,96 @@
+!SceneAsset
+Id: 1bb8b377-0593-404b-ac64-d8493201224e
+SerializedVersion: {Xenko: 2.1.0.1}
+Tags: []
+ChildrenIds: []
+Offset: {X: 0.0, Y: 0.0, Z: 0.0}
+Hierarchy:
+    RootParts:
+        - ref!! e7e59220-5b87-43ec-8388-bc426faf4757
+        - ref!! 83b1b72e-16a0-4020-b837-447cce7dd834
+        - ref!! e9fb5af7-619c-43b3-bebc-9dfa975a67fd
+        - ref!! 69744fa0-deb4-487a-a05a-39a28b366349
+    Parts:
+        -   Entity:
+                Id: 48174840-8921-4cc2-84fd-68ad2aae0deb
+                Name: NavigateBack
+                Components:
+                    47f72b162f21adf1633cf05861fb2270: !TransformComponent
+                        Id: 47653832-b532-47c7-a9f4-2166eba4d9f1
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    e48e3c06dbd408953af574faf34cfb17: !UIComponent
+                        Id: ebc4105b-9b95-43bd-8eda-5b2ea500660e
+                        Page: aee6dbcf-1d67-46f7-9970-f3649adab5ac:Shared/NavigateBackUI
+                        Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
+                        Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                    7158b9cf7672efd9ee85d8349afe543b: !XenkoToolkit.Samples.Core.NavigationButtonHandler,XenkoToolkit.Samples.Game
+                        Id: 6b5e2278-0e3f-4892-8a09-839693ba783f
+                        Page: null
+                        ButtonName: BackButton
+                        ButtonAction: !XenkoToolkit.Samples.Core.NavigateBack,XenkoToolkit.Samples.Game
+                            KeepLoaded: false
+                            RememberCurrent: true
+            Base:
+                BasePartAsset: 2427c113-db4d-48b0-9173-ac736dbbe007:Shared/NavigateBack
+                BasePartId: fbf8fadd-c878-4e29-a6ea-abcc01a67c95
+                InstanceId: 557cf697-8c69-41d7-a1c5-2b9791808b66
+        -   Entity:
+                Id: 69744fa0-deb4-487a-a05a-39a28b366349
+                Name: Skybox light
+                Components:
+                    8046a2b668bc2b8a76ca6aba9c7542d9: !TransformComponent
+                        Id: 14daf059-4f5b-463f-902d-b9f873f445d2
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    5c1af05ceaa023407392256a2d3ca718: !LightComponent
+                        Id: 7271bcc8-6079-4146-b31d-fa5b7cd7dfa8
+                        Type: !LightSkybox
+                            Skybox: d39e6cd7-681e-40b6-9a45-4d94c4a9705a:Shared/Skybox
+                    4483947a9bf92ca6f74d86e7b66aed31: !BackgroundComponent
+                        Id: e69034a1-76eb-4aa1-9b6e-d1f58f8b90ca
+                        Texture: 8836af5d-3fc5-4326-87ca-9bcc1d0d6306:Shared/Skybox texture
+        -   Entity:
+                Id: 83b1b72e-16a0-4020-b837-447cce7dd834
+                Name: Camera
+                Components:
+                    e29192633f07bf5b1aaab781c83786ed: !TransformComponent
+                        Id: cad70de6-a069-4d1e-9897-582159b016fd
+                        Position: {X: 0.0, Y: 0.0, Z: 4.659839}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    9b9234cc192051cc65602975c8e48a62: !CameraComponent
+                        Id: 8e39ea7e-7a42-492a-a5be-a4380c6f0aad
+                        Name: null
+                        Projection: Perspective
+                        Slot: d729338d-6510-44fc-a91d-48fe121b368b
+        -   Entity:
+                Id: e7e59220-5b87-43ec-8388-bc426faf4757
+                Name: NavigateBack
+                Components:
+                    de61a4337796bdd33117d1020a3255a8: !TransformComponent
+                        Id: 683ae059-fac9-4fcc-99c6-af6c7638618b
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            4c332d1cc7817963371d2553331bf008: ref!! 47653832-b532-47c7-a9f4-2166eba4d9f1
+        -   Entity:
+                Id: e9fb5af7-619c-43b3-bebc-9dfa975a67fd
+                Name: Torus
+                Components:
+                    5ad6e7a13c07af1337d46c009e7e85a1: !TransformComponent
+                        Id: d125ac37-8714-4d9f-b824-9321a7352ee3
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    4871e6220ea4d194525bd593763031e5: !ModelComponent
+                        Id: de801aec-ccf3-4404-80d1-0330363ff450
+                        Model: b8976fe1-ac82-40dd-b234-9e372048feeb:Scenes/Easing/Torus
+                        Materials: {}
