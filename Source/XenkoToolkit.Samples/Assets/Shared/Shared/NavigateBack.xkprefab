@@ -21,10 +21,3 @@ Hierarchy:
                         Page: aee6dbcf-1d67-46f7-9970-f3649adab5ac:Shared/NavigateBackUI
                         Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
                         Size: {X: 1.0, Y: 1.0, Z: 1.0}
-                    7158b9cf7672efd9ee85d8349afe543b: !XenkoToolkit.Samples.Core.NavigationButtonHandler,XenkoToolkit.Samples.Game
-                        Id: dc3d601a-14df-4407-a924-089ec2c3c773
-                        Page: null
-                        ButtonName: BackButton
-                        ButtonAction: !XenkoToolkit.Samples.Core.NavigateBack,XenkoToolkit.Samples.Game
-                            KeepLoaded: false
-                            RememberCurrent: true

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using SiliconStudio.Xenko.Engine;
 
-namespace XenkoToolkit.Samples.Core
+namespace XenkoToolkit.Engine.Navigation
 {
     public interface ISceneNavigationService 
     {

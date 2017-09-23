@@ -1,7 +1,7 @@
 ﻿using SiliconStudio.Core;
 using System.Threading.Tasks;
 
-namespace XenkoToolkit.Samples.Core
+namespace XenkoToolkit.Engine.Navigation.Components
 {
     [DataContract]
     public abstract class NavigationButtonAction : INavigationButtonAction

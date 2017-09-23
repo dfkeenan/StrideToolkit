@@ -386,6 +386,11 @@
     <Compile Include="Engine\CameraExtensions.cs" />
     <Compile Include="Engine\EntityExtensions.cs" />
     <Compile Include="Engine\GameExtensions.cs" />
+    <Compile Include="Engine\Navigation\Components\INavigationButtonAction.cs" />
+    <Compile Include="Engine\Navigation\Components\NavigationButtonAction.cs" />
+    <Compile Include="Engine\Navigation\Components\NavigationButtonHandler.cs" />
+    <Compile Include="Engine\Navigation\Components\SceneNavigationService.cs" />
+    <Compile Include="Engine\Navigation\ISceneNavigationService.cs" />
     <Compile Include="Mathematics\Easing.Double.cs" />
     <Compile Include="Mathematics\Easing.Single.cs" />
     <Compile Include="Mathematics\EasingFunction.cs" />

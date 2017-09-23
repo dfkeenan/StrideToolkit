@@ -26,13 +26,6 @@ Hierarchy:
                         Page: aee6dbcf-1d67-46f7-9970-f3649adab5ac:Shared/NavigateBackUI
                         Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
                         Size: {X: 1.0, Y: 1.0, Z: 1.0}
-                    7158b9cf7672efd9ee85d8349afe543b: !XenkoToolkit.Samples.Core.NavigationButtonHandler,XenkoToolkit.Samples.Game
-                        Id: 6b5e2278-0e3f-4892-8a09-839693ba783f
-                        Page: null
-                        ButtonName: BackButton
-                        ButtonAction: !XenkoToolkit.Samples.Core.NavigateBack,XenkoToolkit.Samples.Game
-                            KeepLoaded: false
-                            RememberCurrent: true
             Base:
                 BasePartAsset: 2427c113-db4d-48b0-9173-ac736dbbe007:Shared/NavigateBack
                 BasePartId: fbf8fadd-c878-4e29-a6ea-abcc01a67c95

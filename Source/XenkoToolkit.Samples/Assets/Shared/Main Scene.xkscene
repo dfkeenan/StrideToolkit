@@ -18,7 +18,3 @@ Hierarchy:
                         Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}
-                    b7ad7fb8e52d486c4eff2fc3940ecedb: !XenkoToolkit.Samples.Core.SceneNavigationService,XenkoToolkit.Samples.Game
-                        Id: 91856d86-9677-4076-a105-e1a8b483efcb
-                        StartScene: 41f9f6f3-b5e9-40c7-8cf0-b79f5992d3b2:Scenes/Start/Scene
-                        KeepStartSceneLoaded: true

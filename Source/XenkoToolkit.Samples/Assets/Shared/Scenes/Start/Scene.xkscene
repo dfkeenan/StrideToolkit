@@ -39,19 +39,3 @@ Hierarchy:
                         Page: e2855973-b479-4c45-b2f2-93d1e8c6d48f:Scenes/Start/Main Menu
                         Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
                         Size: {X: 1.0, Y: 1.0, Z: 1.0}
-                    89353eadd960f2a591dea52e088dbcaa: !XenkoToolkit.Samples.Core.NavigationButtonHandler,XenkoToolkit.Samples.Game
-                        Id: 6d4999f1-4b24-4307-8472-7fdfa696707a
-                        Page: null
-                        ButtonName: CameraAndTransFormButton
-                        ButtonAction: !XenkoToolkit.Samples.Core.NavigateToScreen,XenkoToolkit.Samples.Game
-                            KeepLoaded: true
-                            RememberCurrent: true
-                            SceneUrl: Scenes/Camera And Transform/Scene
-                    8d15d887525805d6d12d3af1127aed71: !XenkoToolkit.Samples.Core.NavigationButtonHandler,XenkoToolkit.Samples.Game
-                        Id: 67dac57b-631e-40f0-88fc-c2d11e9a4e68
-                        Page: null
-                        ButtonName: EasingButton
-                        ButtonAction: !XenkoToolkit.Samples.Core.NavigateToScreen,XenkoToolkit.Samples.Game
-                            KeepLoaded: true
-                            RememberCurrent: true
-                            SceneUrl: Scenes/Easing/Scene

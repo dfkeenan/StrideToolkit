@@ -7,9 +7,9 @@ using SiliconStudio.Core.Mathematics;
 using SiliconStudio.Xenko.Input;
 using SiliconStudio.Xenko.Engine;
 using SiliconStudio.Xenko.UI.Controls;
-using XenkoToolkit.Samples.Core;
+using XenkoToolkit.Engine.Navigation.Components;
 
-namespace XenkoToolkit.Samples.Core
+namespace XenkoToolkit.Engine.Navigation.Components
 {
     public class NavigationButtonHandler : SyncScript
     {

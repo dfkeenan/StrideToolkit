@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using XenkoToolkit.Collections;
 
-namespace XenkoToolkit.Samples.Core
+namespace XenkoToolkit.Engine.Navigation.Components
 {
     public class SceneNavigationService : StartupScript, ISceneNavigationService
     {
