@@ -45,5 +45,14 @@ namespace XenkoToolkit.Samples.Core
         {
             // Do stuff every new frame
         }
+
+        public override void Cancel()
+        {
+            if (Page?.RootElement.FindName(ButtonName) is Button button)
+            {
+                button.Click -= Button_Click;
+
+            }
+        }
     }
 }
