@@ -14,7 +14,7 @@
 [assembly: System.Reflection.AssemblyProduct("XenkoToolkit")]
 [assembly: System.Reflection.AssemblyCopyright("Copyright © 2017")]
 [assembly: System.Runtime.InteropServices.ComVisible(false)]
-[assembly: System.CLSCompliant(true)]
+[assembly: System.CLSCompliant(false)]
 [assembly: System.Reflection.AssemblyInformationalVersion("0.1.0.0-alpha")]
 [assembly: System.Reflection.AssemblyVersion("0.1.0")]
 [assembly: System.Reflection.AssemblyFileVersion("0.1.0")]

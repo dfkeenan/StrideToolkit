@@ -40,7 +40,7 @@
         AssemblyProduct="XenkoToolkit"
         AssemblyCopyright="Copyright © 2017"
         ComVisible="false"
-        CLSCompliant="true"
+        CLSCompliant="false"
         AssemblyInformationalVersion="$(Major).$(Minor).$(Build).$(Revision)$(PreRelease)"
         AssemblyVersion="$(Major).$(Minor).$(Build)"
         AssemblyFileVersion="$(Major).$(Minor).$(Build)" />
