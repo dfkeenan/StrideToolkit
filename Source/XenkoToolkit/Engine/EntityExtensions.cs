@@ -12,6 +12,48 @@ namespace XenkoToolkit.Engine
     /// </summary>
     public static class EntityExtensions
     {
+
+        /// <summary>
+        /// Performs a breadth first search of a collection of entities and there children for a component of the specified type.
+        /// </summary>
+        /// <typeparam name="T">The type of component.</typeparam>
+        /// <param name="entities">The collection of entities.</param>
+        /// <param name="includeDisabled">Should search include <see cref="ActivableEntityComponent"/> where <see cref="ActivableEntityComponent.Enabled"/> is <c>false</c>.</param>
+        /// <returns>The component or null if does no exist.</returns>
+        /// <exception cref="ArgumentNullException">The entities argument was <c>null</c>.</exception>
+        public static T FindComponent<T>(this IEnumerable<Entity> entities, bool includeDisabled = false) where T : EntityComponent
+        {
+            if (entities == null)
+                throw new ArgumentNullException(nameof(entities));
+
+            //breadth first
+            var queue = new Queue<Entity>(entities);
+
+            while (queue.Count > 0)
+            {
+                var current = queue.Dequeue();
+
+
+                var component = current.Get<T>();
+
+                var isEnabled = ((component as ActivableEntityComponent)?.Enabled).GetValueOrDefault(true);
+                if (component != null && (isEnabled || includeDisabled))
+                {
+                    return component;
+                }
+
+                var children = current.Transform.Children;
+
+                for (int i = 0; i < children.Count; i++)
+                {
+                    queue.Enqueue(children[i].Entity);
+                }
+            }
+
+            return null;
+        }
+
+
         /// <summary>
         /// Performs a breadth first search of the entity and it's children for a component of the specified type.
         /// </summary>

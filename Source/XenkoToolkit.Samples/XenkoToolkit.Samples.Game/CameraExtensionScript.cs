@@ -21,7 +21,8 @@ namespace XenkoToolkit.Samples
 
         public override void Start()
         {
-           // MainCamera = SceneSystem.GetMainCamera();
+            // MainCamera = SceneSystem.GetMainCamera();
+
         }
 
         

@@ -18,10 +18,6 @@ Profiles:
         InheritProfiles: []
         AssetFolders: []
         OutputGroupDirectories: {}
-        ProjectReferences:
-            -   Id: 32ae5bf6-59f6-454f-93f5-57f60f194971
-                Location: XenkoToolkit.csproj
-                Type: Library
 ExplicitFolders: []
 Bundles: []
 TemplateFolders: []

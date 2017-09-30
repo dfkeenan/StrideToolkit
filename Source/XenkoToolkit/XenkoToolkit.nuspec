@@ -11,7 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>First Release</releaseNotes>
-    <copyright>Copyright 2017</copyright>
+    <copyright>$copyright$</copyright>
     <tags>Xenko</tags>
   </metadata>
 </package>

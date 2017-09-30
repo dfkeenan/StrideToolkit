@@ -8,9 +8,11 @@ using SiliconStudio.Xenko.Input;
 using SiliconStudio.Xenko.Engine;
 using SiliconStudio.Xenko.UI.Controls;
 using XenkoToolkit.Engine.Navigation.Components;
+using SiliconStudio.Core;
 
 namespace XenkoToolkit.Engine.Navigation.Components
 {
+    [Display("Navigation Button Handler")]
     public class NavigationButtonHandler : SyncScript
     {
         public UIPage Page { get; set; }
@@ -38,7 +40,7 @@ namespace XenkoToolkit.Engine.Navigation.Components
         {           
             var navService = Game.Services.GetService<ISceneNavigationService>();
 
-            if(navService != null)
+            if(navService != null && !navService.IsNavigating)
             {
                 Script.AddTask(() => ButtonAction?.Handle(navService));
             }

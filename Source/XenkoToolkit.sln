@@ -11,17 +11,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XenkoToolkit.Samples.Windows", "XenkoToolkit.Samples\XenkoToolkit.Samples.Windows\XenkoToolkit.Samples.Windows.csproj", "{0EBECDA4-28C5-40FC-9CC9-93C3567219EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XenkoToolkit.Samples.Game", "XenkoToolkit.Samples\XenkoToolkit.Samples.Game\XenkoToolkit.Samples.Game.csproj", "{BD367729-7FE9-42D8-84D9-E980BAFD6374}"
+	ProjectSection(ProjectDependencies) = postProject
+		{32AE5BF6-59F6-454F-93F5-57F60F194971} = {32AE5BF6-59F6-454F-93F5-57F60F194971}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XenkoToolkit", "XenkoToolkit\XenkoToolkit.csproj", "{32AE5BF6-59F6-454F-93F5-57F60F194971}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{3202ED98-1236-43D3-9B6F-BB736C984EB5}"
 	ProjectSection(SolutionItems) = preProject
 		..\README.MD = ..\README.MD
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XenkoToolkit", "XenkoToolkit", "{1BFF1995-374A-4A70-9932-07776CCFD12F}"
-	ProjectSection(SiliconStudioPackage) = preProject
-		XenkoToolkit/XenkoToolkit.xkpkg = XenkoToolkit/XenkoToolkit.xkpkg
 	EndProjectSection
 EndProject
 Global
@@ -179,7 +177,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{0EBECDA4-28C5-40FC-9CC9-93C3567219EC} = {5E5453C9-C69B-469F-8A98-222C5417D11C}
 		{BD367729-7FE9-42D8-84D9-E980BAFD6374} = {5E5453C9-C69B-469F-8A98-222C5417D11C}
-		{32AE5BF6-59F6-454F-93F5-57F60F194971} = {1BFF1995-374A-4A70-9932-07776CCFD12F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BFBFE38A-130C-4C3B-AF00-3D92A9F96EB5}

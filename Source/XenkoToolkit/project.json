@@ -2,6 +2,10 @@
   "supports": {},
   "dependencies": {
     "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
+    "MSBuildTasks": {
+      "version": "1.5.0.235",
+      "type": "build"
+    },
     "NETStandard.Library": "1.6.0"
   },
   "frameworks": {

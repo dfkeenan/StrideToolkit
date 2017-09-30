@@ -1,4 +1,5 @@
-﻿using SiliconStudio.Core.Mathematics;
+﻿using SiliconStudio.Core;
+using SiliconStudio.Core.Mathematics;
 using SiliconStudio.Xenko.Engine;
 using SiliconStudio.Xenko.Physics;
 using System;
@@ -10,6 +11,7 @@ using XenkoToolkit.Collections;
 
 namespace XenkoToolkit.Engine.Navigation.Components
 {
+    [Display("Scene Navigation Service")]
     public class SceneNavigationService : StartupScript, ISceneNavigationService
     {
 
@@ -58,6 +60,7 @@ namespace XenkoToolkit.Engine.Navigation.Components
                     Content.Unload(currentItem.Scene);
                 }
             }
+            ClearHistory();
 
             currentItem = default(SceneHistoryItem);
         }
@@ -126,22 +129,31 @@ namespace XenkoToolkit.Engine.Navigation.Components
         public bool CanGoBack => back.Count > 0;
 
         public bool CanGoForward => forward.Count > 0;
-
         
 
         public async Task<bool> GoBackAsync(bool rememberCurrent = true)
+        {
+            return await GoAsync(CanGoBack, back, forward, rememberCurrent);
+        }
+
+        public async Task<bool> GoForwardAsync(bool rememberCurrent = true)
+        {
+            return await GoAsync(CanGoForward, forward, back, rememberCurrent);
+        }
+
+        private async Task<bool> GoAsync(bool canNavigate, List<SceneHistoryItem> navigationFromStack, List<SceneHistoryItem> navigationToStack, bool rememberCurrent)
         {
             if (IsNavigating) return false;
 
             IsNavigating = true;
 
-            if (!CanGoBack)
+            if (!canNavigate)
             {
                 IsNavigating = false;
                 return false;
             }
 
-            var navTo = back.Pop();
+            var navTo = navigationFromStack.Pop();
 
             if (navTo.Scene == null)
             {
@@ -158,42 +170,7 @@ namespace XenkoToolkit.Engine.Navigation.Components
 
             if (rememberCurrent)
             {
-                forward.Push(currentItem);
-            }
-
-            SceneSystem.SceneInstance.RootScene.Children.Add(navTo.Scene);
-
-            currentItem = navTo;
-            IsNavigating = false;
-            return true;
-        }
-
-        public async Task<bool> GoForwardAsync(bool rememberCurrent = true)
-        {
-            if (IsNavigating) return false;
-
-            IsNavigating = true;
-
-            if (!CanGoForward) return false;
-
-            var navTo = forward.Pop();
-
-            if (navTo.Scene == null)
-            {
-                navTo.Scene = await Content.LoadAsync<Scene>(navTo.AssetName);
-            }
-
-            SceneSystem.SceneInstance.RootScene.Children.Remove(currentItem.Scene);
-
-            if (!currentItem.KeepLoaded)
-            {
-                Content.Unload(currentItem.Scene);
-                currentItem.Scene = null;
-            }
-
-            if (rememberCurrent)
-            {
-                back.Push(currentItem);
+                navigationToStack.Push(currentItem);
             }
 
             SceneSystem.SceneInstance.RootScene.Children.Add(navTo.Scene);
