@@ -388,6 +388,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collections\CollectionExtensions.cs" />
+    <Compile Include="Collections\DictionaryExtensions.cs" />
+    <Compile Include="Collections\EnumerableExtensions.cs" />
+    <Compile Include="Collections\ListExtensions.cs" />
+    <Compile Include="Collections\RandomListExtensions.cs" />
     <Compile Include="Engine\CameraExtensions.cs" />
     <Compile Include="Engine\EntityExtensions.cs" />
     <Compile Include="Engine\GameExtensions.cs" />
@@ -412,7 +416,7 @@
   <Target Name="BeforeBuild">
   </Target>
   -->
-  <Target Name="AfterBuild"  Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  <Target Name="AfterBuild" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Exec WorkingDirectory="$(SolutionDir)..\Build" Command="Nuget.exe pack &quot;$(ProjectPath)&quot; -Properties Configuration=$(Configuration);Platform=$(Platform) -OutputDirectory &quot;..\Source\CustomPackages&quot;" />
   </Target>
 </Project>
