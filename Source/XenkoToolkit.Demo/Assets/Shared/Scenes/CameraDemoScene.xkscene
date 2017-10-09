@@ -25,17 +25,21 @@ Hierarchy:
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}
                     d08d65c392c05230413b4175ee1b529f: !UIComponent
-                        Id: 9a787a0e-3d59-4c49-9f7f-e947f8a9ca9e
+                        Id: e33dd7ec-98da-4325-9a82-6fdfc964123a
                         Page: c7439e8f-602b-4591-8c58-1534d0a9d368:BackButton
                         Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
                         Size: {X: 1.0, Y: 1.0, Z: 1.0}
                     638259d25610b3d8622bcdb316d3ddba: !XenkoToolkit.Engine.Navigation.Components.NavigationButtonHandler,XenkoToolkit.Demo.Game
-                        Id: ebcc33f6-35ba-45a8-8b22-dafd2358ee7e
+                        Id: 6088eaca-ff6d-499e-a867-860ef46a55b0
                         Page: null
                         ButtonName: BackButton
                         ButtonAction: !XenkoToolkit.Engine.Navigation.Components.NavigateBack,XenkoToolkit.Demo.Game
                             KeepLoaded: false
                             RememberCurrent: true
+            Base:
+                BasePartAsset: fc3d61d4-fa41-47b4-b0c5-39e5affaf404:Scenes/Back
+                BasePartId: db53157c-c333-4b5a-ab6d-a8bc76f1d0bf
+                InstanceId: 84682266-e168-4b2c-be25-1cb8e941bd09
         -   Entity:
                 Id: 2abcce26-fd2d-4cfb-9962-2be1cd4ffe3f
                 Name: Skybox

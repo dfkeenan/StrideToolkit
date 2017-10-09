@@ -39,3 +39,4 @@ Bundles: []
 TemplateFolders: []
 RootAssets:
     - 3993c2cc-c601-4ac2-8240-4b58cd53bba6:Scenes/CameraDemoScene
+    - f0a5552d-7e69-464c-bd70-fc1b083c8780:Scenes/EasingDemoScene

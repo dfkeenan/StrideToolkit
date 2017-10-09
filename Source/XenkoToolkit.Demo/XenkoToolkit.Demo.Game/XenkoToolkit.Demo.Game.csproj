@@ -110,6 +110,7 @@
   <ItemGroup>
     <Compile Include="BasicCameraController.cs" />
     <Compile Include="CameraExtensionsDemo.cs" />
+    <Compile Include="EasingDemo.cs" />
     <Compile Include="Engine\Navigation\Components\INavigationButtonAction.cs" />
     <Compile Include="Engine\Navigation\Components\NavigationButtonAction.cs" />
     <Compile Include="Engine\Navigation\Components\NavigationButtonHandler.cs" />
