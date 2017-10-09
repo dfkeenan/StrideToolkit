@@ -5,7 +5,7 @@
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{32AE5BF6-59F6-454F-93F5-57F60F194971}</ProjectGuid>
+    <ProjectGuid>{880F8E4D-403A-4039-9797-F0A271993223}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>XenkoToolkit</RootNamespace>
@@ -17,9 +17,9 @@
     </TargetFrameworkProfile>
     <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
-  </PropertyGroup>  
+  </PropertyGroup>
   <PropertyGroup>
-    <SiliconStudioCurrentPackagePath>$(MSBuildThisFileDirectory)\XenkoToolkit.xkpkg</SiliconStudioCurrentPackagePath>
+    <SiliconStudioCurrentPackagePath>$(MSBuildThisFileDirectory)..\XenkoToolkit.Demo\XenkoToolkit.xkpkg</SiliconStudioCurrentPackagePath>
     <SiliconStudioPackageProps>$([System.IO.Path]::ChangeExtension('$(SiliconStudioCurrentPackagePath)', '.props'))</SiliconStudioPackageProps>
     <SiliconStudioProjectType>Library</SiliconStudioProjectType>
   </PropertyGroup>
@@ -30,20 +30,8 @@
     <Revision>0</Revision>
     <PreRelease>-alpha</PreRelease>
   </PropertyGroup>
-  <Target Name="Version">
-    <AssemblyInfo
-        CodeLanguage="CS"
-        OutputFile="Properties\AssemblyInfo.cs"
-        AssemblyTitle="XenkoToolkit"
-        AssemblyDescription="A Toolkit for the Xenko game engine. Xenko version $(SiliconStudioPackageXenkoVersion)."
-        AssemblyCompany="dfkeenan"
-        AssemblyProduct="XenkoToolkit"
-        AssemblyCopyright="Copyright © 2017"
-        ComVisible="false"
-        CLSCompliant="false"
-        AssemblyInformationalVersion="$(Major).$(Minor).$(Build).$(Revision)$(PreRelease)"
-        AssemblyVersion="$(Major).$(Minor).$(Build)"
-        AssemblyFileVersion="$(Major).$(Minor).$(Build)" />
+  <Target Name="Version" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <AssemblyInfo CodeLanguage="CS" OutputFile="Properties\AssemblyInfo.cs" AssemblyTitle="XenkoToolkit" AssemblyDescription="A Toolkit for the Xenko game engine. Xenko version $(SiliconStudioPackageXenkoVersion)." AssemblyCompany="dfkeenan" AssemblyProduct="XenkoToolkit" AssemblyCopyright="Copyright © 2017" ComVisible="false" CLSCompliant="false" AssemblyInformationalVersion="$(Major).$(Minor).$(Build).$(Revision)$(PreRelease)" AssemblyVersion="$(Major).$(Minor).$(Build)" AssemblyFileVersion="$(Major).$(Minor).$(Build)" />
   </Target>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,7 +45,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DocumentationFile>..\Bin\Windows\Debug\XenkoToolkit.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -70,7 +57,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DocumentationFile>..\Bin\Windows\Release\XenkoToolkit.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testing|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -399,32 +385,21 @@
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
     <None Include="project.json" />
-    <None Include="XenkoToolkit.nuspec">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collections\CollectionExtensions.cs" />
     <Compile Include="Engine\CameraExtensions.cs" />
     <Compile Include="Engine\EntityExtensions.cs" />
     <Compile Include="Engine\GameExtensions.cs" />
-    <Compile Include="Engine\Navigation\Components\INavigationButtonAction.cs" />
-    <Compile Include="Engine\Navigation\Components\NavigationButtonAction.cs" />
-    <Compile Include="Engine\Navigation\Components\NavigationButtonHandler.cs" />
-    <Compile Include="Engine\Navigation\Components\SceneNavigationService.cs" />
-    <Compile Include="Engine\Navigation\ISceneNavigationService.cs" />
     <Compile Include="Mathematics\Easing.Double.cs" />
     <Compile Include="Mathematics\Easing.Single.cs" />
     <Compile Include="Mathematics\EasingFunction.cs" />
     <Compile Include="Mathematics\MathUtilEx.cs" />
+    <Compile Include="Mathematics\RandomExtensions.cs" />
     <Compile Include="Mathematics\RaySegment.cs" />
-    <Compile Include="Module.cs" />
     <Compile Include="Physics\SimulationExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Mathematics\RandomExtensions.cs" />
-    <Compile Include="UI\TransitioningContentControl.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SiliconStudioPackageProps)" Condition="Exists('$(SiliconStudioPackageProps)')" />
   <Import Project="$(SiliconStudioXenkoDir)\Targets\SiliconStudio.Common.targets" Condition="Exists('$(SiliconStudioXenkoDir)\Targets\SiliconStudio.Common.targets')" />
@@ -436,10 +411,8 @@
     Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
   -->
-  <Target Name="AfterBuild" >
-    <Exec WorkingDirectory="$(MSBuildThisFileDirectory)..\..\Build" Command="Nuget.exe pack &quot;$(ProjectPath)&quot; -Properties Configuration=$(Configuration);Platform=$(Platform) -OutputDirectory &quot;..\Source\CustomPackages&quot;" />
+  <Target Name="AfterBuild"  Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Exec WorkingDirectory="$(SolutionDir)..\Build" Command="Nuget.exe pack &quot;$(ProjectPath)&quot; -Properties Configuration=$(Configuration);Platform=$(Platform) -OutputDirectory &quot;..\Source\CustomPackages&quot;" />
   </Target>
 </Project>

@@ -1,0 +1,41 @@
+!Package
+Id: 988b3698-c532-41b2-b674-906f268b6391
+SerializedVersion: {Assets: 0.0.4}
+Meta:
+    Name: XenkoToolkit.Demo
+    Version: 1.0.0.0
+    Authors: []
+    Owners: []
+    RootNamespace: XenkoToolkit.Demo
+    Dependencies:
+        -   Name: Xenko
+            Version: 2.1.0.3
+            RootAssets: []
+LocalDependencies: []
+Profiles:
+    -   Name: Shared
+        Platform: Shared
+        InheritProfiles: []
+        AssetFolders:
+            -   Path: Assets/Shared
+            -   Path: XenkoToolkit.Game/Effects
+        OutputGroupDirectories: {}
+        ProjectReferences:
+            -   Id: 325e363f-0aa3-4866-bf26-9d1d415bfa86
+                Location: XenkoToolkit.Demo.Game/XenkoToolkit.Demo.Game.csproj
+                Type: Library
+    -   Name: Windows
+        Platform: Windows
+        InheritProfiles: []
+        AssetFolders:
+            -   Path: Assets/Windows
+        OutputGroupDirectories: {}
+        ProjectReferences:
+            -   Id: 648feccc-8723-4379-9de5-efc1324c3c6b
+                Location: XenkoToolkit.Demo.Windows/XenkoToolkit.Demo.Windows.csproj
+                Type: Executable
+ExplicitFolders: []
+Bundles: []
+TemplateFolders: []
+RootAssets:
+    - 3993c2cc-c601-4ac2-8240-4b58cd53bba6:Scenes/CameraDemoScene

@@ -1,0 +1,13 @@
+﻿{
+  "dependencies": {
+    "NETStandard.Library": "2.0.0"
+  },
+  "frameworks": {
+    "net461": {}
+  },
+  "runtimes": {
+    "win": {},
+    "win-x86": {},
+    "win-x64": {}
+  }
+}

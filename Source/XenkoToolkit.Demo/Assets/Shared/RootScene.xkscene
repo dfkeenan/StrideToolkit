@@ -1,0 +1,24 @@
+!SceneAsset
+Id: 5a34e337-4d8f-459f-b450-0a5b33013d15
+SerializedVersion: {Xenko: 2.1.0.1}
+Tags: []
+ChildrenIds: []
+Offset: {X: 0.0, Y: 0.0, Z: 0.0}
+Hierarchy:
+    RootParts:
+        - ref!! d706cc8a-d6e3-485d-abab-2a99d07a4e86
+    Parts:
+        -   Entity:
+                Id: d706cc8a-d6e3-485d-abab-2a99d07a4e86
+                Name: Services
+                Components:
+                    2c5b34bbaeeefe324ad9776f5d3027a0: !TransformComponent
+                        Id: 56574a10-7e93-43b6-951d-00b75f12189d
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    f4e8a4440a517f80b90fbd5d9cecce2f: !XenkoToolkit.Engine.Navigation.Components.SceneNavigationService,XenkoToolkit.Demo.Game
+                        Id: 566a1f22-a64f-425a-9a34-2da6e1aa86ab
+                        StartScene: 53779cd7-40cd-45ee-b97d-dbac30439d4f:Scenes/MainMenuScene
+                        KeepStartSceneLoaded: true
