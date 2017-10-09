@@ -18,7 +18,14 @@ namespace XenkoToolkit.Engine
                 throw new ArgumentNullException(nameof(prefab));
             }
 
-            return prefab.Instantiate().Single();
+            var instances = prefab.Instantiate();
+
+            if(instances.Count > 1)
+            {
+                throw new InvalidOperationException("Prefab contains for than 1 entity.");
+            }
+
+            return instances[0];
         }
 
         public static Entity InstantiateSingleEulerXYZ(this Prefab prefab, Vector3? position = null, Vector3? rotationEulerXYZ = null, Vector3? scale = null)
@@ -33,21 +40,38 @@ namespace XenkoToolkit.Engine
                 throw new ArgumentNullException(nameof(prefab));
             }
 
-            Entity instance = prefab.Instantiate().Single();
+            var instances = prefab.Instantiate();
 
-            if(!instance.Transform.UseTRS)
+            if (instances.Count > 1)
             {
-                throw new NotSupportedException("Entity Transforms must have UseTRS set to true.");
+                throw new InvalidOperationException("Prefab contains for than 1 entity.");
             }
 
-            instance.Transform.Position = position ?? instance.Transform.Position;
+            var instance = instances[0];
 
-            if (rotation.HasValue)
+            if (instance.Transform.UseTRS)
             {
-                instance.Transform.Rotation = rotation.Value;
+                instance.Transform.Position = position ?? instance.Transform.Position;
+
+                if (rotation.HasValue)
+                {
+                    instance.Transform.Rotation = rotation.Value;
+                }
+
+                instance.Transform.Scale = scale ?? instance.Transform.Scale;
+            }
+            else
+            {
+                var localTranslation = position ?? Vector3.Zero;
+                var localRotation = rotation ?? Quaternion.Identity;
+                var localScale = scale ?? Vector3.One;
+                Matrix localMatrix;
+                Matrix.Transformation(ref localScale, ref localRotation, ref localTranslation, out localMatrix);
+
+                instance.Transform.LocalMatrix = localMatrix;
             }
 
-            instance.Transform.Scale = scale ?? instance.Transform.Scale;
+            
 
             return instance;
         }
@@ -75,14 +99,18 @@ namespace XenkoToolkit.Engine
 
             foreach (var instance in instances)
             {
-                if (!instance.Transform.UseTRS)
-                {
-                    throw new NotSupportedException("Entity Transforms must have UseTRS set to true.");
-                }
-
                 instance.Transform.UpdateLocalMatrix();
                 var entityMatrix = instance.Transform.LocalMatrix * localMatrix;
-                entityMatrix.Decompose(out instance.Transform.Scale, out instance.Transform.Rotation, out instance.Transform.Position);
+
+                if (instance.Transform.UseTRS)
+                {
+                    entityMatrix.Decompose(out instance.Transform.Scale, out instance.Transform.Rotation, out instance.Transform.Position);
+                }
+                else
+                {
+                    instance.Transform.LocalMatrix = entityMatrix;
+                }                
+                
             }   
 
             return instances;
