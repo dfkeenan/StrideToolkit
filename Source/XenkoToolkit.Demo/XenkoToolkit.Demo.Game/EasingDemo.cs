@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XenkoToolkit.Engine;
 using XenkoToolkit.Mathematics;
 
 namespace XenkoToolkit.Demo
@@ -27,10 +28,9 @@ namespace XenkoToolkit.Demo
 
             for (int i = 0; i < easingFunctions.Length; i++)
             {
-                var sphere = SpherePrefab.Instantiate()[0];
                 Vector3 startPosition = FirstPosition + new Vector3(i, 0, 0);
+                var sphere = SpherePrefab.InstantiateSingle(startPosition);
 
-                sphere.Transform.Position = startPosition;
                 transforms.Add(sphere.Transform);
                 startPositions.Add(startPosition);
                 Entity.Scene.Entities.Add(sphere);
@@ -72,6 +72,12 @@ namespace XenkoToolkit.Demo
                 await Script.NextFrame();
             }
 
+            
+        }
+
+        public override void Cancel()
+        {
+            base.Cancel();
             DebugText.Update(Game.UpdateTime);
         }
     }

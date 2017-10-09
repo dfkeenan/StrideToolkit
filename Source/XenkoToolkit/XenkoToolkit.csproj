@@ -395,6 +395,9 @@
     <Compile Include="Engine\CameraExtensions.cs" />
     <Compile Include="Engine\EntityExtensions.cs" />
     <Compile Include="Engine\GameExtensions.cs" />
+    <Compile Include="Engine\PrefabExtensions.cs" />
+    <Compile Include="Engine\Space.cs" />
+    <Compile Include="Engine\TransformExtensions.cs" />
     <Compile Include="Mathematics\Easing.Double.cs" />
     <Compile Include="Mathematics\Easing.Single.cs" />
     <Compile Include="Mathematics\EasingFunction.cs" />
