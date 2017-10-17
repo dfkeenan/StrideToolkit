@@ -28,12 +28,64 @@ namespace XenkoToolkit.Engine
             return instances[0];
         }
 
-        public static Entity InstantiateSingleEulerXYZ(this Prefab prefab, Vector3? position = null, Vector3? rotationEulerXYZ = null, Vector3? scale = null)
+        public static Entity InstantiateSingle(this Prefab prefab, ref Vector3 translation)
         {
-            return prefab.InstantiateSingle(position, rotationEulerXYZ?.ToQuaternion(), scale);
+            var one = Vector3.One;
+            var rotation = Quaternion.Identity;
+            return prefab.InstantiateSingle(ref translation, ref rotation, ref one);
         }
 
-        public static Entity InstantiateSingle(this Prefab prefab, Vector3? position = null, Quaternion? rotation = null, Vector3? scale = null)
+        public static Entity InstantiateSingle(this Prefab prefab, Vector3 translation)
+        {
+            var one = Vector3.One;
+            var rotation = Quaternion.Identity;
+            return prefab.InstantiateSingle(ref translation, ref rotation, ref one);
+        }
+
+        public static Entity InstantiateSingle(this Prefab prefab, ref Vector3 translation, ref Vector3 rotationEulerXYZ)
+        {
+            var one = Vector3.One;
+            MathUtilEx.ToQuaternion(ref rotationEulerXYZ, out var rotation);
+            return prefab.InstantiateSingle(ref translation, ref rotation, ref one);
+        }
+
+        public static Entity InstantiateSingle(this Prefab prefab, Vector3 translation, Vector3 rotationEulerXYZ)
+        {
+            var one = Vector3.One;
+            MathUtilEx.ToQuaternion(ref rotationEulerXYZ, out var rotation);
+            return prefab.InstantiateSingle(ref translation, ref rotation, ref one);
+        }
+
+        public static Entity InstantiateSingle(this Prefab prefab, ref Vector3 translation, ref Quaternion rotation)
+        {
+            var one = Vector3.One;
+            return prefab.InstantiateSingle(ref translation, ref rotation, ref one);
+        }
+
+        public static Entity InstantiateSingle(this Prefab prefab, Vector3 translation, Quaternion rotation)
+        {
+            var one = Vector3.One;
+            return prefab.InstantiateSingle(ref translation, ref rotation, ref one);
+        }
+
+        public static Entity InstantiateSingle(this Prefab prefab, ref Vector3 translation, ref Vector3 rotationEulerXYZ, ref Vector3 scale)
+        {
+            if (prefab == null)
+            {
+                throw new ArgumentNullException(nameof(prefab));
+            }
+
+            MathUtilEx.ToQuaternion(ref rotationEulerXYZ, out var rotation);
+            return prefab.InstantiateSingle(ref translation, ref rotation, ref scale);
+        }
+
+        public static Entity InstantiateSingle(this Prefab prefab, Vector3 translation, Vector3 rotationEulerXYZ, Vector3 scale)
+        {
+            MathUtilEx.ToQuaternion(ref rotationEulerXYZ, out var rotation);
+            return prefab.InstantiateSingle(ref translation, ref rotation, ref scale);
+        }
+
+        public static Entity InstantiateSingle(this Prefab prefab, ref Vector3 translation, ref Quaternion rotation, ref Vector3 scale)
         {
             if (prefab == null)
             {
@@ -48,52 +100,89 @@ namespace XenkoToolkit.Engine
             }
 
             var instance = instances[0];
+            Matrix.Transformation(ref scale, ref rotation, ref translation, out Matrix localMatrix);
+
+            instance.Transform.UpdateLocalMatrix();
+            var entityMatrix = instance.Transform.LocalMatrix * localMatrix;
 
             if (instance.Transform.UseTRS)
             {
-                instance.Transform.Position = position ?? instance.Transform.Position;
-
-                if (rotation.HasValue)
-                {
-                    instance.Transform.Rotation = rotation.Value;
-                }
-
-                instance.Transform.Scale = scale ?? instance.Transform.Scale;
+                entityMatrix.Decompose(out instance.Transform.Scale, out instance.Transform.Rotation, out instance.Transform.Position);
             }
             else
             {
-                var localTranslation = position ?? Vector3.Zero;
-                var localRotation = rotation ?? Quaternion.Identity;
-                var localScale = scale ?? Vector3.One;
-                Matrix localMatrix;
-                Matrix.Transformation(ref localScale, ref localRotation, ref localTranslation, out localMatrix);
-
-                instance.Transform.LocalMatrix = localMatrix;
+                instance.Transform.LocalMatrix = entityMatrix;
             }
-
-            
 
             return instance;
         }
 
-        public static List<Entity> InstantiateEulerXYZ(this Prefab prefab, Vector3? translation = null, Vector3? rotationEulerXYZ = null, Vector3? scale = null)
+        public static Entity InstantiateSingle(this Prefab prefab, Vector3 translation, Quaternion rotation, Vector3 scale)
         {
-            return prefab.Instantiate(translation, rotationEulerXYZ?.ToQuaternion(), scale);
+            return prefab.InstantiateSingle(ref translation, ref rotation, ref scale);
         }
 
-        public static List<Entity> Instantiate(this Prefab prefab, Vector3? translation = null, Quaternion? rotation = null, Vector3? scale = null)
+        public static List<Entity> Instantiate(this Prefab prefab, ref Vector3 translation)
+        {
+            var one = Vector3.One;
+            var rotation = Quaternion.Identity;
+            return prefab.Instantiate(ref translation, ref rotation, ref one);
+        }
+
+        public static List<Entity> Instantiate(this Prefab prefab, Vector3 translation)
+        {
+            var one = Vector3.One;
+            var rotation = Quaternion.Identity;
+            return prefab.Instantiate(ref translation, ref rotation, ref one);
+        }
+
+        public static List<Entity> Instantiate(this Prefab prefab, ref Vector3 translation, ref Vector3 rotationEulerXYZ)
+        {
+            var one = Vector3.One;
+            MathUtilEx.ToQuaternion(ref rotationEulerXYZ, out var rotation);
+            return prefab.Instantiate(ref translation, ref rotation, ref one);
+        }
+
+        public static List<Entity> Instantiate(this Prefab prefab, Vector3 translation, Vector3 rotationEulerXYZ)
+        {
+            var one = Vector3.One;
+            MathUtilEx.ToQuaternion(ref rotationEulerXYZ, out var rotation);
+            return prefab.Instantiate(ref translation, ref rotation, ref one);
+        }
+
+        public static List<Entity> Instantiate(this Prefab prefab, ref Vector3 translation, ref Quaternion rotation)
+        {
+            var one = Vector3.One;
+            return prefab.Instantiate(ref translation, ref rotation, ref one);
+        }
+
+        public static List<Entity> Instantiate(this Prefab prefab, Vector3 translation, Quaternion rotation)
+        {
+            var one = Vector3.One;
+            return prefab.Instantiate(ref translation, ref rotation, ref one);
+        }
+
+        public static List<Entity> Instantiate(this Prefab prefab, ref Vector3 translation, ref Vector3 rotationEulerXYZ, ref Vector3 scale)
+        {
+            MathUtilEx.ToQuaternion(ref rotationEulerXYZ, out var rotation);
+            return prefab.Instantiate(ref translation, ref rotation, ref scale);
+        }
+
+        public static List<Entity> Instantiate(this Prefab prefab, Vector3 translation, Vector3 rotationEulerXYZ, Vector3 scale)
+        {
+            MathUtilEx.ToQuaternion(ref rotationEulerXYZ, out var rotation);
+            return prefab.Instantiate(ref translation, ref rotation, ref scale);
+        }
+
+        public static List<Entity> Instantiate(this Prefab prefab, ref Vector3 translation, ref Quaternion rotation, ref Vector3 scale)
         {
             if (prefab == null)
             {
                 throw new ArgumentNullException(nameof(prefab));
             }
 
-            var localTranslation = translation ?? Vector3.Zero;
-            var localRotation = rotation ?? Quaternion.Identity;
-            var localScale = scale ?? Vector3.One;
-
             Matrix localMatrix;
-            Matrix.Transformation(ref localScale, ref localRotation, ref localTranslation, out localMatrix);
+            Matrix.Transformation(ref scale, ref rotation, ref translation, out localMatrix);
 
             var instances = prefab.Instantiate();
 
@@ -114,6 +203,11 @@ namespace XenkoToolkit.Engine
             }   
 
             return instances;
+        }
+
+        public static List<Entity> Instantiate(this Prefab prefab, Vector3 translation, Quaternion rotation, Vector3 scale)
+        {
+            return prefab.Instantiate(ref translation, ref rotation, ref scale);
         }
     }
 }

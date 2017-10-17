@@ -73,11 +73,8 @@ namespace XenkoToolkit.Mathematics
         /// <param name="eye">The postion of the observer. i.e. camera</param>
         /// <param name="target">The location of the object to look-at.</param>
         /// <param name="up">The vector that defines which direction is up.</param>
-        /// <returns>The created quaternion rotation</returns>
-        /// <example>
-        /// var cameraRotation = Quaternion.LookRotation(cameraPosition, targetPosition, Vector3.UnitY); 
-        /// </example>
-        public static Quaternion LookRotation(Vector3 eye, Vector3 target, Vector3 up)
+        /// <param name="result">The created quaternion rotation</param>
+        public static void LookRotation(ref Vector3 eye, ref Vector3 target, ref Vector3 up, out Quaternion result)
         {
             var forward = target - eye;
             
@@ -94,7 +91,7 @@ namespace XenkoToolkit.Mathematics
             var w = (float)Math.Sqrt(1.0f + right.X + up.Y + forward.Z) * 0.5f;
             var w4_recip = 1.0f / (4.0f * w);
 
-            var result = new Quaternion()
+            result = new Quaternion()
             {
                 W = w,
                 X = (up.Z - forward.Y) * w4_recip,
@@ -102,6 +99,21 @@ namespace XenkoToolkit.Mathematics
                 Z = (right.Y - up.X) * w4_recip,
             };
 
+        }
+
+        /// <summary>
+        /// Creates a rotation with the specified forward and upwards directions.
+        /// </summary>
+        /// <param name="eye">The postion of the observer. i.e. camera</param>
+        /// <param name="target">The location of the object to look-at.</param>
+        /// <param name="up">The vector that defines which direction is up.</param>
+        /// <returns>The created quaternion rotation</returns>
+        /// <example>
+        /// var cameraRotation = Quaternion.LookRotation(cameraPosition, targetPosition, Vector3.UnitY); 
+        /// </example>
+        public static Quaternion LookRotation(Vector3 eye, Vector3 target, Vector3 up)
+        {
+            LookRotation(ref eye, ref target, ref up, out var result);
             return result;
         }
 
@@ -109,8 +121,8 @@ namespace XenkoToolkit.Mathematics
         /// Convert rotation Euler angles to a <see cref="Quaternion"/>.
         /// </summary>
         /// <param name="rotationEulerXYZ">The euler rotation, with XYZ order.</param>
-        /// <returns>Resulting quaternion rotation</returns>
-        public static Quaternion ToQuaternion(this Vector3 rotationEulerXYZ)
+        /// <param name="result">Resulting quaternion rotation</param>
+        public static void ToQuaternion(ref Vector3 rotationEulerXYZ,out Quaternion result)
         {
             // Equilvalent to:
             //  Quaternion quatX, quatY, quatZ;
@@ -131,24 +143,32 @@ namespace XenkoToolkit.Mathematics
             var fCosXY = fCosX * fCosY;
             var fSinXY = fSinX * fSinY;
 
-            Quaternion rotation;
+            result.X = fSinX * fCosY * fCosZ - fSinZ * fSinY * fCosX;
+            result.Y = fSinY * fCosX * fCosZ + fSinZ * fSinX * fCosY;
+            result.Z = fSinZ * fCosXY - fSinXY * fCosZ;
+            result.W = fCosZ * fCosXY + fSinXY * fSinZ;
 
-            rotation.X = fSinX * fCosY * fCosZ - fSinZ * fSinY * fCosX;
-            rotation.Y = fSinY * fCosX * fCosZ + fSinZ * fSinX * fCosY;
-            rotation.Z = fSinZ * fCosXY - fSinXY * fCosZ;
-            rotation.W = fCosZ * fCosXY + fSinXY * fSinZ;
+        }
 
-            return rotation;
+        /// <summary>
+        /// Convert rotation Euler angles to a <see cref="Quaternion"/>.
+        /// </summary>
+        /// <param name="rotationEulerXYZ">The euler rotation, with XYZ order.</param>
+        /// <returns>Resulting quaternion rotation</returns>
+        public static Quaternion ToQuaternion(this Vector3 rotationEulerXYZ)
+        {
+            ToQuaternion(ref rotationEulerXYZ, out var result);
+            return result;
         }
 
         /// <summary>
         /// Convert <see cref="Quaternion"/> to rotation Euler angles.
         /// </summary>
         /// <param name="rotationEulerXYZ">The rotation.</param>
-        /// <returns>Reulting euler rotation, with XYZ order.</returns>
-        public static Vector3 ToRotationEulerXYZ(this Quaternion rotation)
+        /// <param name="result">Reulting euler rotation, with XYZ order.</param>
+        public static void ToRotationEulerXYZ(ref Quaternion rotation, out Vector3 result)
         {
-            Vector3 rotationEuler;
+    
             // Equivalent to:
             //  Matrix rotationMatrix;
             //  Matrix.Rotation(ref cachedRotation, out rotationMatrix);
@@ -162,19 +182,30 @@ namespace XenkoToolkit.Mathematics
             float yw = rotation.Y * rotation.W;
             float yz = rotation.Y * rotation.Z;
             float xw = rotation.X * rotation.W;
-            rotationEuler.Y = (float)Math.Asin(2.0f * (yw - zx));
-            double test = Math.Cos(rotationEuler.Y);
+            result.Y = (float)Math.Asin(2.0f * (yw - zx));
+            double test = Math.Cos(result.Y);
             if (test > 1e-6f)
             {
-                rotationEuler.Z = (float)Math.Atan2(2.0f * (xy + zw), 1.0f - (2.0f * (yy + zz)));
-                rotationEuler.X = (float)Math.Atan2(2.0f * (yz + xw), 1.0f - (2.0f * (yy + xx)));
+                result.Z = (float)Math.Atan2(2.0f * (xy + zw), 1.0f - (2.0f * (yy + zz)));
+                result.X = (float)Math.Atan2(2.0f * (yz + xw), 1.0f - (2.0f * (yy + xx)));
             }
             else
             {
-                rotationEuler.Z = (float)Math.Atan2(2.0f * (zw - xy), 2.0f * (zx + yw));
-                rotationEuler.X = 0.0f;
+                result.Z = (float)Math.Atan2(2.0f * (zw - xy), 2.0f * (zx + yw));
+                result.X = 0.0f;
             }
-            return rotationEuler;
+
+        }
+
+        /// <summary>
+        /// Convert <see cref="Quaternion"/> to rotation Euler angles.
+        /// </summary>
+        /// <param name="rotationEulerXYZ">The rotation.</param>
+        /// <returns>Reulting euler rotation, with XYZ order.</returns>
+        public static Vector3 ToRotationEulerXYZ(this Quaternion rotation)
+        {
+            ToRotationEulerXYZ(ref rotation, out var result);
+            return result;
         }
 
         /// <summary>
