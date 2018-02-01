@@ -396,6 +396,7 @@
     <Compile Include="Engine\EntityExtensions.cs" />
     <Compile Include="Engine\GameExtensions.cs" />
     <Compile Include="Engine\PrefabExtensions.cs" />
+    <Compile Include="Engine\ScriptSystemExtensions.cs" />
     <Compile Include="Engine\Space.cs" />
     <Compile Include="Engine\TransformExtensions.cs" />
     <Compile Include="Mathematics\Easing.Double.cs" />

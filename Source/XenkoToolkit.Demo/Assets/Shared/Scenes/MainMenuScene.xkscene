@@ -40,6 +40,14 @@ Hierarchy:
                             KeepLoaded: false
                             RememberCurrent: true
                             SceneUrl: Scenes/EasingDemoScene
+                    f655a7474ff986c12fd78f6262eca816: !XenkoToolkit.Engine.Navigation.Components.NavigationButtonHandler,XenkoToolkit.Demo.Game
+                        Id: d6c2d5c1-c994-43ea-a896-f72ea14586a2
+                        Page: null
+                        ButtonName: EventDemo
+                        ButtonAction: !XenkoToolkit.Engine.Navigation.Components.NavigateToScreen,XenkoToolkit.Demo.Game
+                            KeepLoaded: false
+                            RememberCurrent: true
+                            SceneUrl: Scenes/EventDemo
         -   Entity:
                 Id: 946d902d-70c1-405e-a8f5-17f8646636ce
                 Name: Camera
