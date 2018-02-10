@@ -13,6 +13,14 @@ namespace XenkoToolkit.Engine
     {
         public static Vector3 WorldUp = Vector3.UnitY;
 
+        public static void UpdateTRSFromLocal(this TransformComponent transform)
+        {
+            if (transform.UseTRS)
+            {
+                transform.LocalMatrix.Decompose(out transform.Scale, out transform.Rotation, out transform.Position);
+            }
+        }
+
         public static void Translate(this TransformComponent transform, ref Vector3 translation, Space relativeTo = Space.Self)
         {
             if (transform == null)
@@ -22,15 +30,12 @@ namespace XenkoToolkit.Engine
 
             throw new NotImplementedException();
 
-            if(transform.UseTRS)
-            {
+            transform.UpdateLocalFromWorld();
+            transform.UpdateTRSFromLocal();
 
-            }
-            else
-            {
-
-            }
         }
+
+        
 
         public static void Translate(this TransformComponent transform, Vector3 translation, Space relativeTo = Space.Self)
         {
@@ -51,14 +56,9 @@ namespace XenkoToolkit.Engine
 
             throw new NotImplementedException();
 
-            if (transform.UseTRS)
-            {
+            transform.UpdateLocalFromWorld();
+            transform.UpdateTRSFromLocal();
 
-            }
-            else
-            {
-
-            }
         }
 
         public static void Translate(this TransformComponent transform, Vector3 translation, TransformComponent relativeTo)
@@ -73,16 +73,26 @@ namespace XenkoToolkit.Engine
                 throw new ArgumentNullException(nameof(transform));
             }
 
+            MathUtilEx.ToQuaternion(ref eulerAngles, out var rotationQ);
+            Matrix.RotationQuaternion(ref rotationQ, out var rotation);
+
+            switch (relativeTo)
+            {
+                case Space.World:
+                    transform.WorldMatrix = transform.WorldMatrix * rotation;
+                    break;
+                case Space.Self:
+                    transform.WorldMatrix = rotation * transform.WorldMatrix;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(relativeTo));
+            }
+
+
             throw new NotImplementedException();
 
-            if (transform.UseTRS)
-            {
-
-            }
-            else
-            {
-
-            }
+            transform.UpdateLocalFromWorld();
+            transform.UpdateTRSFromLocal();
         }
 
         public static void Rotate(this TransformComponent transform, Vector3 eulerAngles, Space relativeTo = Space.Self)
@@ -97,20 +107,17 @@ namespace XenkoToolkit.Engine
                 throw new ArgumentNullException(nameof(transform));
             }
 
-            transform.UpdateLocalMatrix();
             var translationToOrigin = point * -1.0f;
 
             Matrix.Translation(ref translationToOrigin, out var translationToOriginMatrix);
             Matrix.RotationAxis(ref axis, angle, out var rotationMatrix);
             Matrix.Translation(ref point, out var translationMatrix);
 
-            transform.LocalMatrix = transform.LocalMatrix * translationToOriginMatrix * rotationMatrix * translationMatrix;
+            transform.WorldMatrix = transform.WorldMatrix * translationToOriginMatrix * rotationMatrix * translationMatrix;
 
-            if (transform.UseTRS)
-            {                
-                transform.LocalMatrix.Decompose(out transform.Scale, out transform.Rotation, out transform.Position);
-            }
-            
+            transform.UpdateLocalFromWorld();
+            transform.UpdateTRSFromLocal();
+
         }
 
         public static void RotateAround(this TransformComponent transform, Vector3 point, Vector3 axis, float angle)
@@ -123,9 +130,7 @@ namespace XenkoToolkit.Engine
             if (transform == null)
             {
                 throw new ArgumentNullException(nameof(transform));
-            }
-
-            transform.UpdateWorldMatrix();
+            }            
 
             Vector3.TransformNormal(ref direction, ref transform.WorldMatrix, out result);
         }
@@ -142,8 +147,6 @@ namespace XenkoToolkit.Engine
             {
                 throw new ArgumentNullException(nameof(transform));
             }
-
-            transform.UpdateWorldMatrix();
 
             Matrix.Invert(ref transform.WorldMatrix, out var inverseMatrix);
 
@@ -163,8 +166,6 @@ namespace XenkoToolkit.Engine
                 throw new ArgumentNullException(nameof(transform));
             }
 
-            transform.UpdateWorldMatrix();
-
             Vector3.TransformCoordinate(ref position, ref transform.WorldMatrix, out result);
         }
 
@@ -180,8 +181,6 @@ namespace XenkoToolkit.Engine
             {
                 throw new ArgumentNullException(nameof(transform));
             }
-
-            transform.UpdateWorldMatrix();
 
             Matrix.Invert(ref transform.WorldMatrix, out var inverseMatrix);
 
@@ -201,8 +200,6 @@ namespace XenkoToolkit.Engine
                 throw new ArgumentNullException(nameof(transform));
             }
 
-            transform.UpdateWorldMatrix();
-
             Vector3.TransformNormal(ref vector, ref transform.WorldMatrix, out result);
         }
 
@@ -218,8 +215,6 @@ namespace XenkoToolkit.Engine
             {
                 throw new ArgumentNullException(nameof(transform));
             }
-
-            transform.UpdateWorldMatrix();
 
             Matrix.Invert(ref transform.WorldMatrix, out var inverseMatrix);
 
@@ -243,7 +238,6 @@ namespace XenkoToolkit.Engine
             {
                 throw new ArgumentNullException(nameof(target));
             }            
-            target.UpdateWorldMatrix();
 
             var targetPosition = target.WorldMatrix.TranslationVector;
             transform.LookAt(ref targetPosition, ref worldUp);
@@ -264,9 +258,7 @@ namespace XenkoToolkit.Engine
             if (transform == null)
             {
                 throw new ArgumentNullException(nameof(transform));
-            }            
-
-            transform.UpdateWorldMatrix();
+            }
 
             if(transform.UseTRS)
             {
@@ -276,6 +268,9 @@ namespace XenkoToolkit.Engine
             {
                 throw new NotImplementedException();
             }
+
+            transform.UpdateLocalFromWorld();
+            transform.UpdateTRSFromLocal();
         }
 
         public static void LookAt(this TransformComponent transform, Vector3 target, Vector3 worldUp)
