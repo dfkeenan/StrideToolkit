@@ -15,10 +15,12 @@ namespace XenkoToolkit.Engine
 
         public static void UpdateTRSFromLocal(this TransformComponent transform)
         {
-            if (transform.UseTRS)
+            if (transform == null)
             {
-                transform.LocalMatrix.Decompose(out transform.Scale, out transform.Rotation, out transform.Position);
+                throw new ArgumentNullException(nameof(transform));
             }
+
+            transform.LocalMatrix.Decompose(out transform.Scale, out transform.Rotation, out transform.Position);
         }
 
         public static void Translate(this TransformComponent transform, ref Vector3 translation, Space relativeTo = Space.Self)
@@ -30,12 +32,27 @@ namespace XenkoToolkit.Engine
 
             throw new NotImplementedException();
 
+
+            Matrix translationMatrix = Matrix.Identity;
+
+            switch (relativeTo)
+            {
+                case Space.World:
+                    Matrix.Translation(ref translation, out translationMatrix);
+                    break;
+                case Space.Self:
+                    transform.InverseTransformVector(ref translation, out var inverseTranslation);
+                    Matrix.Translation(ref inverseTranslation, out translationMatrix);
+                    break;
+                default:
+                    throw new ArgumentException(nameof(relativeTo));
+            }
+
+            Matrix.Multiply(ref transform.WorldMatrix, ref translationMatrix, out transform.WorldMatrix);            
+           
             transform.UpdateLocalFromWorld();
             transform.UpdateTRSFromLocal();
-
-        }
-
-        
+        }        
 
         public static void Translate(this TransformComponent transform, Vector3 translation, Space relativeTo = Space.Self)
         {
@@ -260,14 +277,17 @@ namespace XenkoToolkit.Engine
                 throw new ArgumentNullException(nameof(transform));
             }
 
-            if(transform.UseTRS)
-            {
-                transform.Rotation = MathUtilEx.LookRotation(transform.WorldMatrix.TranslationVector, target, worldUp);
-            }
-            else
-            {
-                throw new NotImplementedException();
-            }
+            throw new NotImplementedException("Doesn't work bro!");
+
+            transform.WorldMatrix.Decompose(out var scale, out var translation);
+            Matrix.Scaling(ref scale, out var scaleMatrix);
+            Matrix.Translation(ref translation, out var translationMatrix);
+            MathUtilEx.LookRotation(ref translation, ref target, ref worldUp, out var lookRotation);
+            Matrix.RotationQuaternion(ref lookRotation, out var lookRotationMatrix);
+
+            Matrix.Multiply(ref scaleMatrix, ref lookRotationMatrix, out transform.WorldMatrix);
+            Matrix.Multiply(ref transform.WorldMatrix, ref translationMatrix, out transform.WorldMatrix);
+
 
             transform.UpdateLocalFromWorld();
             transform.UpdateTRSFromLocal();

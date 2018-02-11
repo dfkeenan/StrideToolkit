@@ -288,5 +288,20 @@ namespace XenkoToolkit.Engine
                 }
             }
         }
+
+        public static void CancelAll(this ICollection<MicroThread> microThreads)
+        {
+            if (microThreads == null)
+            {
+                throw new ArgumentNullException(nameof(microThreads));
+            }
+
+            foreach (var thread in microThreads)
+            {
+                thread.Cancel();
+            }
+
+            microThreads.Clear();
+        }
     }
 }

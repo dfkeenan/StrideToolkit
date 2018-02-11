@@ -55,10 +55,11 @@ namespace XenkoToolkit.Demo
         public override void Cancel()
         {
             base.Cancel();
-            tasks.ForEach(t => t.Cancel());
-            tasks.Clear();
+            tasks.CancelAll();
             
             DebugText.Update(Game.UpdateTime);
         }
+
+        
     }
 }

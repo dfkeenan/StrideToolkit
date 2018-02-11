@@ -45,7 +45,10 @@ namespace XenkoToolkit.Demo
                 {
                     message = hitResult.Collider.Entity.Name;
 
+                    //MainCamera.Entity.Transform.UpdateWorldMatrix();
+                    //MainCamera.Entity.Transform.LookAt(hitResult.Collider.Entity.Transform);
                     MainCamera.Entity.Transform.Rotation = MathUtilEx.LookRotation(MainCamera.Entity.Transform.Position, hitResult.Collider.Entity.Transform.Position, Vector3.UnitY);
+
                 }
                 DebugText.Print($"Clicked on {message}", new Int2(20, 60));
             }
