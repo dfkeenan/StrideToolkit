@@ -1,5 +1,6 @@
 ﻿using SiliconStudio.Core.Mathematics;
 using SiliconStudio.Xenko.Engine;
+using SiliconStudio.Xenko.Engine.Events;
 using SiliconStudio.Xenko.Physics;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,13 @@ namespace XenkoToolkit.Demo
 {
     public class CameraExtensionsDemo : SyncScript
     {
+        public static readonly EventKey<Entity> TargetAcquired = new EventKey<Entity>(eventName: "TargetAcquired");
         
         private string message;
 
         public CameraComponent MainCamera { get; set; }
+
+        public Entity Cube { get; set; }
 
         public override void Start()
         {
@@ -27,6 +31,8 @@ namespace XenkoToolkit.Demo
 
         public override void Update()
         {
+            Cube?.Transform.Rotate(new Vector3(MathUtil.DegreesToRadians(60) * Game.GetDeltaTime(), 0, 0));
+
 
             DebugText.Print($"Screen {MainCamera.WorldToScreen(Entity.Transform.Position)}", new Int2(20, 20));
 
@@ -46,9 +52,14 @@ namespace XenkoToolkit.Demo
                     message = hitResult.Collider.Entity.Name;
 
                     //MainCamera.Entity.Transform.UpdateWorldMatrix();
-                    //MainCamera.Entity.Transform.LookAt(hitResult.Collider.Entity.Transform);
-                    MainCamera.Entity.Transform.Rotation = MathUtilEx.LookRotation(MainCamera.Entity.Transform.Position, hitResult.Collider.Entity.Transform.Position, Vector3.UnitY);
-
+                    
+                    MainCamera.Entity.Transform.LookAt(hitResult.Collider.Entity.Transform);
+                    //MainCamera.Entity.Transform.Rotation = MathUtilEx.LookRotation(MainCamera.Entity.Transform.Position, hitResult.Collider.Entity.Transform.Position, Vector3.UnitY);
+                    TargetAcquired.Broadcast(hitResult.Collider.Entity);
+                }
+                else
+                {
+                    TargetAcquired.Broadcast(null);
                 }
                 DebugText.Print($"Clicked on {message}", new Int2(20, 60));
             }

@@ -30,28 +30,28 @@ namespace XenkoToolkit.Engine
                 throw new ArgumentNullException(nameof(transform));
             }
 
-            throw new NotImplementedException();
-
-
-            Matrix translationMatrix = Matrix.Identity;
-
-            switch (relativeTo)
+            if (!transform.UseTRS)
             {
-                case Space.World:
-                    Matrix.Translation(ref translation, out translationMatrix);
-                    break;
-                case Space.Self:
-                    transform.InverseTransformVector(ref translation, out var inverseTranslation);
-                    Matrix.Translation(ref inverseTranslation, out translationMatrix);
-                    break;
-                default:
-                    throw new ArgumentException(nameof(relativeTo));
+                throw new ArgumentException("Must use TRS", nameof(transform));
             }
 
-            Matrix.Multiply(ref transform.WorldMatrix, ref translationMatrix, out transform.WorldMatrix);            
-           
-            transform.UpdateLocalFromWorld();
-            transform.UpdateTRSFromLocal();
+            var localTranslation = translation;
+
+
+            if (relativeTo == Space.Self)
+            {
+                Vector3.TransformNormal(ref translation, ref transform.WorldMatrix, out localTranslation);
+            }
+
+            if (transform.Parent != null)
+            {
+                Matrix.Invert(ref transform.Parent.WorldMatrix, out var inverseParent);
+                Vector3.TransformNormal(ref localTranslation, ref inverseParent, out localTranslation);
+            }
+
+            transform.Position += localTranslation;
+
+            transform.UpdateWorldMatrix();
         }        
 
         public static void Translate(this TransformComponent transform, Vector3 translation, Space relativeTo = Space.Self)
@@ -66,15 +66,18 @@ namespace XenkoToolkit.Engine
                 throw new ArgumentNullException(nameof(transform));
             }
 
+            if (!transform.UseTRS)
+            {
+                throw new ArgumentException("Must use TRS", nameof(transform));
+            }
+
             if (relativeTo == null)
             {
                 throw new ArgumentNullException(nameof(relativeTo));
             }
 
-            throw new NotImplementedException();
-
-            transform.UpdateLocalFromWorld();
-            transform.UpdateTRSFromLocal();
+            relativeTo.TransformDirection(ref translation, out var localTranslation);
+            transform.Translate(ref localTranslation, Space.World);
 
         }
 
@@ -90,26 +93,55 @@ namespace XenkoToolkit.Engine
                 throw new ArgumentNullException(nameof(transform));
             }
 
-            MathUtilEx.ToQuaternion(ref eulerAngles, out var rotationQ);
-            Matrix.RotationQuaternion(ref rotationQ, out var rotation);
-
-            switch (relativeTo)
+            if (!transform.UseTRS)
             {
-                case Space.World:
-                    transform.WorldMatrix = transform.WorldMatrix * rotation;
-                    break;
-                case Space.Self:
-                    transform.WorldMatrix = rotation * transform.WorldMatrix;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(relativeTo));
+                throw new ArgumentException("Must use TRS", nameof(transform));
             }
 
 
-            throw new NotImplementedException();
+            Quaternion rotation = Quaternion.Identity;
 
-            transform.UpdateLocalFromWorld();
-            transform.UpdateTRSFromLocal();
+            if(relativeTo == Space.Self)
+            {
+                //What do I do here???
+                if(eulerAngles.X != 0f)
+                {
+                    var right = transform.WorldMatrix.Right; right.Normalize();
+                    Quaternion.RotationAxis(ref right, eulerAngles.X, out var axisRotation);
+                    Quaternion.Multiply(ref rotation, ref axisRotation, out rotation);
+                }
+
+                if (eulerAngles.Y != 0f)
+                {
+                    var up = transform.WorldMatrix.Up; up.Normalize();
+                    Quaternion.RotationAxis(ref up, eulerAngles.Y, out var axisRotation);
+                    Quaternion.Multiply(ref rotation, ref axisRotation, out rotation);
+                }
+
+                if (eulerAngles.Z != 0f)
+                {
+                    var forward = transform.WorldMatrix.Forward; forward.Normalize();
+                    Quaternion.RotationAxis(ref forward, eulerAngles.Z, out var axisRotation);
+                    Quaternion.Multiply(ref rotation, ref axisRotation, out rotation);
+                }
+            }
+            else
+            {
+                //Quaternion.RotationYawPitchRoll(eulerAngles.Y, eulerAngles.X, eulerAngles.Z, out rotation);
+                MathUtilEx.ToQuaternion(ref eulerAngles, out rotation);
+            }
+
+            if(transform.Parent != null)
+            {
+                transform.Parent.WorldMatrix.Decompose(out var _, out Quaternion parentRotation, out var _);
+                parentRotation.Conjugate();
+
+                Quaternion.Multiply(ref rotation, ref parentRotation, out rotation);
+            }
+
+            Quaternion.Multiply(ref transform.Rotation, ref rotation, out transform.Rotation);
+
+            transform.UpdateWorldMatrix();
         }
 
         public static void Rotate(this TransformComponent transform, Vector3 eulerAngles, Space relativeTo = Space.Self)
@@ -117,30 +149,21 @@ namespace XenkoToolkit.Engine
             transform.Rotate(ref eulerAngles, relativeTo);
         }
 
-        public static void RotateAround(this TransformComponent transform, ref Vector3 point, ref Vector3 axis, float angle)
-        {
-            if (transform == null)
-            {
-                throw new ArgumentNullException(nameof(transform));
-            }
+        //public static void RotateAround(this TransformComponent transform, ref Vector3 point, ref Vector3 axis, float angle)
+        //{
+        //    if (transform == null)
+        //    {
+        //        throw new ArgumentNullException(nameof(transform));
+        //    }
 
-            var translationToOrigin = point * -1.0f;
+        //    throw new NotImplementedException();
 
-            Matrix.Translation(ref translationToOrigin, out var translationToOriginMatrix);
-            Matrix.RotationAxis(ref axis, angle, out var rotationMatrix);
-            Matrix.Translation(ref point, out var translationMatrix);
+        //}
 
-            transform.WorldMatrix = transform.WorldMatrix * translationToOriginMatrix * rotationMatrix * translationMatrix;
-
-            transform.UpdateLocalFromWorld();
-            transform.UpdateTRSFromLocal();
-
-        }
-
-        public static void RotateAround(this TransformComponent transform, Vector3 point, Vector3 axis, float angle)
-        {
-            transform.RotateAround(ref point, ref axis, angle);
-        }
+        //public static void RotateAround(this TransformComponent transform, Vector3 point, Vector3 axis, float angle)
+        //{
+        //    transform.RotateAround(ref point, ref axis, angle);
+        //}
 
         public static void TransformDirection(this TransformComponent transform, ref Vector3 direction, out Vector3 result)
         {
@@ -244,7 +267,7 @@ namespace XenkoToolkit.Engine
             return result;
         }
 
-        public static void LookAt(this TransformComponent transform, TransformComponent target, ref Vector3 worldUp)
+        public static void LookAt(this TransformComponent transform, TransformComponent target, ref Vector3 worldUp, float smooth = 1.0f)
         {
             if (transform == null)
             {
@@ -257,55 +280,71 @@ namespace XenkoToolkit.Engine
             }            
 
             var targetPosition = target.WorldMatrix.TranslationVector;
-            transform.LookAt(ref targetPosition, ref worldUp);
+            transform.LookAt(ref targetPosition, ref worldUp,smooth);
         }
 
-        public static void LookAt(this TransformComponent transform, TransformComponent target, Vector3 worldUp)
+        public static void LookAt(this TransformComponent transform, TransformComponent target, Vector3 worldUp, float smooth = 1.0f)
         {
-            transform.LookAt(target, ref worldUp);
+            transform.LookAt(target, ref worldUp, smooth);
         }
 
-        public static void LookAt(this TransformComponent transform, TransformComponent target)
+        public static void LookAt(this TransformComponent transform, TransformComponent target, float smooth = 1.0f)
         {
-            transform.LookAt(target, ref WorldUp);
+            transform.LookAt(target, ref WorldUp, smooth);
         }
 
-        public static void LookAt(this TransformComponent transform, ref Vector3 target, ref Vector3 worldUp)
+        public static void LookAt(this TransformComponent transform, ref Vector3 target, ref Vector3 worldUp, float smooth = 1.0f)
         {
             if (transform == null)
             {
                 throw new ArgumentNullException(nameof(transform));
             }
 
-            throw new NotImplementedException("Doesn't work bro!");
+            if (!transform.UseTRS)
+            {
+                throw new ArgumentException("Must use TRS", nameof(transform));
+            }
 
-            transform.WorldMatrix.Decompose(out var scale, out var translation);
-            Matrix.Scaling(ref scale, out var scaleMatrix);
-            Matrix.Translation(ref translation, out var translationMatrix);
-            MathUtilEx.LookRotation(ref translation, ref target, ref worldUp, out var lookRotation);
-            Matrix.RotationQuaternion(ref lookRotation, out var lookRotationMatrix);
+            var localTarget = target;
+            var localUp = worldUp;
 
-            Matrix.Multiply(ref scaleMatrix, ref lookRotationMatrix, out transform.WorldMatrix);
-            Matrix.Multiply(ref transform.WorldMatrix, ref translationMatrix, out transform.WorldMatrix);
+            if(transform.Parent != null)
+            {
+                Matrix.Invert(ref transform.Parent.WorldMatrix, out var inverseParent);
+                Vector3.TransformCoordinate(ref target, ref inverseParent, out localTarget);
+                Vector3.TransformNormal(ref worldUp, ref inverseParent, out localUp);
+            }
+
+            var localEye = transform.LocalMatrix.TranslationVector;
+
+            MathUtilEx.LookRotation(ref localEye, ref localTarget, ref localUp, out var lookRotation);
+
+            if(smooth == 1.0f)
+            {
+                transform.Rotation = lookRotation;
+            }
+            else
+            {
+                Quaternion.Slerp(ref transform.Rotation, ref lookRotation, smooth, out transform.Rotation);
+            }
 
 
-            transform.UpdateLocalFromWorld();
-            transform.UpdateTRSFromLocal();
+            transform.UpdateWorldMatrix();
         }
 
-        public static void LookAt(this TransformComponent transform, Vector3 target, Vector3 worldUp)
+        public static void LookAt(this TransformComponent transform, Vector3 target, Vector3 worldUp, float smooth = 1.0f)
         {
-            transform.LookAt(ref target, ref worldUp);
+            transform.LookAt(ref target, ref worldUp, smooth);
         }
 
-        public static void LookAt(this TransformComponent transform, ref Vector3 target)
+        public static void LookAt(this TransformComponent transform, ref Vector3 target, float smooth = 1.0f)
         {
-            transform.LookAt(ref target, ref WorldUp);
+            transform.LookAt(ref target, ref WorldUp, smooth);
         }
 
-        public static void LookAt(this TransformComponent transform, Vector3 target)
+        public static void LookAt(this TransformComponent transform, Vector3 target, float smooth = 1.0f)
         {
-            transform.LookAt(ref target, ref WorldUp);
+            transform.LookAt(ref target, ref WorldUp, smooth);
         }
     }
 }

@@ -2,7 +2,9 @@
 using SiliconStudio.Core;
 using SiliconStudio.Core.Mathematics;
 using SiliconStudio.Xenko.Engine;
+using SiliconStudio.Xenko.Engine.Events;
 using SiliconStudio.Xenko.Input;
+using XenkoToolkit.Engine;
 
 namespace XenkoToolkit.Demo
 {
@@ -22,6 +24,12 @@ namespace XenkoToolkit.Demo
         private float yaw;
         private float pitch;
 
+        private Entity target;
+
+        private readonly EventReceiver<Entity> TargetAcquired
+           = new EventReceiver<Entity>(CameraExtensionsDemo.TargetAcquired);
+
+
         public Vector3 KeyboardMovementSpeed { get; set; } = new Vector3(5.0f);
 
         public Vector3 TouchMovementSpeed { get; set; } = new Vector3(40, 40, 20);
@@ -33,6 +41,8 @@ namespace XenkoToolkit.Demo
         public Vector2 MouseRotationSpeed { get; set; } = new Vector2(90.0f, 60.0f);
 
         public Vector2 TouchRotationSpeed { get; set; } = new Vector2(60.0f, 40.0f);
+
+
 
         public override void Start()
         {
@@ -51,6 +61,11 @@ namespace XenkoToolkit.Demo
 
         public override void Update()
         {
+            if(TargetAcquired.TryReceive(out var targetCandidate))
+            {
+                target = targetCandidate;
+            }
+
             ProcessInput();
             UpdateTransform();
         }
@@ -177,10 +192,19 @@ namespace XenkoToolkit.Demo
             pitch = MathUtil.Clamp(currentPitch + pitch, -MaximumPitch, MaximumPitch) - currentPitch;
 
             // Move in local coordinates
-            Entity.Transform.Position += Vector3.TransformCoordinate(translation, rotation);
+            //Entity.Transform.Position += Vector3.TransformCoordinate(translation, rotation);
+            Entity.Transform.Translate(translation);
 
-            // Yaw around global up-vector, pitch and roll in local space
-            Entity.Transform.Rotation *= Quaternion.RotationAxis(right, pitch) * Quaternion.RotationAxis(upVector, yaw);
+            if(target != null && Input.IsKeyDown(Keys.LeftCtrl))
+            {
+                Entity.Transform.LookAt(target.Transform,Game.GetDeltaTime() * 3);
+            }
+            else
+            {
+                // Yaw around global up-vector, pitch and roll in local space
+                Entity.Transform.Rotation *= Quaternion.RotationAxis(right, pitch) * Quaternion.RotationAxis(upVector, yaw);
+            }
+            
         }
     }
 }
