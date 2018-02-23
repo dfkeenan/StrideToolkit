@@ -79,16 +79,16 @@ public class ReceiverScript : StartupScript
 
 Execute methods at a delayed time:
 ```csharp
-    Script.AddAction(DelayedAction, TimeSpan.FromSeconds(2));
-    //async method
-    Script.AddTask(DelayedTask, TimeSpan.FromSeconds(2));
+Script.AddAction(DelayedAction, TimeSpan.FromSeconds(2));
+//async method
+Script.AddTask(DelayedTask, TimeSpan.FromSeconds(2));
 ```
 
 Repeat method execute at a given time span:
 ```csharp
-    Script.AddAction(RepeatedAction, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(2));
-    //async method
-    Script.AddTask(RepeatedTask, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(2));
+Script.AddAction(RepeatedAction, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(2));
+//async method
+Script.AddTask(RepeatedTask, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(2));
 ```
 Animate a property using an easing function:
 ```csharp
