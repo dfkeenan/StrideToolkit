@@ -11,7 +11,7 @@ namespace XenkoToolkit.Engine
 {
     public static class ScriptSystemExtensions
     {
-        public static MicroThread AddOnEventTask<T>(
+        public static MicroThread AddOnEventAction<T>(
             this ScriptSystem scriptSystem, 
             EventKey<T> eventKey, Action<T> action, 
             long priority = 0L)
@@ -31,12 +31,12 @@ namespace XenkoToolkit.Engine
                 throw new ArgumentNullException(nameof(action));
             }            
 
-            return scriptSystem.AddOnEventTask(new EventReceiver<T>(eventKey), action, priority);
+            return scriptSystem.AddOnEventAction(new EventReceiver<T>(eventKey), action, priority);
 
         }
         
 
-        public static MicroThread AddOnEventTask<T>(
+        public static MicroThread AddOnEventAction<T>(
             this ScriptSystem scriptSystem, 
             EventReceiver<T> receiver, 
             Action<T> action, 
@@ -70,7 +70,7 @@ namespace XenkoToolkit.Engine
         }
 
 
-        public static MicroThread AddOnEventTaskAsync<T>(
+        public static MicroThread AddOnEventTask<T>(
            this ScriptSystem scriptSystem,
            EventKey<T> eventKey, Func<T,Task> action,
            long priority = 0L)
@@ -90,12 +90,12 @@ namespace XenkoToolkit.Engine
                 throw new ArgumentNullException(nameof(action));
             }
 
-            return scriptSystem.AddOnEventTaskAsync(new EventReceiver<T>(eventKey), action, priority);
+            return scriptSystem.AddOnEventTask(new EventReceiver<T>(eventKey), action, priority);
 
         }
 
 
-        public static MicroThread AddOnEventTaskAsync<T>(
+        public static MicroThread AddOnEventTask<T>(
             this ScriptSystem scriptSystem,
             EventReceiver<T> receiver,
             Func<T, Task> action,
@@ -160,7 +160,7 @@ namespace XenkoToolkit.Engine
             }
         }
 
-        public static MicroThread AddTask(
+        public static MicroThread AddAction(
            this ScriptSystem scriptSystem,
            Action action,
            TimeSpan delay,
@@ -240,7 +240,7 @@ namespace XenkoToolkit.Engine
             }
         }
 
-        public static MicroThread AddTask(
+        public static MicroThread AddAction(
            this ScriptSystem scriptSystem,
            Action action,
            TimeSpan delay,
@@ -284,6 +284,54 @@ namespace XenkoToolkit.Engine
                         delay = repeatEvery;
                         action();
                     }                    
+                    await scriptSystem.NextFrame();
+                }
+            }
+        }
+
+        public static MicroThread AddOverTimeAction(
+           this ScriptSystem scriptSystem,
+           Action<float> action,
+           TimeSpan duration,
+           long priority = 0L)
+        {
+            if (scriptSystem == null)
+            {
+                throw new ArgumentNullException(nameof(scriptSystem));
+            }
+
+            if (action == null)
+            {
+                throw new ArgumentNullException(nameof(action));
+            }
+
+            if (duration <= TimeSpan.Zero)
+            {
+                throw new ArgumentOutOfRangeException(nameof(duration), "Must be greater than zero.");
+            }
+
+            return scriptSystem.AddTask(DoTask, priority);
+
+            //C# 7 Local function could also use a variable Func<Task> DoEvent = async () => { ... };
+            async Task DoTask()
+            {
+                var elapsedTime = new TimeSpan(0);
+
+                while (scriptSystem.Game.IsRunning)
+                {
+                    elapsedTime += scriptSystem.Game.UpdateTime.Elapsed;
+
+                    if (elapsedTime >= duration)
+                    {
+                        action(1.0f);
+                        break;
+                    }
+                    else
+                    {
+                        var progress = (float)(elapsedTime.TotalSeconds / duration.TotalSeconds);
+
+                        action(progress);
+                    }
                     await scriptSystem.NextFrame();
                 }
             }

@@ -22,13 +22,13 @@ namespace XenkoToolkit.Demo
             tasks = new List<MicroThread>()
             {
                 //Directly using EventKey so you don't have to declare EventReciever:
-                Script.AddOnEventTask(SenderScript.EventOne, HandleOne),
+                Script.AddOnEventAction(SenderScript.EventOne, (Action<Vector2>)this.HandleOne),
                 //Using an EventReciever:
-                Script.AddOnEventTask(EventTwoReciever, HandleTwo),
+                Script.AddOnEventAction(EventTwoReciever, (Action<Vector2>)this.HandleTwo),
 
-                Script.AddTask((Action)Delay, TimeSpan.FromSeconds(2)),
+                Script.AddAction(DelayedAction, TimeSpan.FromSeconds(2)),
 
-                Script.AddTask((Action)DelayRepeat, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(2)),
+                Script.AddAction(DelayRepeatAction, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(2)),
             };
         }
 
@@ -42,12 +42,12 @@ namespace XenkoToolkit.Demo
             DebugText.Print($"Even Two - {position}", new Int2(10, 20));
         }
 
-        private void Delay()
+        private void DelayedAction()
         {
             DebugText.Print("Delay", new Int2(10, 30));
         }
 
-        private void DelayRepeat()
+        private void DelayRepeatAction()
         {
             DebugText.Print("Delay Repeat", new Int2(10, 40));
         }

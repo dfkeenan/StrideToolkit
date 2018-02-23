@@ -21,14 +21,36 @@ namespace XenkoToolkit.Demo
 
         public override async Task Execute()
         {
-            var easingFunctions = (EasingFunction[])Enum.GetValues(typeof(EasingFunction));
+            var bottom = new Vector3(0, Height, 0);
+
+            var duration = TimeSpan.FromSeconds(2);
+            var elapsed = TimeSpan.Zero;
+
+            var easingFunctions = ((EasingFunction[])Enum.GetValues(typeof(EasingFunction))).Reverse().ToList();
+            easingFunctions.RemoveAt(0);
+
+            {
+                var startPosition = FirstPosition;
+                var endPosition = FirstPosition - bottom;
+
+                var sphere = SpherePrefab.InstantiateSingle(FirstPosition);
+                Entity.Scene.Entities.Add(sphere);
+
+                Script.AddOverTimeAction((progress) =>
+                {
+                    sphere.Transform.Position = MathUtilEx.Interpolate(startPosition, endPosition, progress,EasingFunction.ElasticEaseOut);   
+
+                }, TimeSpan.FromSeconds(2));
+            }
+            
+
 
             var startPositions = new List<Vector3>();
             var transforms = new List<TransformComponent>();
 
-            for (int i = 0; i < easingFunctions.Length; i++)
+            for (int i = 0; i < easingFunctions.Count; i++)
             {
-                Vector3 startPosition = FirstPosition + new Vector3(i, 0, 0);
+                Vector3 startPosition = FirstPosition + new Vector3(i + 1, 0, 0);
                 var sphere = SpherePrefab.InstantiateSingle(startPosition);
 
                 transforms.Add(sphere.Transform);
@@ -36,10 +58,7 @@ namespace XenkoToolkit.Demo
                 Entity.Scene.Entities.Add(sphere);
             }
 
-            var bottom = new Vector3(0, Height,0);
-
-            var duration = TimeSpan.FromSeconds(2);
-            var elapsed = TimeSpan.Zero;
+            
 
 
             while (Game.IsRunning)

@@ -26,7 +26,6 @@ namespace XenkoToolkit.Demo
         public override void Start()
         {
             // MainCamera = SceneSystem.GetMainCamera();
-
         }
 
         public override void Update()
@@ -42,19 +41,15 @@ namespace XenkoToolkit.Demo
             {
                 message = "";
 
-                var simulation = this.GetSimulation();
 
                 var ray = MainCamera.ScreenToWorldRaySegment(Input.MousePosition);
 
-                var hitResult = simulation.Raycast(ray);
+                var hitResult = this.GetSimulation().Raycast(ray);
                 if (hitResult.Succeeded)
                 {
                     message = hitResult.Collider.Entity.Name;
-
-                    //MainCamera.Entity.Transform.UpdateWorldMatrix();
-                    
+                   
                     MainCamera.Entity.Transform.LookAt(hitResult.Collider.Entity.Transform);
-                    //MainCamera.Entity.Transform.Rotation = MathUtilEx.LookRotation(MainCamera.Entity.Transform.Position, hitResult.Collider.Entity.Transform.Position, Vector3.UnitY);
                     TargetAcquired.Broadcast(hitResult.Collider.Entity);
                 }
                 else
