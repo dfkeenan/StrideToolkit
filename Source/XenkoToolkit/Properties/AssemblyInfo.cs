@@ -9,10 +9,10 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Reflection.AssemblyTitle("XenkoToolkit")]
-[assembly: System.Reflection.AssemblyDescription("A Toolkit for the Xenko game engine. Xenko version 2.1.0.3.")]
+[assembly: System.Reflection.AssemblyDescription("A Toolkit for the Xenko game engine. Xenko version 2.1.1.1.")]
 [assembly: System.Reflection.AssemblyCompany("dfkeenan")]
 [assembly: System.Reflection.AssemblyProduct("XenkoToolkit")]
-[assembly: System.Reflection.AssemblyCopyright("Copyright © 2017")]
+[assembly: System.Reflection.AssemblyCopyright("Copyright © 2018")]
 [assembly: System.Runtime.InteropServices.ComVisible(false)]
 [assembly: System.CLSCompliant(false)]
 [assembly: System.Reflection.AssemblyInformationalVersion("0.1.0.0-alpha")]

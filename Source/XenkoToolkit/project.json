@@ -1,19 +1,14 @@
 ﻿{
   "supports": {},
   "dependencies": {
-
     "Microsoft.NETCore.Portable.Compatibility": {
       "version": "1.0.2",
       "type": "build"
     },
-    "MSBuildTasks": {
-      "version": "1.5.0.235",
-      "type": "build"
-    },    
     "NETStandard.Library": {
       "version": "2.0.0",
       "type": "build"
-    }    
+    }
   },
   "frameworks": {
     "netstandard1.4": {}

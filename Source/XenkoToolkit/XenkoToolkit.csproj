@@ -24,14 +24,30 @@
     <SiliconStudioProjectType>Library</SiliconStudioProjectType>
   </PropertyGroup>
   <PropertyGroup>
+    <CustomBuildToolsDir>$(MSBuildThisFileDirectory)..\..\Build</CustomBuildToolsDir>    
+  </PropertyGroup>
+  <Import Project="$(CustomBuildToolsDir)\MSBuild.Community.Tasks.Targets"/>
+  <PropertyGroup>
     <Major>0</Major>
     <Minor>1</Minor>
     <Build>0</Build>
     <Revision>0</Revision>
     <PreRelease>-alpha</PreRelease>
+    <CopyrightYear>$([System.DateTime]::Now.Year)</CopyrightYear>
   </PropertyGroup>
   <Target Name="Version" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <AssemblyInfo CodeLanguage="CS" OutputFile="Properties\AssemblyInfo.cs" AssemblyTitle="XenkoToolkit" AssemblyDescription="A Toolkit for the Xenko game engine. Xenko version $(SiliconStudioPackageXenkoVersion)." AssemblyCompany="dfkeenan" AssemblyProduct="XenkoToolkit" AssemblyCopyright="Copyright © 2017" ComVisible="false" CLSCompliant="false" AssemblyInformationalVersion="$(Major).$(Minor).$(Build).$(Revision)$(PreRelease)" AssemblyVersion="$(Major).$(Minor).$(Build)" AssemblyFileVersion="$(Major).$(Minor).$(Build)" />
+    <AssemblyInfo CodeLanguage="CS" 
+                  OutputFile="Properties\AssemblyInfo.cs" 
+                  AssemblyTitle="XenkoToolkit" 
+                  AssemblyDescription="A Toolkit for the Xenko game engine. Xenko version $(SiliconStudioPackageXenkoVersion)." 
+                  AssemblyCompany="dfkeenan" 
+                  AssemblyProduct="XenkoToolkit" 
+                  AssemblyCopyright="Copyright © $(CopyrightYear)" 
+                  ComVisible="false" 
+                  CLSCompliant="false" 
+                  AssemblyInformationalVersion="$(Major).$(Minor).$(Build).$(Revision)$(PreRelease)" 
+                  AssemblyVersion="$(Major).$(Minor).$(Build)" 
+                  AssemblyFileVersion="$(Major).$(Minor).$(Build)" />
   </Target>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -420,7 +436,7 @@
   <Target Name="BeforeBuild">
   </Target>
   -->
-  <Target Name="AfterBuild" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <Exec WorkingDirectory="$(SolutionDir)..\Build" Command="Nuget.exe pack &quot;$(ProjectPath)&quot; -Properties Configuration=$(Configuration);Platform=$(Platform) -OutputDirectory &quot;..\Source\CustomPackages&quot;" />
+  <Target Name="AfterBuild" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' "> 
+    <Exec WorkingDirectory="$(CustomBuildToolsDir)" Command="Nuget.exe pack &quot;$(ProjectPath)&quot; -Properties Configuration=$(Configuration);Platform=$(Platform) -OutputDirectory &quot;..\Source\CustomPackages&quot;" />
   </Target>
 </Project>
