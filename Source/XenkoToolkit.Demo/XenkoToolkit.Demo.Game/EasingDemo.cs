@@ -1,6 +1,7 @@
 ﻿using SiliconStudio.Core;
 using SiliconStudio.Core.Mathematics;
 using SiliconStudio.Xenko.Engine;
+using SiliconStudio.Xenko.Rendering.Materials;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,8 +39,7 @@ namespace XenkoToolkit.Demo
 
                 Script.AddOverTimeAction((progress) =>
                 {
-                    sphere.Transform.Position = MathUtilEx.Interpolate(startPosition, endPosition, progress,EasingFunction.ElasticEaseOut);   
-
+                    sphere.Transform.Position = MathUtilEx.Interpolate(startPosition, endPosition, progress,EasingFunction.ElasticEaseOut);
                 }, TimeSpan.FromSeconds(2));
             }
             
@@ -58,7 +58,8 @@ namespace XenkoToolkit.Demo
                 Entity.Scene.Entities.Add(sphere);
             }
 
-            
+            var ran = new Random();
+            var colors = Enumerable.Range(0, transforms.Count).Select(i => ran.NextColor()).ToList();
 
 
             while (Game.IsRunning)
@@ -78,6 +79,9 @@ namespace XenkoToolkit.Demo
 
                     t.Position = MathUtilEx.Interpolate(startPositions[i], startPositions[i] - bottom, progress, easing);
 
+
+                    var diffuse = MathUtilEx.Interpolate(Color.White, colors[i], progress, EasingFunction.Linear);
+                    t.Entity.Get<ModelComponent>().SetMaterialParameter(MaterialKeys.DiffuseValue, diffuse);
                 }                
 
                 elapsed += Game.UpdateTime.Elapsed;
