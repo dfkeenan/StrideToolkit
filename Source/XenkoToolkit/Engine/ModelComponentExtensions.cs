@@ -78,7 +78,7 @@ namespace XenkoToolkit.Engine
                 throw new ArgumentNullException(nameof(modelComponent));
             }
 
-            if (materialIndex < 0 || materialIndex >= modelComponent.GetMaterialCount())
+            if (!IsValidMaterialIndex(modelComponent, materialIndex))
             {
                 throw new ArgumentOutOfRangeException(nameof(materialIndex));
             }
@@ -100,6 +100,22 @@ namespace XenkoToolkit.Engine
             modelComponent.Materials[materialIndex] = materialCopy;
 
             return materialCopy;
+        }
+
+        private static bool IsValidMaterialIndex(ModelComponent modelComponent, int materialIndex)
+        {
+            if (materialIndex < 0) return false;
+
+            int materialCount = modelComponent.GetMaterialCount();
+
+            if (materialCount > 0)
+            {
+                return materialIndex < materialCount;
+            }
+            else
+            {
+                return modelComponent.Materials.ContainsKey(materialIndex);
+            }            
         }
 
         private static ParameterCollection GetMaterialPassParameters(this ModelComponent modelComponent, int materialIndex, int passIndex)
