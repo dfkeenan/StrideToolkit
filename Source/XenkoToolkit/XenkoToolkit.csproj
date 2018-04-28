@@ -29,7 +29,7 @@
   <Import Project="$(CustomBuildToolsDir)\MSBuild.Community.Tasks.Targets" />
   <PropertyGroup>
     <Major>0</Major>
-    <Minor>1</Minor>
+    <Minor>2</Minor>
     <Build>0</Build>
     <Revision>0</Revision>
     <PreRelease>-alpha</PreRelease>

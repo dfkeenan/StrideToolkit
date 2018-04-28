@@ -101,7 +101,7 @@
   <ItemGroup>
     <ProjectReference Include="..\XenkoToolkit.Demo.Game\XenkoToolkit.Demo.Game.csproj">
       <Project>{325e363f-0aa3-4866-bf26-9d1d415bfa86}</Project>
-      <Name>XenkoToolkit.Game</Name>
+      <Name>XenkoToolkit.Demo.Game</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>

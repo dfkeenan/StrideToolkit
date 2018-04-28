@@ -14,22 +14,16 @@ namespace XenkoToolkit.Demo
         private readonly EventReceiver<Vector2> EventTwoReciever
             = new EventReceiver<Vector2>(SenderScript.EventTwo);
 
-        private List<MicroThread> tasks;
-
         public override void Start()
         {
-            //Keep a list of tasks to stop on cancel
-            tasks = new List<MicroThread>()
-            {
-                //Directly using EventKey so you don't have to declare EventReciever:
-                Script.AddOnEventAction(SenderScript.EventOne, (Action<Vector2>)this.HandleOne),
-                //Using an EventReciever:
-                Script.AddOnEventAction(EventTwoReciever, (Action<Vector2>)this.HandleTwo),
+            //Directly using EventKey so you don't have to declare EventReciever:
+            Script.AddOnEventAction(SenderScript.EventOne, (Action<Vector2>)this.HandleOne);
+            //Using an EventReciever:
+            Script.AddOnEventAction(EventTwoReciever, (Action<Vector2>)this.HandleTwo);
 
-                Script.AddAction(DelayedAction, TimeSpan.FromSeconds(2)),
+            Script.AddAction(DelayedAction, TimeSpan.FromSeconds(2));
 
-                Script.AddAction(DelayRepeatAction, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(2)),
-            };
+            Script.AddAction(DelayRepeatAction, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(2));
         }
 
         private void HandleOne(Vector2 position)
@@ -54,9 +48,6 @@ namespace XenkoToolkit.Demo
 
         public override void Cancel()
         {
-            //base.Cancel();
-            //tasks.CancelAll();
-
             DebugText.Update(Game.UpdateTime);
         }
 
