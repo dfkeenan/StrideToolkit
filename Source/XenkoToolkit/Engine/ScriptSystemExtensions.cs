@@ -11,6 +11,26 @@ namespace XenkoToolkit.Engine
 {
     public static class ScriptSystemExtensions
     {
+        public static async Task WaitFor(this ScriptSystem scriptSystem, TimeSpan delay)
+        {
+            if (scriptSystem == null)
+            {
+                throw new ArgumentNullException(nameof(scriptSystem));
+            }
+
+            if (delay <= TimeSpan.Zero)
+            {
+                throw new ArgumentOutOfRangeException(nameof(delay), "Must be greater than zero.");
+            }
+
+            while (scriptSystem.Game.IsRunning && delay >= TimeSpan.Zero)
+            {
+                delay -= scriptSystem.Game.UpdateTime.Elapsed;
+                await scriptSystem.NextFrame();
+            }
+
+        }
+
         public static MicroThread AddOnEventAction<T>(
             this ScriptSystem scriptSystem, 
             EventKey<T> eventKey, Action<T> action, 
@@ -150,15 +170,13 @@ namespace XenkoToolkit.Engine
             //C# 7 Local function could also use a variable Func<Task> DoEvent = async () => { ... };
             async Task DoTask()
             {
-                while (scriptSystem.Game.IsRunning && delay >= TimeSpan.Zero)
-                {
-                    delay -= scriptSystem.Game.UpdateTime.Elapsed;
-                    await scriptSystem.NextFrame();
-                }
+                await scriptSystem.WaitFor(delay);
 
                 await action();
             }
         }
+
+       
 
         public static MicroThread AddAction(
            this ScriptSystem scriptSystem,
@@ -186,11 +204,7 @@ namespace XenkoToolkit.Engine
             //C# 7 Local function could also use a variable Func<Task> DoEvent = async () => { ... };
             async Task DoTask()
             {
-                while (scriptSystem.Game.IsRunning && delay >= TimeSpan.Zero)
-                {
-                    delay -= scriptSystem.Game.UpdateTime.Elapsed;
-                    await scriptSystem.NextFrame();
-                }
+                await scriptSystem.WaitFor(delay);
 
                 action();
             }
