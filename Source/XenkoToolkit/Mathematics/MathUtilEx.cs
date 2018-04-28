@@ -164,7 +164,7 @@ namespace XenkoToolkit.Mathematics
         /// <summary>
         /// Convert <see cref="Quaternion"/> to rotation Euler angles.
         /// </summary>
-        /// <param name="rotationEulerXYZ">The rotation.</param>
+        /// <param name="rotation">The rotation.</param>
         /// <param name="result">Reulting euler rotation, with XYZ order.</param>
         public static void ToRotationEulerXYZ(ref Quaternion rotation, out Vector3 result)
         {
@@ -200,7 +200,7 @@ namespace XenkoToolkit.Mathematics
         /// <summary>
         /// Convert <see cref="Quaternion"/> to rotation Euler angles.
         /// </summary>
-        /// <param name="rotationEulerXYZ">The rotation.</param>
+        /// <param name="rotation">The rotation.</param>
         /// <returns>Reulting euler rotation, with XYZ order.</returns>
         public static Vector3 ToRotationEulerXYZ(this Quaternion rotation)
         {
@@ -215,7 +215,6 @@ namespace XenkoToolkit.Mathematics
         /// <param name="end">End value.</param>
         /// <param name="amount">Value between 0 and 1 indicating the weight of <paramref name="end"/>.</param>
         /// <param name="easingFunction">The function used to ease the interpolation.</param>
-        /// <param name="result">When the method completes, contains the interpolation of the two value.</param>
         /// <remarks>
         /// Passing <paramref name="amount"/> a value of 0 will cause <paramref name="start"/> to be returned; a value of 1 will cause <paramref name="end"/> to be returned. 
         /// </remarks>

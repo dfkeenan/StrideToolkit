@@ -62,7 +62,6 @@ namespace XenkoToolkit.Mathematics
         /// <param name="amount">The amount.</param>
         /// <returns>The amount eased.</returns>
         /// <remarks>
-        /// <remarks>
         /// Modeled after the line y = x
         /// </remarks>
         public static double Linear(double amount)
@@ -156,9 +155,9 @@ namespace XenkoToolkit.Mathematics
         }
 
         /// <remarks>
-        // Modeled after the piecewise quartic
-        // y = (1/2)((2x)^4)        ; [0, 0.5]
-        // y = -(1/2)((2x-2)^4 - 2) ; [0.5, 1]
+        /// Modeled after the piecewise quartic
+        /// y = (1/2)((2x)^4)        ; [0, 0.5]
+        /// y = -(1/2)((2x-2)^4 - 2) ; [0.5, 1]
         /// </remarks>
         public static double QuarticEaseInOut(double amount)
         {

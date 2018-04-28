@@ -159,9 +159,9 @@ namespace XenkoToolkit.Mathematics
         }
 
         /// <remarks>
-        // Modeled after the piecewise quartic
-        // y = (1/2)((2x)^4)        ; [0, 0.5]
-        // y = -(1/2)((2x-2)^4 - 2) ; [0.5, 1]
+        /// Modeled after the piecewise quartic
+        /// y = (1/2)((2x)^4)        ; [0, 0.5]
+        /// y = -(1/2)((2x-2)^4 - 2) ; [0.5, 1]
         /// </remarks>
         public static float QuarticEaseInOut(float amount)
         {
