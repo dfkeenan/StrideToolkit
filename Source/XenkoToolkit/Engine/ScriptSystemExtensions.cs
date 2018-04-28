@@ -31,6 +31,26 @@ namespace XenkoToolkit.Engine
 
         }
 
+        internal static async Task WaitFor(this ScriptSystem scriptSystem, TimeSpan delay, ScriptDelegateWatcher scriptDelegateWatcher)
+        {
+            if (scriptSystem == null)
+            {
+                throw new ArgumentNullException(nameof(scriptSystem));
+            }
+
+            if (delay <= TimeSpan.Zero)
+            {
+                throw new ArgumentOutOfRangeException(nameof(delay), "Must be greater than zero.");
+            }
+
+            while (scriptSystem.Game.IsRunning && scriptDelegateWatcher.IsActive && delay >= TimeSpan.Zero)
+            {
+                delay -= scriptSystem.Game.UpdateTime.Elapsed;
+                await scriptSystem.NextFrame();
+            }
+
+        }
+
         public static MicroThread AddOnEventAction<T>(
             this ScriptSystem scriptSystem, 
             EventKey<T> eventKey, Action<T> action, 
@@ -76,15 +96,22 @@ namespace XenkoToolkit.Engine
             {
                 throw new ArgumentNullException(nameof(action));
             }
-            
+
             return scriptSystem.AddTask(DoEvent, priority);
 
             //C# 7 Local function could also use a variable Func<Task> DoEvent = async () => { ... };
             async Task DoEvent()
             {
-                while (scriptSystem.Game.IsRunning)
+                var scriptDelegateWatcher = new ScriptDelegateWatcher(action);
+
+                while (scriptSystem.Game.IsRunning && scriptDelegateWatcher.IsActive)
                 {
-                    action(await receiver.ReceiveAsync());
+                    if(receiver.TryReceive(out var data))
+                    {
+                        action(data);
+                    }
+
+                    await scriptSystem.NextFrame();
                 }
             }
         }
@@ -136,14 +163,22 @@ namespace XenkoToolkit.Engine
                 throw new ArgumentNullException(nameof(action));
             }
 
+
             return scriptSystem.AddTask(DoEvent, priority);
 
             //C# 7 Local function could also use a variable Func<Task> DoEvent = async () => { ... };
             async Task DoEvent()
             {
-                while (scriptSystem.Game.IsRunning)
+                var scriptDelegateWatcher = new ScriptDelegateWatcher(action);
+
+                while (scriptSystem.Game.IsRunning && scriptDelegateWatcher.IsActive)
                 {
-                    await action(await receiver.ReceiveAsync());
+                    if (receiver.TryReceive(out var data))
+                    {
+                        await action(data);
+                    }
+
+                    await scriptSystem.NextFrame();
                 }
             }
         }
@@ -170,9 +205,14 @@ namespace XenkoToolkit.Engine
             //C# 7 Local function could also use a variable Func<Task> DoEvent = async () => { ... };
             async Task DoTask()
             {
-                await scriptSystem.WaitFor(delay);
+                var scriptDelegateWatcher = new ScriptDelegateWatcher(action);
 
-                await action();
+                await scriptSystem.WaitFor(delay, scriptDelegateWatcher);
+
+                if (scriptSystem.Game.IsRunning && scriptDelegateWatcher.IsActive)
+                {
+                    await action(); 
+                }
             }
         }
 
@@ -204,9 +244,14 @@ namespace XenkoToolkit.Engine
             //C# 7 Local function could also use a variable Func<Task> DoEvent = async () => { ... };
             async Task DoTask()
             {
-                await scriptSystem.WaitFor(delay);
+                var scriptDelegateWatcher = new ScriptDelegateWatcher(action);
 
-                action();
+                await scriptSystem.WaitFor(delay, scriptDelegateWatcher);
+
+                if (scriptSystem.Game.IsRunning && scriptDelegateWatcher.IsActive)
+                {
+                    action();
+                }
             }
         }
 
@@ -239,7 +284,9 @@ namespace XenkoToolkit.Engine
             {
                 var elapsedTime = new TimeSpan(0);
 
-                while (scriptSystem.Game.IsRunning)
+                var scriptDelegateWatcher = new ScriptDelegateWatcher(action);
+
+                while (scriptSystem.Game.IsRunning && scriptDelegateWatcher.IsActive)
                 {
                     elapsedTime += scriptSystem.Game.UpdateTime.Elapsed;
 
@@ -288,7 +335,9 @@ namespace XenkoToolkit.Engine
             {
                 var elapsedTime = new TimeSpan(0);
 
-                while (scriptSystem.Game.IsRunning)
+                var scriptDelegateWatcher = new ScriptDelegateWatcher(action);
+
+                while (scriptSystem.Game.IsRunning && scriptDelegateWatcher.IsActive)
                 {
                     elapsedTime += scriptSystem.Game.UpdateTime.Elapsed;
 
@@ -331,7 +380,9 @@ namespace XenkoToolkit.Engine
             {
                 var elapsedTime = new TimeSpan(0);
 
-                while (scriptSystem.Game.IsRunning)
+                var scriptDelegateWatcher = new ScriptDelegateWatcher(action);
+
+                while (scriptSystem.Game.IsRunning && scriptDelegateWatcher.IsActive)
                 {
                     elapsedTime += scriptSystem.Game.UpdateTime.Elapsed;
 

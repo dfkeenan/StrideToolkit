@@ -43,6 +43,22 @@ namespace XenkoToolkit.Engine.Navigation.Components
 
                 Navigate(navTo, false);
             }
+
+            //TODO: Put this else where
+            Script.AddTask(async () => {
+
+                while (Game.IsRunning)
+                {
+                    var y = (int)Game.GraphicsContext.CommandList.Viewport.Height;
+                    y -= 10;
+
+                    DebugText.Print($"Number of running tasks: {Script.Scheduler.MicroThreads.Count}", new Int2(0, y));
+
+                    await Script.NextFrame();
+                }
+
+            });
+
         }
 
         public override void Cancel()
