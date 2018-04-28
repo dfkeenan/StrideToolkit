@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace XenkoToolkit.Engine
 {
+    /// <summary>
+    /// Extension methods for <see cref="ScriptSystem"/>.
+    /// </summary>
     public static class ScriptSystemExtensions
     {
         public static async Task WaitFor(this ScriptSystem scriptSystem, TimeSpan delay)

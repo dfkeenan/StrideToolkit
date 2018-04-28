@@ -1,11 +1,26 @@
-﻿using SiliconStudio.Xenko.Rendering;
+﻿using System;
+using SiliconStudio.Xenko.Rendering;
 
 namespace XenkoToolkit.Rendering
 {
+    /// <summary>
+    /// Extension methods for <see cref="Material"/>.
+    /// </summary>
     public static class MaterialExtensions
     {
+        /// <summary>
+        /// Clone the <see cref="Material"/>.
+        /// </summary>
+        /// <param name="material">The material to clone.</param>
+        /// <returns>The cloned material.</returns>
+        /// <exception cref="ArgumentNullException">If <paramref name="material"/> is <see langword="null"/>.</exception>
         public static Material Clone(this Material material)
         {
+            if (material == null)
+            {
+                throw new ArgumentNullException(nameof(material));
+            }
+
             var clone = new Material();
 
             CopyProperties(material, clone);

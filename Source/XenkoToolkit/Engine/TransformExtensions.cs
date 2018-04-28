@@ -9,6 +9,9 @@ using XenkoToolkit.Mathematics;
 
 namespace XenkoToolkit.Engine
 {
+    /// <summary>
+    /// Extension methods for <see cref="TransformComponent"/>.
+    /// </summary>
     public static class TransformExtensions
     {
         public static Vector3 WorldUp = Vector3.UnitY;

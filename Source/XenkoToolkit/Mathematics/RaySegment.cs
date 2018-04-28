@@ -156,6 +156,11 @@ namespace XenkoToolkit.Mathematics
             return Equals((RaySegment)value);
         }
 
+        /// <summary>
+        /// Performs an explicit conversion from <see cref="RaySegment"/> to <see cref="Ray"/>.
+        /// </summary>
+        /// <param name="raySegment">The <see cref="RaySegment"/> to convert</param>
+        /// <returns>The result of the conversion.</returns>
         public static explicit operator Ray(RaySegment raySegment)
         {
             var result = new Ray(raySegment.Start, Vector3.Normalize(raySegment.End - raySegment.Start));

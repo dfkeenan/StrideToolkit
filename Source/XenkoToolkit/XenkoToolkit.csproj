@@ -402,7 +402,7 @@
     <Compile Include="Collections\CollectionExtensions.cs" />
     <Compile Include="Collections\DictionaryExtensions.cs" />
     <Compile Include="Collections\EnumerableExtensions.cs" />
-    <Compile Include="Collections\ListExtensions.cs" />
+    <Compile Include="Collections\ListStackExtensions.cs" />
     <Compile Include="Collections\RandomListExtensions.cs" />
     <Compile Include="Engine\CameraExtensions.cs" />
     <Compile Include="Engine\EntityExtensions.cs" />

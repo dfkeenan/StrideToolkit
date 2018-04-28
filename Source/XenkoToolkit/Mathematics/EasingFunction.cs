@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace XenkoToolkit.Mathematics
 {
+    /// <summary>
+    /// The type of easing functions implemented in <see cref="Easing"/>
+    /// </summary>
     public enum EasingFunction
     {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         Linear,
         QuadraticEaseIn,
         QuadraticEaseOut,
@@ -39,5 +43,6 @@ namespace XenkoToolkit.Mathematics
         BounceEaseIn,
         BounceEaseOut,
         BounceEaseInOut
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 }

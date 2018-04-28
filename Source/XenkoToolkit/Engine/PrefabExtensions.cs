@@ -9,6 +9,9 @@ using XenkoToolkit.Mathematics;
 
 namespace XenkoToolkit.Engine
 {
+    /// <summary>
+    /// Extension methods for <see cref="Prefab"/>.
+    /// </summary>
     public static class PrefabExtensions
     {
         public static Entity InstantiateSingle(this Prefab prefab)
