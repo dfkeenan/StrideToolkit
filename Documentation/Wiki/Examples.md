@@ -1,6 +1,6 @@
-## Examples
+# Examples
 
-# Entity Extensions
+## Entity Extensions
 Find `Component`s more easily:
 ```csharp
 //Find component in self or children
@@ -9,7 +9,7 @@ var model = this.Entity.GetComponentInChildren<ModelComponent>();
 var models = this.Entity.GetComponentsInChildren<ModelComponent>();
 ```
 
-# Physics/Input/Transform Extensions
+## Physics/Input/Transform Extensions
 Pick and aim at an `Entity`:
 
 ```csharp
