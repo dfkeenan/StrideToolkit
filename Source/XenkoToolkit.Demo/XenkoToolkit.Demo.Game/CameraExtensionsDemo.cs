@@ -51,13 +51,16 @@ namespace XenkoToolkit.Demo
                     message = targetEntity.Name;
 
                     MainCamera.Entity.Transform.LookAt(targetEntity.Transform);
+                    MainCamera.Update();
                     TargetAcquired.Broadcast(targetEntity);
 
-                    Vector3 targetPosition = targetEntity.Transform.Position;
-                    Vector3 targetScreenPosition = MainCamera.WorldToScreenPoint(targetPosition);
-                    Vector3 targetWorldPosition = MainCamera.ScreenToWorldPoint(targetScreenPosition);
+                    //Vector3 targetPosition = targetEntity.Transform.Position;
+                    //Vector3 targetScreenPosition = MainCamera.WorldToScreenPoint(targetPosition);
+                    //Vector3 targetWorldPosition = MainCamera.ScreenToWorldPoint(targetScreenPosition);
+                    ////targetPosition should == targetWorldPosition
+                    //var distance = Vector3.Distance(targetPosition, targetWorldPosition).ToString("F17");
 
-                    Console.WriteLine($"Input World: {targetPosition}, WorldToScreenPoint: {targetScreenPosition}, ScreenToWorldPoint {targetWorldPosition}");
+                    //Console.WriteLine($"Input World: {targetPosition}, WorldToScreenPoint: {targetScreenPosition}, ScreenToWorldPoint {targetWorldPosition}");
                 }
                 else
                 {
