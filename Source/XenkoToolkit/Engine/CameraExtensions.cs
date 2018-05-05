@@ -67,15 +67,37 @@ namespace XenkoToolkit.Engine
         /// <returns>
         /// The position in clip space.
         /// </returns>
-        /// <exception cref="ArgumentNullException">If the cameraComponent argument is null.</exception>
+        /// <exception cref="ArgumentNullException">If the cameraComponent argument is <see langword="null"/>.</exception>
+        /// <remarks>
+        /// This method does not update the <see cref="CameraComponent.ViewMatrix"/> or <see cref="CameraComponent.ProjectionMatrix"/> before performing the transformation.
+        /// If the <see cref="CameraComponent"/> or it's containing <see cref="Entity"/> <see cref="TransformComponent"/>has been modified since the last frame you may need to call the <see cref="CameraComponent.Update()"/> method first.
+        /// </remarks>
         public static Vector3 WorldToClip(this CameraComponent cameraComponent, Vector3 position)
+        {
+            cameraComponent.WorldToClip(ref position, out var result);
+            return result;
+
+        }
+
+        /// <summary>
+        /// Converts the world position to clip space coordinates relative to camera.
+        /// </summary>
+        /// <param name="cameraComponent"></param>
+        /// <param name="position"></param>
+        /// <param name="result">The position in clip space.</param>
+        /// <exception cref="ArgumentNullException">If the cameraComponent argument is <see langword="null"/>.</exception>
+        /// <remarks>
+        /// This method does not update the <see cref="CameraComponent.ViewMatrix"/> or <see cref="CameraComponent.ProjectionMatrix"/> before performing the transformation.
+        /// If the <see cref="CameraComponent"/> or it's containing <see cref="Entity"/> <see cref="TransformComponent"/>has been modified since the last frame you may need to call the <see cref="CameraComponent.Update()"/> method first.
+        /// </remarks>
+        public static void WorldToClip(this CameraComponent cameraComponent, ref Vector3 position, out Vector3 result)
         {
             if (cameraComponent == null)
             {
                 throw new ArgumentNullException(nameof(cameraComponent));
             }
 
-            return Vector3.TransformCoordinate(position, cameraComponent.ViewProjectionMatrix);           
+            Vector3.TransformCoordinate(ref position, ref cameraComponent.ViewProjectionMatrix, out result);
 
         }
 
@@ -87,18 +109,43 @@ namespace XenkoToolkit.Engine
         /// <returns>
         /// The screen position in normalized X, Y coordinates. Top-left is (0,0), bottom-right is (1,1).
         /// </returns>
-        /// <exception cref="ArgumentNullException">If the cameraComponent argument is null.</exception>
-        public static Vector2 WorldToScreen(this CameraComponent cameraComponent, Vector3 position)
+        /// <exception cref="ArgumentNullException">If the cameraComponent argument is <see langword="null"/>.</exception>
+        /// <remarks>
+        /// This method does not update the <see cref="CameraComponent.ViewMatrix"/> or <see cref="CameraComponent.ProjectionMatrix"/> before performing the transformation.
+        /// If the <see cref="CameraComponent"/> or it's containing <see cref="Entity"/> <see cref="TransformComponent"/>has been modified since the last frame you may need to call the <see cref="CameraComponent.Update()"/> method first.
+        /// </remarks>
+        public static Vector3 WorldToScreenPoint(this CameraComponent cameraComponent, Vector3 position)
         {
-            var clipSpace = cameraComponent.WorldToClip(position);
+            cameraComponent.WorldToScreenPoint(ref position, out var result);
+            return result;
+        }
 
-            var screenSpace = new Vector2
+        /// <summary>
+        /// Converts the world position to screen space coordinates relative to camera.
+        /// </summary>
+        /// <param name="cameraComponent"></param>
+        /// <param name="position"></param>
+        /// <param name="result">The screen position in normalized X, Y coordinates. Top-left is (0,0), bottom-right is (1,1).</param>
+        /// <exception cref="ArgumentNullException">If the cameraComponent argument is <see langword="null"/>.</exception>
+        /// <remarks>
+        /// This method does not update the <see cref="CameraComponent.ViewMatrix"/> or <see cref="CameraComponent.ProjectionMatrix"/> before performing the transformation.
+        /// If the <see cref="CameraComponent"/> or it's containing <see cref="Entity"/> <see cref="TransformComponent"/>has been modified since the last frame you may need to call the <see cref="CameraComponent.Update()"/> method first.
+        /// </remarks>
+        public static void WorldToScreenPoint(this CameraComponent cameraComponent, ref Vector3 position, out Vector3 result)
+        {
+            cameraComponent.WorldToClip(ref position, out var clipSpace);
+
+            Vector3.TransformCoordinate(ref position, ref cameraComponent.ViewMatrix, out var viewSpace);
+
+
+            var screenSpace = new Vector3
             {
                 X = (clipSpace.X + 1f) / 2f,
                 Y = 1f - (clipSpace.Y + 1f) / 2f,
+                Z = viewSpace.Z,
             };
 
-            return screenSpace;
+            result = screenSpace;
         }
 
         /// <summary>
@@ -106,9 +153,31 @@ namespace XenkoToolkit.Engine
         /// </summary>
         /// <param name="cameraComponent"></param>
         /// <param name="position"></param>
-        /// <returns>ReaySegment, starting at near plain and ending at the far plain.</returns>
-        /// <exception cref="ArgumentNullException">If the cameraComponent argument is null.</exception>
+        /// <returns><see cref="RaySegment"/>, starting at near plain and ending at the far plain.</returns>
+        /// <exception cref="ArgumentNullException">If the cameraComponent argument is <see langword="null"/>.</exception>
+        /// <remarks>
+        /// This method does not update the <see cref="CameraComponent.ViewMatrix"/> or <see cref="CameraComponent.ProjectionMatrix"/> before performing the transformation.
+        /// If the <see cref="CameraComponent"/> or it's containing <see cref="Entity"/> <see cref="TransformComponent"/>has been modified since the last frame you may need to call the <see cref="CameraComponent.Update()"/> method first.
+        /// </remarks>
         public static RaySegment ScreenToWorldRaySegment(this CameraComponent cameraComponent, Vector2 position)
+        {
+            cameraComponent.ScreenToWorldRaySegment(ref position, out var result);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Converts the screen position to a <see cref="RaySegment"/> in world coordinates.
+        /// </summary>
+        /// <param name="cameraComponent"></param>
+        /// <param name="position"></param>
+        /// <param name="result"><see cref="RaySegment"/>, starting at near plain and ending at the far plain.</param>
+        /// <exception cref="ArgumentNullException">If the cameraComponent argument is <see langword="null"/>.</exception>
+        /// <remarks>
+        /// This method does not update the <see cref="CameraComponent.ViewMatrix"/> or <see cref="CameraComponent.ProjectionMatrix"/> before performing the transformation.
+        /// If the <see cref="CameraComponent"/> or it's containing <see cref="Entity"/> <see cref="TransformComponent"/>has been modified since the last frame you may need to call the <see cref="CameraComponent.Update()"/> method first.
+        /// </remarks>
+        public static void ScreenToWorldRaySegment(this CameraComponent cameraComponent, ref Vector2 position, out RaySegment result)
         {
             if (cameraComponent == null)
             {
@@ -122,42 +191,66 @@ namespace XenkoToolkit.Engine
             clipSpace.Y = 1f - position.Y * 2f;
 
             clipSpace.Z = 0f;
-            var near = Vector3.TransformCoordinate(clipSpace, inverseViewProjection);
+            Vector3.TransformCoordinate(ref clipSpace, ref inverseViewProjection, out var near);
 
             clipSpace.Z = 1f;
-            var far = Vector3.TransformCoordinate(clipSpace, inverseViewProjection);
+            Vector3.TransformCoordinate(ref clipSpace, ref inverseViewProjection, out var far);
 
-            return new RaySegment(near, far);
+            result = new RaySegment(near, far);
         }
 
         /// <summary>
         /// Converts the screen position to a point in world coordinates.
         /// </summary>
         /// <param name="cameraComponent"></param>
-        /// <param name="position">The screen position in normalized X, Y coordinates. Top-left is (0,0), bottom-right is (1,1).</param>
-        /// <param name="plane">How far from the cameras near plane. 0 is the near plane, 1 is the far plane.</param>
+        /// <param name="position">The screen position in normalized X, Y coordinates. Top-left is (0,0), bottom-right is (1,1). Z is in world units from near camera plane.</param>
         /// <returns>Position in world coordinates.</returns>
-        /// <exception cref="ArgumentNullException">If the cameraComponent argument is null.</exception>
-        public static Vector3 ScreenToWorldPoint(this CameraComponent cameraComponent, Vector2 position, float plane = 0)
+        /// <exception cref="ArgumentNullException">If the cameraComponent argument is <see langword="null"/>.</exception>
+        /// <remarks>
+        /// This method does not update the <see cref="CameraComponent.ViewMatrix"/> or <see cref="CameraComponent.ProjectionMatrix"/> before performing the transformation.
+        /// If the <see cref="CameraComponent"/> or it's containing <see cref="Entity"/> <see cref="TransformComponent"/>has been modified since the last frame you may need to call the <see cref="CameraComponent.Update()"/> method first.
+        /// </remarks>
+        public static Vector3 ScreenToWorldPoint(this CameraComponent cameraComponent, Vector3 position)
+        {
+            cameraComponent.ScreenToWorldPoint(ref position, out var result);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Converts the screen position to a point in world coordinates.
+        /// </summary>
+        /// <param name="cameraComponent"></param>
+        /// <param name="position">The screen position in normalized X, Y coordinates. Top-left is (0,0), bottom-right is (1,1). Z is in world units from near camera plane.</param>
+        /// <param name="result">Position in world coordinates.</param>
+        /// <exception cref="ArgumentNullException">If the cameraComponent argument is <see langword="null"/>.</exception>
+        /// <remarks>
+        /// This method does not update the <see cref="CameraComponent.ViewMatrix"/> or <see cref="CameraComponent.ProjectionMatrix"/> before performing the transformation.
+        /// If the <see cref="CameraComponent"/> or it's containing <see cref="Entity"/> <see cref="TransformComponent"/>has been modified since the last frame you may need to call the <see cref="CameraComponent.Update()"/> method first.
+        /// </remarks>
+        public static void ScreenToWorldPoint(this CameraComponent cameraComponent, ref Vector3 position, out Vector3 result)
         {
             if (cameraComponent == null)
             {
                 throw new ArgumentNullException(nameof(cameraComponent));
             }
 
-            Matrix inverseViewProjection = Matrix.Invert(cameraComponent.ViewProjectionMatrix);
+            Matrix.Invert(ref cameraComponent.ProjectionMatrix, out var inverseProjection);
+            Matrix.Invert(ref cameraComponent.ViewMatrix, out var inverseView);
 
-            Vector3 clipSpace;
-            clipSpace.X = position.X * 2f - 1f;
-            clipSpace.Y = 1f - position.Y * 2f;
+            Vector3 clipSpace = new Vector3
+            {
+                X = position.X * 2f - 1f,
+                Y = 1f - position.Y * 2f,
+                Z = 0,
+            };
 
-            clipSpace.Z = 0f;
-            var near = Vector3.TransformCoordinate(clipSpace, inverseViewProjection);
+            Vector3.TransformCoordinate(ref clipSpace, ref inverseProjection, out var near);
+            
+            near.Z = position.Z;
 
-            clipSpace.Z = 1f;
-            var far = Vector3.TransformCoordinate(clipSpace, inverseViewProjection);
+            Vector3.TransformCoordinate(ref near, ref inverseView, out result);
 
-            return Vector3.Lerp(near, far, plane);
         }
     }
 }

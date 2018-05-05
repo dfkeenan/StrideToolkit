@@ -33,7 +33,7 @@ namespace XenkoToolkit.Demo
             Cube?.Transform.Rotate(new Vector3(MathUtil.DegreesToRadians(60) * Game.GetDeltaTime(), 0, 0));
 
 
-            DebugText.Print($"Screen {MainCamera.WorldToScreen(Entity.Transform.Position)}", new Int2(20, 20));
+            
 
             DebugText.Print($"ScreenToWorldRaySegment {MainCamera.ScreenToWorldRaySegment(Input.MousePosition)}", new Int2(20, 40));
 
@@ -47,10 +47,17 @@ namespace XenkoToolkit.Demo
                 var hitResult = this.GetSimulation().Raycast(ray);
                 if (hitResult.Succeeded)
                 {
-                    message = hitResult.Collider.Entity.Name;
-                   
-                    MainCamera.Entity.Transform.LookAt(hitResult.Collider.Entity.Transform);
-                    TargetAcquired.Broadcast(hitResult.Collider.Entity);
+                    Entity targetEntity = hitResult.Collider.Entity;
+                    message = targetEntity.Name;
+
+                    MainCamera.Entity.Transform.LookAt(targetEntity.Transform);
+                    TargetAcquired.Broadcast(targetEntity);
+
+                    Vector3 targetPosition = targetEntity.Transform.Position;
+                    Vector3 targetScreenPosition = MainCamera.WorldToScreenPoint(targetPosition);
+                    Vector3 targetWorldPosition = MainCamera.ScreenToWorldPoint(targetScreenPosition);
+
+                    Console.WriteLine($"Input World: {targetPosition}, WorldToScreenPoint: {targetScreenPosition}, ScreenToWorldPoint {targetWorldPosition}");
                 }
                 else
                 {
