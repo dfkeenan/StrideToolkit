@@ -137,15 +137,12 @@ namespace XenkoToolkit.Engine
 
             Vector3.TransformCoordinate(ref position, ref cameraComponent.ViewMatrix, out var viewSpace);
 
-
-            var screenSpace = new Vector3
+            result = new Vector3
             {
                 X = (clipSpace.X + 1f) / 2f,
                 Y = 1f - (clipSpace.Y + 1f) / 2f,
-                Z = viewSpace.Z,
+                Z = -viewSpace.Z,
             };
-
-            result = screenSpace;
         }
 
         /// <summary>
@@ -247,7 +244,7 @@ namespace XenkoToolkit.Engine
 
             Vector3.TransformCoordinate(ref clipSpace, ref inverseProjection, out var near);
             
-            near.Z = position.Z;
+            near.Z = -position.Z;
 
             Vector3.TransformCoordinate(ref near, ref inverseView, out result);
 
