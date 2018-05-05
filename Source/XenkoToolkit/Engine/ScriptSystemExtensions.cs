@@ -1,4 +1,5 @@
 ﻿using SiliconStudio.Core.MicroThreading;
+using SiliconStudio.Xenko.Engine;
 using SiliconStudio.Xenko.Engine.Events;
 using SiliconStudio.Xenko.Engine.Processors;
 using System;
@@ -14,6 +15,12 @@ namespace XenkoToolkit.Engine
     /// </summary>
     public static class ScriptSystemExtensions
     {
+        /// <summary>
+        /// Waits for the specified delay <paramref name="delay"/> .
+        /// </summary>
+        /// <param name="scriptSystem">The <see cref="ScriptSystem"/>.</param>
+        /// <param name="delay">The amount of time to wait.</param>
+        /// <returns>The <see cref="Task"/> to await.</returns>
         public static async Task WaitFor(this ScriptSystem scriptSystem, TimeSpan delay)
         {
             if (scriptSystem == null)
@@ -34,6 +41,13 @@ namespace XenkoToolkit.Engine
 
         }
 
+        /// <summary>
+        /// Waits for the specified delay <paramref name="delay"/> .
+        /// </summary>
+        /// <param name="scriptSystem">The <see cref="ScriptSystem"/>.</param>
+        /// <param name="delay">The amount of time to wait.</param>
+        /// <param name="scriptDelegateWatcher">Allows to stop waiting if <see cref="ScriptComponent"/> is not active.</param>
+        /// <returns>The <see cref="Task"/> to await.</returns>
         internal static async Task WaitFor(this ScriptSystem scriptSystem, TimeSpan delay, ScriptDelegateWatcher scriptDelegateWatcher)
         {
             if (scriptSystem == null)
@@ -54,6 +68,19 @@ namespace XenkoToolkit.Engine
 
         }
 
+        /// <summary>
+        /// Adds a micro thread function to the <paramref name="scriptSystem"/> that executes when the event is published.
+        /// </summary>
+        /// <typeparam name="T">The type of the event handler parameter.</typeparam>
+        /// <param name="scriptSystem">The <see cref="ScriptSystem"/>.</param>
+        /// <param name="eventKey">The event to wait for.</param>
+        /// <param name="action">The micro thread function to execute.</param>
+        /// <param name="priority">The priority of the micro thread action being added.</param>
+        /// <returns>The <see cref="MicroThread"/>.</returns>
+        /// <exception cref="ArgumentNullException"> If <paramref name="scriptSystem"/>, <paramref name="eventKey"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
+        /// <remarks>
+        /// If the <paramref name="action"/> is a <see cref="ScriptComponent"/> instance method the micro thread will be automatically stopped if the <see cref="ScriptComponent"/> or <see cref="Entity"/> is removed.
+        /// </remarks>
         public static MicroThread AddOnEventAction<T>(
             this ScriptSystem scriptSystem, 
             EventKey<T> eventKey, Action<T> action, 
@@ -77,8 +104,21 @@ namespace XenkoToolkit.Engine
             return scriptSystem.AddOnEventAction(new EventReceiver<T>(eventKey), action, priority);
 
         }
-        
 
+
+        /// <summary>
+        /// Adds a micro thread function to the <paramref name="scriptSystem"/> that executes when the event is published.
+        /// </summary>
+        /// <typeparam name="T">The type of the event handler parameter.</typeparam>
+        /// <param name="scriptSystem">The <see cref="ScriptSystem"/>.</param>
+        /// <param name="receiver">The event reciever to listen to for.</param>
+        /// <param name="action">The micro thread function to execute.</param>
+        /// <param name="priority">The priority of the micro thread action being added.</param>
+        /// <returns>The <see cref="MicroThread"/>.</returns>
+        /// <exception cref="ArgumentNullException"> If <paramref name="scriptSystem"/>, <paramref name="receiver"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
+        /// <remarks>
+        /// If the <paramref name="action"/> is a <see cref="ScriptComponent"/> instance method the micro thread will be automatically stopped if the <see cref="ScriptComponent"/> or <see cref="Entity"/> is removed.
+        /// </remarks>
         public static MicroThread AddOnEventAction<T>(
             this ScriptSystem scriptSystem, 
             EventReceiver<T> receiver, 
@@ -120,6 +160,19 @@ namespace XenkoToolkit.Engine
         }
 
 
+        /// <summary>
+        /// Adds a micro thread function to the <paramref name="scriptSystem"/> that executes when the event is published.
+        /// </summary>
+        /// <typeparam name="T">The type of the event handler parameter.</typeparam>
+        /// <param name="scriptSystem">The <see cref="ScriptSystem"/>.</param>
+        /// <param name="eventKey">The event to wait for.</param>
+        /// <param name="action">The micro thread function to execute.</param>
+        /// <param name="priority">The priority of the micro thread action being added.</param>
+        /// <returns>The <see cref="MicroThread"/>.</returns>
+        /// <exception cref="ArgumentNullException"> If <paramref name="scriptSystem"/>, <paramref name="eventKey"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
+        /// <remarks>
+        /// If the <paramref name="action"/> is a <see cref="ScriptComponent"/> instance method the micro thread will be automatically stopped if the <see cref="ScriptComponent"/> or <see cref="Entity"/> is removed.
+        /// </remarks>
         public static MicroThread AddOnEventTask<T>(
            this ScriptSystem scriptSystem,
            EventKey<T> eventKey, Func<T,Task> action,
@@ -145,6 +198,19 @@ namespace XenkoToolkit.Engine
         }
 
 
+        /// <summary>
+        /// Adds a micro thread function to the <paramref name="scriptSystem"/> that executes when the event is published.
+        /// </summary>
+        /// <typeparam name="T">The type of the event handler parameter.</typeparam>
+        /// <param name="scriptSystem">The <see cref="ScriptSystem"/>.</param>
+        /// <param name="receiver">The event reciever to listen to for.</param>
+        /// <param name="action">The micro thread function to execute.</param>
+        /// <param name="priority">The priority of the micro thread action being added.</param>
+        /// <returns>The <see cref="MicroThread"/>.</returns>
+        /// <exception cref="ArgumentNullException"> If <paramref name="scriptSystem"/>, <paramref name="receiver"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
+        /// <remarks>
+        /// If the <paramref name="action"/> is a <see cref="ScriptComponent"/> instance method the micro thread will be automatically stopped if the <see cref="ScriptComponent"/> or <see cref="Entity"/> is removed.
+        /// </remarks>
         public static MicroThread AddOnEventTask<T>(
             this ScriptSystem scriptSystem,
             EventReceiver<T> receiver,
@@ -187,6 +253,19 @@ namespace XenkoToolkit.Engine
         }
 
 
+        /// <summary>
+        /// Adds a micro thread function to the <paramref name="scriptSystem"/> that executes after waiting specified delay.
+        /// </summary>
+        /// <param name="scriptSystem">The <see cref="ScriptSystem"/>.</param>
+        /// <param name="action">The micro thread function to execute.</param>
+        /// <param name="delay">The amount of time to wait for.</param>
+        /// <param name="priority">The priority of the micro thread action being added.</param>
+        /// <returns>The <see cref="MicroThread"/>.</returns>
+        /// <exception cref="ArgumentNullException"> If <paramref name="scriptSystem"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="delay"/> is less than zero.</exception>
+        /// <remarks>
+        /// If the <paramref name="action"/> is a <see cref="ScriptComponent"/> instance method the micro thread will be automatically stopped if the <see cref="ScriptComponent"/> or <see cref="Entity"/> is removed.
+        /// </remarks>
         public static MicroThread AddTask(
            this ScriptSystem scriptSystem,
            Func<Task> action,
@@ -219,8 +298,20 @@ namespace XenkoToolkit.Engine
             }
         }
 
-       
 
+        /// <summary>
+        /// Adds a micro thread function to the <paramref name="scriptSystem"/> that executes after waiting specified delay.
+        /// </summary>
+        /// <param name="scriptSystem">The <see cref="ScriptSystem"/>.</param>
+        /// <param name="action">The micro thread function to execute.</param>
+        /// <param name="delay">The amount of time to wait for.</param>
+        /// <param name="priority">The priority of the micro thread action being added.</param>
+        /// <returns>The <see cref="MicroThread"/>.</returns>
+        /// <exception cref="ArgumentNullException"> If <paramref name="scriptSystem"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="delay"/> is less than zero.</exception>
+        /// <remarks>
+        /// If the <paramref name="action"/> is a <see cref="ScriptComponent"/> instance method the micro thread will be automatically stopped if the <see cref="ScriptComponent"/> or <see cref="Entity"/> is removed.
+        /// </remarks>
         public static MicroThread AddAction(
            this ScriptSystem scriptSystem,
            Action action,
@@ -258,6 +349,20 @@ namespace XenkoToolkit.Engine
             }
         }
 
+        /// <summary>
+        /// Adds a micro thread function to the <paramref name="scriptSystem"/> that executes after waiting specified delay and repeats execution.
+        /// </summary>
+        /// <param name="scriptSystem">The <see cref="ScriptSystem"/>.</param>
+        /// <param name="action">The micro thread function to execute.</param>
+        /// <param name="delay">The amount of time to wait for.</param>
+        /// <param name="repeatEvery">The amount of time to wait for between repetition.</param>
+        /// <param name="priority">The priority of the micro thread action being added.</param>
+        /// <returns>The <see cref="MicroThread"/>.</returns>
+        /// <exception cref="ArgumentNullException"> If <paramref name="scriptSystem"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="delay"/> or <paramref name="repeatEvery"/> is less than zero.</exception>
+        /// <remarks>
+        /// If the <paramref name="action"/> is a <see cref="ScriptComponent"/> instance method the micro thread will be automatically stopped if the <see cref="ScriptComponent"/> or <see cref="Entity"/> is removed.
+        /// </remarks>
         public static MicroThread AddTask(
            this ScriptSystem scriptSystem,
            Func<Task> action,
@@ -304,6 +409,20 @@ namespace XenkoToolkit.Engine
             }
         }
 
+        /// <summary>
+        /// Adds a micro thread function to the <paramref name="scriptSystem"/> that executes after waiting specified delay and repeats execution.
+        /// </summary>
+        /// <param name="scriptSystem">The <see cref="ScriptSystem"/>.</param>
+        /// <param name="action">The micro thread function to execute.</param>
+        /// <param name="delay">The amount of time to wait for.</param>
+        /// <param name="repeatEvery">The amount of time to wait for between repetition.</param>
+        /// <param name="priority">The priority of the micro thread action being added.</param>
+        /// <returns>The <see cref="MicroThread"/>.</returns>
+        /// <exception cref="ArgumentNullException"> If <paramref name="scriptSystem"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="delay"/> or <paramref name="repeatEvery"/> is less than zero.</exception>
+        /// <remarks>
+        /// If the <paramref name="action"/> is a <see cref="ScriptComponent"/> instance method the micro thread will be automatically stopped if the <see cref="ScriptComponent"/> or <see cref="Entity"/> is removed.
+        /// </remarks>
         public static MicroThread AddAction(
            this ScriptSystem scriptSystem,
            Action action,
@@ -355,6 +474,19 @@ namespace XenkoToolkit.Engine
             }
         }
 
+        /// <summary>
+        /// Adds a micro thread function to the <paramref name="scriptSystem"/> that executes after waiting specified delay and repeats execution.
+        /// </summary>
+        /// <param name="scriptSystem">The <see cref="ScriptSystem"/>.</param>
+        /// <param name="action">The micro thread function to execute. The parameter is the progress over time from 0.0f to 1.0f.</param>
+        /// <param name="duration">The duration of the time to execute the micro thread function for.</param>
+        /// <param name="priority">The priority of the micro thread action being added.</param>
+        /// <returns>The <see cref="MicroThread"/>.</returns>
+        /// <exception cref="ArgumentNullException"> If <paramref name="scriptSystem"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="duration"/> is less than zero.</exception>
+        /// <remarks>
+        /// If the <paramref name="action"/> is a <see cref="ScriptComponent"/> instance method the micro thread will be automatically stopped if the <see cref="ScriptComponent"/> or <see cref="Entity"/> is removed.
+        /// </remarks>
         public static MicroThread AddOverTimeAction(
            this ScriptSystem scriptSystem,
            Action<float> action,
@@ -405,6 +537,11 @@ namespace XenkoToolkit.Engine
             }
         }
 
+        /// <summary>
+        /// Cancels all <see cref="MicroThread"/> and clears the <paramref name="microThreads"/> collection.
+        /// </summary>
+        /// <param name="microThreads">A collection of <see cref="MicroThread"/> to cancel.</param>
+        /// <exception cref="ArgumentNullException">If <paramref name="microThreads"/> is <see langword="null"/>.</exception>
         public static void CancelAll(this ICollection<MicroThread> microThreads)
         {
             if (microThreads == null)
