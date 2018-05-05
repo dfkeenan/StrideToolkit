@@ -24,6 +24,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wiki", "Wiki", "{CD549A1A-0
 		..\Documentation\Wiki\Examples.md = ..\Documentation\Wiki\Examples.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{E84C40F5-9874-4DA8-AEA0-F86A038C998B}"
+	ProjectSection(SolutionItems) = preProject
+		..\Build\PackageAssemblyVersion.props = ..\Build\PackageAssemblyVersion.props
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		AppStore|Any CPU = AppStore|Any CPU

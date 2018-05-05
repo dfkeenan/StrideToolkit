@@ -15,8 +15,8 @@
 [assembly: System.Reflection.AssemblyCopyright("Copyright © 2018")]
 [assembly: System.Runtime.InteropServices.ComVisible(false)]
 [assembly: System.CLSCompliant(false)]
-[assembly: System.Reflection.AssemblyInformationalVersion("0.2.0.0-alpha")]
-[assembly: System.Reflection.AssemblyVersion("0.2.0")]
-[assembly: System.Reflection.AssemblyFileVersion("0.2.0")]
+[assembly: System.Reflection.AssemblyInformationalVersion("0.3.0.0-alpha")]
+[assembly: System.Reflection.AssemblyVersion("0.3.0")]
+[assembly: System.Reflection.AssemblyFileVersion("0.3.0")]
 
 
