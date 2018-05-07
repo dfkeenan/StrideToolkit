@@ -107,7 +107,7 @@ namespace XenkoToolkit.Engine
         /// <param name="cameraComponent"></param>
         /// <param name="position"></param>
         /// <returns>
-        /// The screen position in normalized X, Y coordinates. Top-left is (0,0), bottom-right is (1,1).
+        /// The screen position in normalized X, Y coordinates. Top-left is (0,0), bottom-right is (1,1). Z is in world units from near camera plane.
         /// </returns>
         /// <exception cref="ArgumentNullException">If the cameraComponent argument is <see langword="null"/>.</exception>
         /// <remarks>
@@ -125,7 +125,7 @@ namespace XenkoToolkit.Engine
         /// </summary>
         /// <param name="cameraComponent"></param>
         /// <param name="position"></param>
-        /// <param name="result">The screen position in normalized X, Y coordinates. Top-left is (0,0), bottom-right is (1,1).</param>
+        /// <param name="result">The screen position in normalized X, Y coordinates. Top-left is (0,0), bottom-right is (1,1). Z is in world units from near camera plane.</param>
         /// <exception cref="ArgumentNullException">If the cameraComponent argument is <see langword="null"/>.</exception>
         /// <remarks>
         /// This method does not update the <see cref="CameraComponent.ViewMatrix"/> or <see cref="CameraComponent.ProjectionMatrix"/> before performing the transformation.
@@ -141,7 +141,7 @@ namespace XenkoToolkit.Engine
             {
                 X = (clipSpace.X + 1f) / 2f,
                 Y = 1f - (clipSpace.Y + 1f) / 2f,
-                Z = -viewSpace.Z,
+                Z = viewSpace.Z,
             };
         }
 
@@ -181,13 +181,10 @@ namespace XenkoToolkit.Engine
                 throw new ArgumentNullException(nameof(cameraComponent));
             }
 
-            Matrix inverseViewProjection = Matrix.Invert(cameraComponent.ViewProjectionMatrix);
+            Matrix.Invert(ref cameraComponent.ViewProjectionMatrix, out var inverseViewProjection);
 
-            Vector3 clipSpace;
-            clipSpace.X = position.X * 2f - 1f;
-            clipSpace.Y = 1f - position.Y * 2f;
+            ScreenToClipSpace(ref position, out var clipSpace);
 
-            clipSpace.Z = 0f;
             Vector3.TransformCoordinate(ref clipSpace, ref inverseViewProjection, out var near);
 
             clipSpace.Z = 1f;
@@ -195,6 +192,23 @@ namespace XenkoToolkit.Engine
 
             result = new RaySegment(near, far);
         }
+
+        private static void ScreenToClipSpace(ref Vector2 position, out Vector3 clipSpace)
+        {
+            clipSpace = new Vector3
+            {
+                X = position.X * 2f - 1f,
+                Y = 1f - position.Y * 2f,
+                Z = 0f
+            };
+        }
+
+        private static Vector3 ScreenToClipSpace(Vector2 position)
+        {
+            ScreenToClipSpace(ref position, out var result);
+            return result;
+        }
+
 
         /// <summary>
         /// Converts the screen position to a point in world coordinates.
@@ -231,22 +245,27 @@ namespace XenkoToolkit.Engine
             {
                 throw new ArgumentNullException(nameof(cameraComponent));
             }
+            var position2D = position.XY();
+            //Matrix.Invert(ref cameraComponent.ProjectionMatrix, out var inverseProjection);
+            //Matrix.Invert(ref cameraComponent.ViewMatrix, out var inverseView);
 
-            Matrix.Invert(ref cameraComponent.ProjectionMatrix, out var inverseProjection);
-            Matrix.Invert(ref cameraComponent.ViewMatrix, out var inverseView);
+            //ScreenToClipSpace(ref position2D, out var clipSpace);
+            //Vector3.TransformCoordinate(ref clipSpace, ref inverseProjection, out var near);
 
-            Vector3 clipSpace = new Vector3
-            {
-                X = position.X * 2f - 1f,
-                Y = 1f - position.Y * 2f,
-                Z = 0,
-            };
+            //near.Z = -position.Z;
 
-            Vector3.TransformCoordinate(ref clipSpace, ref inverseProjection, out var near);
-            
-            near.Z = -position.Z;
+            //Vector3.TransformCoordinate(ref near, ref inverseView, out result);
 
-            Vector3.TransformCoordinate(ref near, ref inverseView, out result);
+            cameraComponent.ScreenToWorldRaySegment(ref position2D, out var ray);
+
+            var direction = ray.End - ray.Start;
+            direction.Normalize();
+
+            Vector3.TransformNormal(ref direction, ref cameraComponent.ViewMatrix, out var viewSpaceDir);
+
+            float rayDistance = (position.Z / viewSpaceDir.Z);
+
+            result = ray.Start + (direction * rayDistance);
 
         }
     }
