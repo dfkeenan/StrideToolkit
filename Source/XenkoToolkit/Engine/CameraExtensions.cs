@@ -141,7 +141,7 @@ namespace XenkoToolkit.Engine
             {
                 X = (clipSpace.X + 1f) / 2f,
                 Y = 1f - (clipSpace.Y + 1f) / 2f,
-                Z = viewSpace.Z,
+                Z = viewSpace.Z + cameraComponent.NearClipPlane,
             };
         }
 
