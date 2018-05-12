@@ -96,8 +96,8 @@ Hierarchy:
                         Id: e56d2e5a-0e5b-4b6e-b1fe-eea7c2abe353
                         Model: cbc4a0b1-dc7f-46dc-9fae-e5262f18c70b:Models/Sphere
                         Materials: {}
-                    ff9e7f4ce27a386fe39b61f787cd2093: !StaticColliderComponent
-                        Id: ac2a719a-e3f4-43e7-89b3-ba970895e5fb
+                    15b656306263f2fba445570bfc8c88cd: !RigidbodyComponent
+                        Id: dd4238ef-9bce-4cff-a75e-27f94c9b5087
                         CanSleep: false
                         Restitution: 0.0
                         Friction: 0.5
@@ -105,8 +105,15 @@ Hierarchy:
                         CcdMotionThreshold: 0.0
                         CcdSweptSphereRadius: 0.0
                         IsTrigger: false
+                        IsKinematic: true
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
                         ColliderShapes:
-                            06b8f5e6eb18f16c4965d16036c7c8d5: !SphereColliderShapeDesc
+                            c7331cbf25df203926e7079ae84519d9: !SphereColliderShapeDesc
                                 Is2D: false
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
         -   Entity:
@@ -123,6 +130,28 @@ Hierarchy:
                         Id: e55c4374-39de-4426-a97f-5c21a092f771
                         Model: 57cfa179-f5da-405a-be99-19f203516257:Models/Cube
                         Materials: {}
+                    bab46daca705b522da6789f20b337c8b: !RigidbodyComponent
+                        Id: 41ab8996-f7e9-4a1d-a4d9-eaab9bbaf2ad
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: true
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            7e80309acfc5e1293845839b7b14b866: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
         -   Entity:
                 Id: 943bbe1e-ea5c-4159-9cec-1e2ed4fb5baa
                 Name: Camera
