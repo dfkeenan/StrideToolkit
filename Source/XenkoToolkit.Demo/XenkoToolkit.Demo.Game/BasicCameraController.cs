@@ -27,7 +27,7 @@ namespace XenkoToolkit.Demo
         private Entity target;
 
         private readonly EventReceiver<Entity> TargetAcquired
-           = new EventReceiver<Entity>(CameraExtensionsDemo.TargetAcquired);
+           = new EventReceiver<Entity>(CameraExtensionsDemo.EntitySelected);
 
 
         public Vector3 KeyboardMovementSpeed { get; set; } = new Vector3(5.0f);
@@ -51,12 +51,7 @@ namespace XenkoToolkit.Demo
             // Default up-direction
             upVector = Vector3.UnitY;
 
-            // Configure touch input
-            if (!Platform.IsWindowsDesktop)
-            {
-                Input.Gestures.Add(new GestureConfigDrag());
-                Input.Gestures.Add(new GestureConfigComposite());
-            }
+           
         }
 
         public override void Update()
@@ -110,67 +105,57 @@ namespace XenkoToolkit.Demo
                 translation *= SpeedFactor;
             }
 
-            // Rotate with keyboard
-            if (Input.IsKeyDown(Keys.NumPad2))
-            {
-                pitch = KeyboardRotationSpeed.X;
-            }
-            else if (Input.IsKeyDown(Keys.NumPad8))
-            {
-                pitch = -KeyboardRotationSpeed.X;
-            }
 
-            if (Input.IsKeyDown(Keys.NumPad4))
+            if (target != null && Input.IsKeyDown(Keys.F))
             {
-                yaw = KeyboardRotationSpeed.Y;
-            }
-            else if (Input.IsKeyDown(Keys.NumPad6))
-            {
-                yaw = -KeyboardRotationSpeed.Y;
-            }
-
-            // Rotate with mouse
-            if (Input.IsMouseButtonDown(MouseButton.Right))
-            {
-                Input.LockMousePosition();
-                Game.IsMouseVisible = false;
-
-                yaw = -Input.MouseDelta.X * MouseRotationSpeed.X;
-                pitch = -Input.MouseDelta.Y * MouseRotationSpeed.Y;
+                Entity.Transform.LookAt(target.Transform);
+                //Update();
             }
             else
             {
-                Input.UnlockMousePosition();
-                Game.IsMouseVisible = true;
-            }
-            
-            // Handle gestures
-            foreach (var gestureEvent in Input.GestureEvents)
-            {
-                switch (gestureEvent.Type)
+                // Rotate with keyboard
+                if (Input.IsKeyDown(Keys.NumPad2))
                 {
-                    // Rotate by dragging
-                    case GestureType.Drag:
-                        var drag = (GestureEventDrag)gestureEvent;
-                        var dragDistance = drag.DeltaTranslation;
-                        yaw = -dragDistance.X * TouchRotationSpeed.X;
-                        pitch = -dragDistance.Y * TouchRotationSpeed.Y;
-                        break;
+                    pitch = KeyboardRotationSpeed.X;
+                }
+                else if (Input.IsKeyDown(Keys.NumPad8))
+                {
+                    pitch = -KeyboardRotationSpeed.X;
+                }
 
-                    // Move along z-axis by scaling and in xy-plane by multi-touch dragging
-                    case GestureType.Composite:
-                        var composite = (GestureEventComposite)gestureEvent;
-                        translation.X = -composite.DeltaTranslation.X * TouchMovementSpeed.X;
-                        translation.Y = -composite.DeltaTranslation.Y * TouchMovementSpeed.Y;
-                        translation.Z = -(float)Math.Log(composite.DeltaScale + 1) * TouchMovementSpeed.Z;
-                        break;
+                if (Input.IsKeyDown(Keys.NumPad4))
+                {
+                    yaw = KeyboardRotationSpeed.Y;
+                }
+                else if (Input.IsKeyDown(Keys.NumPad6))
+                {
+                    yaw = -KeyboardRotationSpeed.Y;
+                }
+
+                // Rotate with mouse
+                if (Input.IsMouseButtonDown(MouseButton.Right))
+                {
+                    Input.LockMousePosition();
+                    Game.IsMouseVisible = false;
+
+                    yaw = -Input.MouseDelta.X * MouseRotationSpeed.X;
+                    pitch = -Input.MouseDelta.Y * MouseRotationSpeed.Y;
+                }
+                else
+                {
+                    Input.UnlockMousePosition();
+                    Game.IsMouseVisible = true;
                 }
             }
+
+          
+            
+          
         }
 
         private void UpdateTransform()
         {
-            var elapsedTime = (float)Game.UpdateTime.Elapsed.TotalSeconds;
+            var elapsedTime = Game.GetDeltaTime();
 
             translation *= elapsedTime;
             yaw *= elapsedTime;

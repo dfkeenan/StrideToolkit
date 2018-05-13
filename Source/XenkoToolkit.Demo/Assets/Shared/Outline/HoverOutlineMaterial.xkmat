@@ -1,0 +1,13 @@
+!MaterialAsset
+Id: a04c9cfb-2726-4596-96da-1767970d5b84
+SerializedVersion: {Xenko: 2.0.0.0}
+Tags: []
+Attributes:
+    Emissive: !MaterialEmissiveMapFeature
+        EmissiveMap: !ComputeColor
+            Value: {R: 0.0, G: 1.0, B: 0.0, A: 1.0}
+        Intensity: !ComputeFloat
+            Value: 1.0
+    Overrides:
+        UVScale: {X: 1.0, Y: 1.0}
+Layers: {}

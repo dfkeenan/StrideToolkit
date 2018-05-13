@@ -36,12 +36,12 @@ Hierarchy:
                         Children: {}
                     d08d65c392c05230413b4175ee1b529f: !UIComponent
                         Id: a723d401-bc9b-403d-b4ff-b9f7f8457056
-                        Page: c7439e8f-602b-4591-8c58-1534d0a9d368:BackButton
+                        Page: c7439e8f-602b-4591-8c58-1534d0a9d368:Scenes/BackButton
                         Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
                         Size: {X: 1.0, Y: 1.0, Z: 1.0}
                     638259d25610b3d8622bcdb316d3ddba: !XenkoToolkit.Engine.Navigation.Components.NavigationButtonHandler,XenkoToolkit.Demo.Game
                         Id: 0c87c7aa-5210-4a3b-9268-396ac058b814
-                        Page: null
+                        Page: c7439e8f-602b-4591-8c58-1534d0a9d368:Scenes/BackButton
                         ButtonName: BackButton
                         ButtonAction: !XenkoToolkit.Engine.Navigation.Components.NavigateBack,XenkoToolkit.Demo.Game
                             KeepLoaded: false

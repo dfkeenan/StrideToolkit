@@ -1,0 +1,27 @@
+!PrefabAsset
+Id: 7d54f947-6c02-45e7-a9ed-c88cac3f1e36
+SerializedVersion: {Xenko: 2.1.0.1}
+Tags: []
+Hierarchy:
+    RootParts:
+        - ref!! b4dd19ad-2d64-48a4-8784-66937b9e0d16
+    Parts:
+        -   Entity:
+                Id: b4dd19ad-2d64-48a4-8784-66937b9e0d16
+                Name: Outline
+                Components:
+                    e540d51a5351343ca560c290d6b03ca2: !TransformComponent
+                        Id: 26b5f746-f212-4c90-8576-ca9aadd9e39b
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    722e1026c89105fd4a3d75f2f7aca639: !ModelComponent
+                        Id: ed225a2c-0d4d-4c1f-bdb0-b62ef0a02511
+                        Model: null
+                        RenderGroup: Group31
+                        IsShadowCaster: false
+                        Materials: {}
+                    7ae8221ad3ae351758940095772dc6e4: !XenkoToolkit.Demo.Outline.OutlineEntity,XenkoToolkit.Demo.Game
+                        Id: a718416f-2fae-48bd-8490-a0592f454e32
+                        Material: null

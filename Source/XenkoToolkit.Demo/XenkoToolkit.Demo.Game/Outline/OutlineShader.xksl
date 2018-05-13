@@ -1,0 +1,52 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace XenkoToolkit.Demo.Outline
+{
+    shader OutlineShader<int Thickness> : ColorTransformShader, Texturing
+    {
+        
+        Texture2D OutlineTexture;
+        float2 OutlineTexelSize;
+
+        [Color]
+        float4 ColorOne;
+
+        [Color]
+        float4 ColorTwo;
+
+        [Color]
+        float4 ColorThree;
+
+        override float4 Compute(float4 inputColor) 
+        {            
+            float outlineSelect = saturate(1.0f - OutlineTexture.Sample(Texturing.PointSampler, streams.TexCoord).w);
+
+
+            float4 outlineColor = (float4)0;
+
+            for(int i = -Thickness; i <= Thickness; i++ )
+            {
+                if(i != 0)
+                {
+                    float2 positionX = streams.TexCoord + OutlineTexelSize * float2(i,0);
+                    outlineColor = max(outlineColor, OutlineTexture.Sample(Texturing.PointSampler, positionX));
+
+                    float2 positionY = streams.TexCoord + OutlineTexelSize * float2(0,i);
+                    outlineColor = max(outlineColor, OutlineTexture.Sample(Texturing.PointSampler, positionY));
+                }
+            }
+
+            float4 resultOutlineColor = ColorOne * outlineColor.r;
+            resultOutlineColor += ColorTwo * outlineColor.g;
+            resultOutlineColor += ColorThree * outlineColor.b;
+
+            resultOutlineColor *= outlineSelect;
+
+            return resultOutlineColor.w > 0 ? resultOutlineColor : inputColor;
+        }
+    }; 
+}

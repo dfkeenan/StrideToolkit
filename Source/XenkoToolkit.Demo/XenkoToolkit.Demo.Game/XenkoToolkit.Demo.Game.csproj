@@ -105,6 +105,14 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <None Include="Outline\OutlineEffect.xkfx">
+      <Generator>XenkoShaderKeyGenerator</Generator>
+      <LastGenOutput>OutlineEffect.cs</LastGenOutput>
+    </None>
+    <None Include="Outline\OutlineShader.xksl">
+      <Generator>XenkoShaderKeyGenerator</Generator>
+      <LastGenOutput>OutlineShader.cs</LastGenOutput>
+    </None>
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +124,22 @@
     <Compile Include="Engine\Navigation\Components\NavigationButtonHandler.cs" />
     <Compile Include="Engine\Navigation\Components\SceneNavigationService.cs" />
     <Compile Include="Engine\Navigation\ISceneNavigationService.cs" />
+    <Compile Include="Outline\OutlineColorTransform.cs" />
+    <Compile Include="Outline\OutlineEffect.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>OutlineEffect.xkfx</DependentUpon>
+    </Compile>
+    <Compile Include="Outline\OutlineEntity.cs" />
+    <Compile Include="Outline\OutlineKeys.cs" />
+    <Compile Include="Outline\OutlineManager.cs" />
+    <Compile Include="Outline\OutlineShader.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>OutlineShader.xksl</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReceiverScript.cs" />
     <Compile Include="SenderScript.cs" />
@@ -125,6 +149,9 @@
       <Project>{880f8e4d-403a-4039-9797-f0a271993223}</Project>
       <Name>XenkoToolkit</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Shaders\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SiliconStudioPackageProps)" Condition="Exists('$(SiliconStudioPackageProps)')" />

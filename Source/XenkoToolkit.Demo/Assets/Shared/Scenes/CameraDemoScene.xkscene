@@ -27,12 +27,12 @@ Hierarchy:
                         Children: {}
                     d08d65c392c05230413b4175ee1b529f: !UIComponent
                         Id: e33dd7ec-98da-4325-9a82-6fdfc964123a
-                        Page: c7439e8f-602b-4591-8c58-1534d0a9d368:BackButton
+                        Page: c7439e8f-602b-4591-8c58-1534d0a9d368:Scenes/BackButton
                         Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
                         Size: {X: 1.0, Y: 1.0, Z: 1.0}
                     638259d25610b3d8622bcdb316d3ddba: !XenkoToolkit.Engine.Navigation.Components.NavigationButtonHandler,XenkoToolkit.Demo.Game
                         Id: 6088eaca-ff6d-499e-a867-860ef46a55b0
-                        Page: null
+                        Page*: c7439e8f-602b-4591-8c58-1534d0a9d368:Scenes/BackButton
                         ButtonName: BackButton
                         ButtonAction: !XenkoToolkit.Engine.Navigation.Components.NavigateBack,XenkoToolkit.Demo.Game
                             KeepLoaded: false
@@ -166,7 +166,7 @@ Hierarchy:
                         Id: 24c830a8-6ea0-402a-a7a3-8dda224d0459
                         Name: null
                         Projection: Perspective
-                        Slot: 7923e9c2-35a8-420c-8ea0-d2ece0e289f6
+                        Slot: 0330b4ff-fac9-4df3-9970-31395bcec4e5
                     2f0e40f190f7afa96166638fa6a24fe9: !XenkoToolkit.Demo.BasicCameraController,XenkoToolkit.Demo.Game
                         Id: 3e89a844-8c80-4d4e-93de-dc5b307c444f
                         KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}
@@ -189,6 +189,12 @@ Hierarchy:
                         Id: 1834ef38-0f2a-4e8b-9766-0b1d9dc0fe1b
                         MainCamera: ref!! 24c830a8-6ea0-402a-a7a3-8dda224d0459
                         Cube: ref!! 93ea5f41-5258-4a5a-87ef-b676cc8ce168
+                    84f348b6425d355db5710a27013a2a01: !XenkoToolkit.Demo.Outline.OutlineManager,XenkoToolkit.Demo.Game
+                        Id: e1848128-2518-4486-8d30-a759fc549419
+                        OutlinePrefab: 7d54f947-6c02-45e7-a9ed-c88cac3f1e36:Outline/OutlineEntity
+                        OutlineGraphicsCompositor: 5d79b127-bf30-48d7-a102-50274b6e6aa2:Outline/OutlineGraphicsCompositor
+                        HoverMaterial: a04c9cfb-2726-4596-96da-1767970d5b84:Outline/HoverOutlineMaterial
+                        SelectMaterial: 90b9f2b1-703e-4db7-98ce-a27a6c0369dc:Outline/SelectOutlineMaterial
         -   Entity:
                 Id: e1cc1033-3caa-4c15-87a0-7635fb781aab
                 Name: CameraParent

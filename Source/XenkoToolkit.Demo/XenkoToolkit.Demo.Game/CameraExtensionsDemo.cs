@@ -3,6 +3,7 @@ using SiliconStudio.Xenko.Engine;
 using SiliconStudio.Xenko.Engine.Events;
 using SiliconStudio.Xenko.Input;
 using SiliconStudio.Xenko.Physics;
+using SiliconStudio.Xenko.Rendering.Compositing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,14 @@ namespace XenkoToolkit.Demo
 {
     public class CameraExtensionsDemo : SyncScript
     {
-        public static readonly EventKey<Entity> TargetAcquired = new EventKey<Entity>(eventName: "TargetAcquired");
-        
+        public static readonly EventKey<Entity> EntitySelected = new EventKey<Entity>(eventName: nameof(EntitySelected));
+        public static readonly EventKey<Entity> EntityHover = new EventKey<Entity>(eventName: nameof(EntityHover));
+
+
         private string message;
 
         private Entity selected = null;
+        private Entity hovered = null;
         private Simulation simulation;
         private Vector3 selectedScreenPoint;
         private Vector3 worldMousePoint;
@@ -30,9 +34,13 @@ namespace XenkoToolkit.Demo
 
         public Entity Cube { get; set; }
 
+      
+
         public override void Start()
         {
             simulation = this.GetSimulation();
+
+           
         }
 
         public override void Update()
@@ -42,20 +50,39 @@ namespace XenkoToolkit.Demo
 
             DebugText.Print($"ScreenToWorldRaySegment {MainCamera.ScreenToWorldRaySegment(Input.MousePosition)}", new Int2(20, 40));
 
+
+            var ray = MainCamera.ScreenToWorldRaySegment(Input.MousePosition);
+
+            HitResult hitResult = simulation.Raycast(ray);
+            Entity hitEntity = hitResult.Collider?.Entity;
+
+            if (hitResult.Succeeded && hitEntity != selected)
+            {
+                if (hitEntity != hovered)
+                {
+                    hovered = hitEntity;
+                    EntityHover.Broadcast(hitEntity); 
+                }
+            }
+            else
+            {
+                if (hovered != null)
+                {
+                    hovered = null;
+                    EntityHover.Broadcast(null);
+                }                
+            }
+
             if (Input.IsMouseButtonPressed(MouseButton.Left))
             {
-                message = "";
-                
+                message = "";   
 
-                var ray = MainCamera.ScreenToWorldRaySegment(Input.MousePosition);
-
-                HitResult hitResult = simulation.Raycast(ray);
                 if (hitResult.Succeeded)
                 {
-                    selected = hitResult.Collider.Entity;
+                    selected = hitEntity;
 
                     message = selected.Name;
-                    TargetAcquired.Broadcast(selected);
+                    EntitySelected.Broadcast(selected);
                     DebugText.Print($"Clicked on {message}", new Int2(20, 60));
 
                     selectedScreenPoint = MainCamera.WorldToScreenPoint(selected.Transform.Position);
@@ -66,7 +93,7 @@ namespace XenkoToolkit.Demo
                     selected = null;
                     selectedScreenPoint = Vector3.Zero;
                     worldMousePoint = Vector3.Zero;
-                    TargetAcquired.Broadcast(null);
+                    EntitySelected.Broadcast(null);
                 }
             }
             else if (selected != null && Input.IsMouseButtonDown(MouseButton.Left))
@@ -76,11 +103,6 @@ namespace XenkoToolkit.Demo
                 selected.Transform.Position = currentWorldMousePoint + offset;
                 worldMousePoint = currentWorldMousePoint;
             }
-            else if (selected != null && Input.IsKeyPressed(Keys.F))
-            {
-                MainCamera.Entity.Transform.LookAt(selected.Transform);
-                MainCamera.Update();
-            }
 
         }
 
@@ -89,6 +111,8 @@ namespace XenkoToolkit.Demo
         {
             base.Cancel();
             DebugText.Update(Game.UpdateTime);
+
+           
         }
     }
 }
