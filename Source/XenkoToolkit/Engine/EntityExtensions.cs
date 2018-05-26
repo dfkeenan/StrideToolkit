@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XenkoToolkit.Collections;
 
 namespace XenkoToolkit.Engine
 {
@@ -104,6 +105,69 @@ namespace XenkoToolkit.Engine
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
 
+            //breadth first
+            var queue = new Queue<Entity>();
+            queue.Enqueue(entity);
+            queue.EnqueueRange(entity.GetChildren());
+
+            while (queue.Count > 0)
+            {
+                var current = queue.Dequeue();
+
+                foreach (var component in current.GetAll<T>())
+                {
+                    yield return component;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Performs a depth first search of the entity and it's children for all components of the specified type.
+        /// </summary>
+        /// <typeparam name="T">The type of component.</typeparam>
+        /// <param name="entity">The entity.</param>
+        /// <param name="includeDisabled">Should search include <see cref="ActivableEntityComponent"/> where <see cref="ActivableEntityComponent.Enabled"/> is <c>false</c>.</param>
+        /// <returns>An iteration on the components.</returns>
+        /// <exception cref="ArgumentNullException">The entity was <c>null</c>.</exception>
+        public static IEnumerable<T> GetComponentsInChildren<T>(this Entity entity, bool includeDisabled = false) where T : ActivableEntityComponent
+        {
+            if (entity == null)
+                throw new ArgumentNullException(nameof(entity));
+
+
+            //breadth first
+            var queue = new Queue<Entity>();
+            queue.Enqueue(entity);
+            queue.EnqueueRange(entity.GetChildren());
+
+            while (queue.Count > 0)
+            {
+                var current = queue.Dequeue();
+
+                foreach (var component in current.GetAll<T>())
+                {
+                    if (component.Enabled || includeDisabled)
+                    {
+                        yield return component;
+                    }
+                }
+            }
+        }
+
+
+
+        /// <summary>
+        /// Performs a depth first search of the entity and it's decendants for all components of the specified type.
+        /// </summary>
+        /// <typeparam name="T">The type of component.</typeparam>
+        /// <param name="entity">The entity.</param>
+        /// <returns>An iteration on the components.</returns>
+        /// <exception cref="ArgumentNullException">The entity was <c>null</c>.</exception>
+        public static IEnumerable<T> GetComponentsInDecendants<T>(this Entity entity) where T : EntityComponent
+        {
+            if (entity == null)
+                throw new ArgumentNullException(nameof(entity));
+
             //depth first
             var stack = new Stack<Entity>();
             stack.Push(entity);
@@ -126,14 +190,14 @@ namespace XenkoToolkit.Engine
         }
 
         /// <summary>
-        /// Performs a depth first search of the entity and it's children for all components of the specified type.
+        /// Performs a depth first search of the entity and it's decendants for all components of the specified type.
         /// </summary>
         /// <typeparam name="T">The type of component.</typeparam>
         /// <param name="entity">The entity.</param>
         /// <param name="includeDisabled">Should search include <see cref="ActivableEntityComponent"/> where <see cref="ActivableEntityComponent.Enabled"/> is <c>false</c>.</param>
         /// <returns>An iteration on the components.</returns>
         /// <exception cref="ArgumentNullException">The entity was <c>null</c>.</exception>
-        public static IEnumerable<T> GetComponentsInChildren<T>(this Entity entity, bool includeDisabled = false) where T : ActivableEntityComponent
+        public static IEnumerable<T> GetComponentsInDecendants<T>(this Entity entity, bool includeDisabled = false) where T : ActivableEntityComponent
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
