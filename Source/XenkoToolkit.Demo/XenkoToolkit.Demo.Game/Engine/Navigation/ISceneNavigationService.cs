@@ -1,5 +1,5 @@
-﻿using System.Threading.Tasks;
-using SiliconStudio.Xenko.Engine;
+using System.Threading.Tasks;
+using Xenko.Engine;
 
 namespace XenkoToolkit.Engine.Navigation
 {

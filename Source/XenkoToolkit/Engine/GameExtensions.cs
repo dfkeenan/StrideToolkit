@@ -1,4 +1,4 @@
-﻿using SiliconStudio.Xenko.Games;
+﻿using Xenko.Games;
 using System;
 using System.Collections.Generic;
 using System.Linq;

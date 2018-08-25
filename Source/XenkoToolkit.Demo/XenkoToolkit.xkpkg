@@ -9,7 +9,7 @@ Meta:
     RootNamespace: XenkoToolkit.Demo
     Dependencies:
         -   Name: Xenko
-            Version: 2.1.0.3
+            Version: 3.0.0.3
             RootAssets: []
 LocalDependencies: []
 Profiles:
@@ -19,6 +19,7 @@ Profiles:
         AssetFolders:
             -   Path: Assets/Shared
             -   Path: XenkoToolkit.Game/Effects
+        ResourceFolders: []
         OutputGroupDirectories: {}
         ProjectReferences:
             -   Id: 325e363f-0aa3-4866-bf26-9d1d415bfa86
@@ -29,6 +30,7 @@ Profiles:
         InheritProfiles: []
         AssetFolders:
             -   Path: Assets/Windows
+        ResourceFolders: []
         OutputGroupDirectories: {}
         ProjectReferences:
             -   Id: 648feccc-8723-4379-9de5-efc1324c3c6b

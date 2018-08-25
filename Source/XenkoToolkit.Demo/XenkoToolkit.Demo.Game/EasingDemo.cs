@@ -1,7 +1,7 @@
-﻿using SiliconStudio.Core;
-using SiliconStudio.Core.Mathematics;
-using SiliconStudio.Xenko.Engine;
-using SiliconStudio.Xenko.Rendering.Materials;
+using Xenko.Core;
+using Xenko.Core.Mathematics;
+using Xenko.Engine;
+using Xenko.Rendering.Materials;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,7 +69,7 @@ namespace XenkoToolkit.Demo
                 if (progress > 1.0f)
                     progress = 1.0f;
 
-                DebugText.Print($"Progress = {progress}", new Int2(10));
+               // DebugText.Print($"Progress = {progress}", new Int2(10));
 
                 for (int i = 0; i < transforms.Count; i++)
                 {
@@ -86,7 +86,7 @@ namespace XenkoToolkit.Demo
 
                 elapsed += Game.UpdateTime.Elapsed;
 
-                if (Input.IsKeyPressed(SiliconStudio.Xenko.Input.Keys.Space))
+                if (Input.IsKeyPressed(Xenko.Input.Keys.Space))
                 {
                     //reset
                     elapsed = TimeSpan.Zero;

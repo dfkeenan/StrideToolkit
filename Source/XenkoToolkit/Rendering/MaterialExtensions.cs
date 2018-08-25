@@ -1,5 +1,5 @@
 ﻿using System;
-using SiliconStudio.Xenko.Rendering;
+using Xenko.Rendering;
 
 namespace XenkoToolkit.Rendering
 {

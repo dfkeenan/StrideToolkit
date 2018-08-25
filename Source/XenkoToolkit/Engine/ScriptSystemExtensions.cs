@@ -1,7 +1,7 @@
-﻿using SiliconStudio.Core.MicroThreading;
-using SiliconStudio.Xenko.Engine;
-using SiliconStudio.Xenko.Engine.Events;
-using SiliconStudio.Xenko.Engine.Processors;
+﻿using Xenko.Core.MicroThreading;
+using Xenko.Engine;
+using Xenko.Engine.Events;
+using Xenko.Engine.Processors;
 using System;
 using System.Collections.Generic;
 using System.Linq;

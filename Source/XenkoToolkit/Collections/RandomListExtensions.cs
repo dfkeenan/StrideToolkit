@@ -1,4 +1,4 @@
-﻿using SiliconStudio.Core.Mathematics;
+﻿using Xenko.Core.Mathematics;
 using System;
 using System.Collections.Generic;
 using System.Linq;

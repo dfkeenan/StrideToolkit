@@ -1,6 +1,6 @@
 ﻿using System;
-using SiliconStudio.Xenko.Engine;
-using SiliconStudio.Xenko.Rendering;
+using Xenko.Engine;
+using Xenko.Rendering;
 using XenkoToolkit.Rendering;
 
 namespace XenkoToolkit.Engine

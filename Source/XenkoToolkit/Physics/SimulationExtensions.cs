@@ -1,5 +1,5 @@
-﻿using SiliconStudio.Core.Collections;
-using SiliconStudio.Xenko.Physics;
+﻿using Xenko.Core.Collections;
+using Xenko.Physics;
 using System;
 using System.Collections.Generic;
 using System.Linq;

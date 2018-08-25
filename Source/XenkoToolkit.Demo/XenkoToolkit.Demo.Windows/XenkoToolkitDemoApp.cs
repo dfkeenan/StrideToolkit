@@ -1,6 +1,6 @@
-using SiliconStudio.Xenko.Engine;
+using Xenko.Engine;
 
-namespace XenkoToolkit
+namespace XenkoToolkit.Demo
 {
     class XenkoToolkitDemoApp
     {

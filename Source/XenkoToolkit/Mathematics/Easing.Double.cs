@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SiliconStudio.Core.Mathematics;
+using Xenko.Core.Mathematics;
 
 namespace XenkoToolkit.Mathematics
 {

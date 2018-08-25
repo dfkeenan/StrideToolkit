@@ -1,5 +1,5 @@
-﻿using SiliconStudio.Core;
-using SiliconStudio.Core.Mathematics;
+﻿using Xenko;
+using Xenko.Core.Mathematics;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Xenko.Core;
 
 namespace XenkoToolkit.Mathematics
 {
@@ -129,11 +130,11 @@ namespace XenkoToolkit.Mathematics
         }
 
         /// <summary>
-        /// Determines whether the specified <see cref="SiliconStudio.Core.Mathematics.Vector4"/> is equal to this instance.
+        /// Determines whether the specified <see cref="Xenko.Core.Mathematics.Vector4"/> is equal to this instance.
         /// </summary>
-        /// <param name="value">The <see cref="SiliconStudio.Core.Mathematics.Vector4"/> to compare with this instance.</param>
+        /// <param name="value">The <see cref="Xenko.Core.Mathematics.Vector4"/> to compare with this instance.</param>
         /// <returns>
-        /// <c>true</c> if the specified <see cref="SiliconStudio.Core.Mathematics.Vector4"/> is equal to this instance; otherwise, <c>false</c>.
+        /// <c>true</c> if the specified <see cref="Xenko.Core.Mathematics.Vector4"/> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
         public bool Equals(RaySegment value)
         {

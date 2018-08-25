@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SiliconStudio.Core;
-using SiliconStudio.Core.Annotations;
-using SiliconStudio.Core.Mathematics;
-using SiliconStudio.Xenko.Graphics;
-using SiliconStudio.Xenko.Rendering.Images;
+using Xenko.Core;
+using Xenko.Core.Annotations;
+using Xenko.Core.Mathematics;
+using Xenko.Graphics;
+using Xenko.Rendering.Images;
 
 namespace XenkoToolkit.Demo.Outline
 {

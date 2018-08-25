@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SiliconStudio.Core.Mathematics;
-using SiliconStudio.Xenko.Input;
-using SiliconStudio.Xenko.Engine;
-using SiliconStudio.Xenko.Rendering.Compositing;
+using Xenko.Core.Mathematics;
+using Xenko.Input;
+using Xenko.Engine;
+using Xenko.Rendering.Compositing;
 using XenkoToolkit.Engine;
-using SiliconStudio.Xenko.Engine.Events;
-using SiliconStudio.Xenko.Rendering;
+using Xenko.Engine.Events;
+using Xenko.Rendering;
 
 namespace XenkoToolkit.Demo.Outline
 {

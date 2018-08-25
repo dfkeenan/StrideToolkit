@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SiliconStudio.Core.Mathematics;
-using SiliconStudio.Xenko.Input;
-using SiliconStudio.Xenko.Engine;
-using SiliconStudio.Xenko.UI.Controls;
+using Xenko.Core.Mathematics;
+using Xenko.Input;
+using Xenko.Engine;
+using Xenko.UI.Controls;
 using XenkoToolkit.Engine.Navigation.Components;
-using SiliconStudio.Core;
+using Xenko.Core;
 
 namespace XenkoToolkit.Engine.Navigation.Components
 {
@@ -36,7 +36,7 @@ namespace XenkoToolkit.Engine.Navigation.Components
             }
         }
 
-        private void Button_Click(object sender, SiliconStudio.Xenko.UI.Events.RoutedEventArgs e)
+        private void Button_Click(object sender, Xenko.UI.Events.RoutedEventArgs e)
         {           
             var navService = Game.Services.GetService<ISceneNavigationService>();
 
