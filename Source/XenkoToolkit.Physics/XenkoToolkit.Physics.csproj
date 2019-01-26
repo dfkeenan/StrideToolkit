@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>A Physics Toolkit for the Xenko game engine.</Description>
+    <PackageTags>Xenko gamedev Game Physics</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xenko.Physics" Version="3.1.0.1-beta01-0406" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XenkoToolkit\XenkoToolkit.csproj" />
+  </ItemGroup>
+
+</Project>

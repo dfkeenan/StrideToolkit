@@ -14,6 +14,7 @@
     <PackageReference Include="Xenko.Video" Version="3.1.0.1-beta01-0406" PrivateAssets="contentfiles;analyzers" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\XenkoToolkit.Physics\XenkoToolkit.Physics.csproj" />
     <ProjectReference Include="..\..\XenkoToolkit\XenkoToolkit.csproj" />
   </ItemGroup>
   <ItemGroup>
