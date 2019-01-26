@@ -69,7 +69,7 @@ namespace XenkoToolkit.Demo
                 if (progress > 1.0f)
                     progress = 1.0f;
 
-               // DebugText.Print($"Progress = {progress}", new Int2(10));
+                DebugText.Print($"Progress = {progress}", new Int2(10));
 
                 for (int i = 0; i < transforms.Count; i++)
                 {

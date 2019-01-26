@@ -48,7 +48,7 @@ namespace XenkoToolkit.Demo
             Cube?.Transform.Rotate(new Vector3(MathUtil.DegreesToRadians(60) * Game.GetDeltaTime(), 0, 0));
 
 
-            //DebugText.Print($"ScreenToWorldRaySegment {MainCamera.ScreenToWorldRaySegment(Input.MousePosition)}", new Int2(20, 40));
+            DebugText.Print($"ScreenToWorldRaySegment {MainCamera.ScreenToWorldRaySegment(Input.MousePosition)}", new Int2(20, 40));
 
 
             var ray = MainCamera.ScreenToWorldRaySegment(Input.MousePosition);
@@ -83,7 +83,7 @@ namespace XenkoToolkit.Demo
 
                     message = selected.Name;
                     EntitySelected.Broadcast(selected);
-                    //DebugText.Print($"Clicked on {message}", new Int2(20, 60));
+                    DebugText.Print($"Clicked on {message}", new Int2(20, 60));
 
                     selectedScreenPoint = MainCamera.WorldToScreenPoint(selected.Transform.Position);
                     worldMousePoint = MainCamera.ScreenToWorldPoint(new Vector3(Input.MousePosition, selectedScreenPoint.Z));

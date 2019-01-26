@@ -1,11 +1,9 @@
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 14.0.23107.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XenkoToolkit.Demo", "XenkoToolkit.Demo", "{988B3698-C532-41B2-B674-906F268B6391}"
-	ProjectSection(XenkoPackage) = preProject
-		XenkoToolkit.Demo/XenkoToolkit.xkpkg = XenkoToolkit.Demo/XenkoToolkit.xkpkg
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenkoToolkit.Demo.Windows", "XenkoToolkit.Demo\XenkoToolkit.Demo.Windows\XenkoToolkit.Demo.Windows.csproj", "{648FECCC-8723-4379-9DE5-EFC1324C3C6B}"
 EndProject

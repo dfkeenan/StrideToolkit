@@ -28,27 +28,27 @@ namespace XenkoToolkit.Demo
 
         private void HandleOne(Vector2 position)
         {
-            //DebugText.Print($"Even One - {position}", new Int2(10, 10));
+            DebugText.Print($"Even One - {position}", new Int2(10, 10));
         }
 
         private void HandleTwo(Vector2 position)
         {
-            //DebugText.Print($"Even Two - {position}", new Int2(10, 20));
+            DebugText.Print($"Even Two - {position}", new Int2(10, 20));
         }
 
         private void DelayedAction()
         {
-            //DebugText.Print("Delay", new Int2(10, 30));
+            DebugText.Print("Delay", new Int2(10, 30));
         }
 
         private void DelayRepeatAction()
         {
-            //DebugText.Print("Delay Repeat", new Int2(10, 40));
+            DebugText.Print("Delay Repeat", new Int2(10, 40));
         }
 
         public override void Cancel()
         {
-           // DebugText.Update(Game.UpdateTime);
+            DebugText.Update(Game.UpdateTime);
         }
 
 
