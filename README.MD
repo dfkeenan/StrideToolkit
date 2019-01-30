@@ -8,13 +8,15 @@ Coming Soon&trade;
 
     Install-Package XenkoToolkit -Prerelease
 
+    Install-Package XenkoToolkit.Physics -Prerelease
+
 ## NuGet Package - Xenko Engine compatibility
 
 This table indicates which version of Xenko each version of the toolkit was compiled against.
 
 |Branch|NuGet|Xenko|
 |:--:|:--:|:--:|
-|master|0.5.0.0-alpha|3.1.0.1-beta01-0406|
+|master|0.5.0.0-alpha|3.1.0.1-beta01-0430|
 
 ## Examples
 

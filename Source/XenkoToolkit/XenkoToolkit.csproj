@@ -7,9 +7,9 @@
     <PackageTags>Xenko gamedev Game</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Xenko.Core" Version="3.1.0.1-beta01-0406" PrivateAssets="contentfiles;analyzers" />
-    <PackageReference Include="Xenko.Engine" Version="3.1.0.1-beta01-0406" PrivateAssets="contentfiles;analyzers" />
-    <PackageReference Include="Xenko.Physics" Version="3.1.0.1-beta01-0406" PrivateAssets="contentfiles;analyzers" />
+    <PackageReference Include="Xenko.Core" Version="3.1.0.1-beta01-0430" PrivateAssets="contentfiles;analyzers" />
+    <PackageReference Include="Xenko.Engine" Version="3.1.0.1-beta01-0430" PrivateAssets="contentfiles;analyzers" />
+    <PackageReference Include="Xenko.Physics" Version="3.1.0.1-beta01-0430" PrivateAssets="contentfiles;analyzers" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Physics\" />
