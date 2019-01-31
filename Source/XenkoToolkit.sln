@@ -21,7 +21,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wiki", "Wiki", "{CD549A1A-0
 		..\Documentation\Wiki\Examples.md = ..\Documentation\Wiki\Examples.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XenkoToolkit.Physics", "XenkoToolkit.Physics\XenkoToolkit.Physics.csproj", "{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenkoToolkit.Physics", "XenkoToolkit.Physics\XenkoToolkit.Physics.csproj", "{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{D0AB24F5-200F-4BED-9AC8-F6B0A217F31C}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

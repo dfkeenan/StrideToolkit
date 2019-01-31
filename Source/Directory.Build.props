@@ -2,7 +2,7 @@
  <PropertyGroup>
     <Version>0.5.0.0-alpha</Version>
     <PackageProjectUrl>https://github.com/dfkeenan/XenkoToolkit</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/dfkeenan/XenkoToolkit/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <Copyright>Copyright © 2019</Copyright>
     <RepositoryUrl>https://github.com/dfkeenan/XenkoToolkit.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
