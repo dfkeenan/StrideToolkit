@@ -14,11 +14,6 @@ using Xenko.Shaders;
 using Xenko.Core.Mathematics;
 using Buffer = Xenko.Graphics.Buffer;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 namespace XenkoToolkit.Demo.Outline
 {
     public static partial class OutlineShaderKeys
