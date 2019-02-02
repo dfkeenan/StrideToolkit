@@ -1,0 +1,22 @@
+<Project>
+  <PropertyGroup>
+    <GitOriginRemote></GitOriginRemote>
+    <GitBranchName></GitBranchName>
+    <GitRawUrlBase></GitRawUrlBase>
+  </PropertyGroup>
+    <Target Name="BeforeBuild">  
+        <!-- Insert tasks to run before build here -->
+      <Exec Command="git config --get remote.origin.url" ConsoleToMSBuild="true">
+        <Output TaskParameter="ConsoleOutput" PropertyName="GitOriginRemote" />
+      </Exec>
+      <Exec Command="git rev-parse --abbrev-ref HEAD" ConsoleToMSBuild="true">
+        <Output TaskParameter="ConsoleOutput" PropertyName="GitBranchName" />
+      </Exec>
+      <PropertyGroup>
+        <GitRawUrlBase>$(GitOriginRemote.Replace(".git","").Replace("github.com","raw.githubusercontent.com"))/$(GitBranchName)/</GitRawUrlBase>
+      </PropertyGroup>      
+      <Message Text="Git remote $(GitOriginRemote)"></Message>
+      <Message Text="Git branch $(GitBranchName)"></Message>
+      <Message Text="Git url $(GitRawUrlBase)"></Message>
+    </Target>
+</Project>

@@ -6,6 +6,7 @@
     <Copyright>Copyright © 2019</Copyright>
     <RepositoryUrl>https://github.com/dfkeenan/XenkoToolkit.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+   <PackageIconUrl>$(GitRawUrlBase)Images/PackageIcon.png</PackageIconUrl>
  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'PublicRelease' ">
     <PublicRelease>true</PublicRelease>
