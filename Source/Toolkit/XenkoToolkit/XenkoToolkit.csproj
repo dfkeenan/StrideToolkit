@@ -6,6 +6,7 @@
     <Description>A Toolkit for the Xenko game engine.</Description>
     <PackageTags>Xenko gamedev Game</PackageTags>
     <Configurations>Debug;Release;PublicRelease</Configurations>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Nerdbank.GitVersioning" Version="2.3.38">
