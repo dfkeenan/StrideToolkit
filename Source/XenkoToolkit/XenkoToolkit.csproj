@@ -4,9 +4,14 @@
     <LangVersion>latest</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>A Toolkit for the Xenko game engine.</Description>   
-    <PackageTags>Xenko gamedev Game</PackageTags>
+    <PackageTags>Xenko gamedev Game</PackageTags>   
+    <Configurations>Debug;Release;PublicRelease</Configurations>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Nerdbank.GitVersioning" Version="2.3.38">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Xenko.Core" Version="3.1.0.1-beta01-0430" PrivateAssets="contentfiles;analyzers" />
     <PackageReference Include="Xenko.Engine" Version="3.1.0.1-beta01-0430" PrivateAssets="contentfiles;analyzers" />
     <PackageReference Include="Xenko.Physics" Version="3.1.0.1-beta01-0430" PrivateAssets="contentfiles;analyzers" />

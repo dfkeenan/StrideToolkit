@@ -1,6 +1,5 @@
 <Project>
  <PropertyGroup>
-    <Version>0.5.0.0-alpha</Version>
     <Authors>Daniel Keenan</Authors>
     <PackageProjectUrl>https://github.com/dfkeenan/XenkoToolkit</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -8,4 +7,7 @@
     <RepositoryUrl>https://github.com/dfkeenan/XenkoToolkit.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'PublicRelease' ">
+    <PublicRelease>true</PublicRelease>
+  </PropertyGroup>
 </Project>
