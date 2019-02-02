@@ -8,6 +8,11 @@
     <Configurations>Debug;Release;PublicRelease</Configurations>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Physics\**" />
+    <EmbeddedResource Remove="Physics\**" />
+    <None Remove="Physics\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Nerdbank.GitVersioning" Version="2.3.38">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
@@ -15,8 +20,5 @@
     <PackageReference Include="Xenko.Core" Version="3.1.0.1-beta01-0430" PrivateAssets="contentfiles;analyzers" />
     <PackageReference Include="Xenko.Engine" Version="3.1.0.1-beta01-0430" PrivateAssets="contentfiles;analyzers" />
     <PackageReference Include="Xenko.Physics" Version="3.1.0.1-beta01-0430" PrivateAssets="contentfiles;analyzers" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Physics\" />
   </ItemGroup>
 </Project>

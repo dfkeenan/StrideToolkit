@@ -2,15 +2,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 14.0.23107.0
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XenkoToolkit.Demo", "XenkoToolkit.Demo", "{988B3698-C532-41B2-B674-906F268B6391}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{988B3698-C532-41B2-B674-906F268B6391}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenkoToolkit.Demo.Windows", "XenkoToolkit.Demo\XenkoToolkit.Demo.Windows\XenkoToolkit.Demo.Windows.csproj", "{648FECCC-8723-4379-9DE5-EFC1324C3C6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenkoToolkit.Demo.Windows", "Demo\XenkoToolkit.Demo.Windows\XenkoToolkit.Demo.Windows.csproj", "{648FECCC-8723-4379-9DE5-EFC1324C3C6B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenkoToolkit.Demo.Game", "XenkoToolkit.Demo\XenkoToolkit.Demo.Game\XenkoToolkit.Demo.Game.csproj", "{325E363F-0AA3-4866-BF26-9D1D415BFA86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenkoToolkit.Demo.Game", "Demo\XenkoToolkit.Demo.Game\XenkoToolkit.Demo.Game.csproj", "{325E363F-0AA3-4866-BF26-9D1D415BFA86}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenkoToolkit", "XenkoToolkit\XenkoToolkit.csproj", "{880F8E4D-403A-4039-9797-F0A271993223}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenkoToolkit", "Toolkit\XenkoToolkit\XenkoToolkit.csproj", "{880F8E4D-403A-4039-9797-F0A271993223}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{44F27A80-2ED0-42BB-9FCC-2D676BADE118}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Documentation", "_Documentation", "{44F27A80-2ED0-42BB-9FCC-2D676BADE118}"
 	ProjectSection(SolutionItems) = preProject
 		..\LICENSE.txt = ..\LICENSE.txt
 		..\README.MD = ..\README.MD
@@ -21,12 +21,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wiki", "Wiki", "{CD549A1A-0
 		..\Documentation\Wiki\Examples.md = ..\Documentation\Wiki\Examples.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenkoToolkit.Physics", "XenkoToolkit.Physics\XenkoToolkit.Physics.csproj", "{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenkoToolkit.Physics", "Toolkit\XenkoToolkit.Physics\XenkoToolkit.Physics.csproj", "{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{D0AB24F5-200F-4BED-9AC8-F6B0A217F31C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Toolkit", "Toolkit", "{89A614EB-5BAB-4923-8963-E8D9B6E05C0F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{1D4B6D4F-E518-46FA-B1C9-190C359AF201}"
 	ProjectSection(SolutionItems) = preProject
-		Directory.Build.props = Directory.Build.props
-		version.json = version.json
+		Toolkit\Directory.Build.props = Toolkit\Directory.Build.props
+		Toolkit\version.json = Toolkit\version.json
 	EndProjectSection
 EndProject
 Global
@@ -63,11 +65,12 @@ Global
 		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.Debug|Windows.ActiveCfg = Debug|Any CPU
 		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.Debug|Windows.Build.0 = Debug|Any CPU
 		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.Debug|Windows.Deploy.0 = Debug|Any CPU
-		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.PublicRelease|Any CPU.ActiveCfg = PublicRelease|Any CPU
-		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.PublicRelease|Any CPU.Build.0 = PublicRelease|Any CPU
-		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.PublicRelease|Mixed Platforms.ActiveCfg = PublicRelease|Any CPU
-		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.PublicRelease|Mixed Platforms.Build.0 = PublicRelease|Any CPU
-		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.PublicRelease|Windows.ActiveCfg = PublicRelease|Any CPU
+		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.PublicRelease|Any CPU.ActiveCfg = Release|Any CPU
+		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.PublicRelease|Any CPU.Build.0 = Release|Any CPU
+		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.PublicRelease|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.PublicRelease|Mixed Platforms.Build.0 = Release|Any CPU
+		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.PublicRelease|Windows.ActiveCfg = Release|Any CPU
+		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.PublicRelease|Windows.Build.0 = Release|Any CPU
 		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.Release|Any CPU.Deploy.0 = Release|Any CPU
@@ -95,11 +98,12 @@ Global
 		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.Debug|Windows.ActiveCfg = Debug|Any CPU
 		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.Debug|Windows.Build.0 = Debug|Any CPU
-		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.PublicRelease|Any CPU.ActiveCfg = PublicRelease|Any CPU
-		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.PublicRelease|Any CPU.Build.0 = PublicRelease|Any CPU
-		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.PublicRelease|Mixed Platforms.ActiveCfg = PublicRelease|Any CPU
-		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.PublicRelease|Mixed Platforms.Build.0 = PublicRelease|Any CPU
-		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.PublicRelease|Windows.ActiveCfg = PublicRelease|Any CPU
+		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.PublicRelease|Any CPU.ActiveCfg = Release|Any CPU
+		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.PublicRelease|Any CPU.Build.0 = Release|Any CPU
+		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.PublicRelease|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.PublicRelease|Mixed Platforms.Build.0 = Release|Any CPU
+		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.PublicRelease|Windows.ActiveCfg = Release|Any CPU
+		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.PublicRelease|Windows.Build.0 = Release|Any CPU
 		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.Release|Any CPU.Build.0 = Release|Any CPU
 		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
@@ -154,12 +158,12 @@ Global
 		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}.Debug|Windows.ActiveCfg = Debug|Any CPU
 		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}.Debug|Windows.Build.0 = Debug|Any CPU
-		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}.PublicRelease|Any CPU.ActiveCfg = PublicRelease|Any CPU
-		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}.PublicRelease|Any CPU.Build.0 = PublicRelease|Any CPU
-		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}.PublicRelease|Mixed Platforms.ActiveCfg = PublicRelease|Any CPU
-		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}.PublicRelease|Mixed Platforms.Build.0 = PublicRelease|Any CPU
-		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}.PublicRelease|Windows.ActiveCfg = PublicRelease|Any CPU
-		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}.PublicRelease|Windows.Build.0 = PublicRelease|Any CPU
+		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}.PublicRelease|Any CPU.ActiveCfg = Release|Any CPU
+		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}.PublicRelease|Any CPU.Build.0 = Release|Any CPU
+		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}.PublicRelease|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}.PublicRelease|Mixed Platforms.Build.0 = Release|Any CPU
+		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}.PublicRelease|Windows.ActiveCfg = Release|Any CPU
+		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}.PublicRelease|Windows.Build.0 = Release|Any CPU
 		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
@@ -179,7 +183,10 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{648FECCC-8723-4379-9DE5-EFC1324C3C6B} = {988B3698-C532-41B2-B674-906F268B6391}
 		{325E363F-0AA3-4866-BF26-9D1D415BFA86} = {988B3698-C532-41B2-B674-906F268B6391}
+		{880F8E4D-403A-4039-9797-F0A271993223} = {89A614EB-5BAB-4923-8963-E8D9B6E05C0F}
 		{CD549A1A-0460-4431-845F-81492FDCA8CE} = {44F27A80-2ED0-42BB-9FCC-2D676BADE118}
+		{A756DF17-9EDC-4C4E-994A-1841D8FD9E5C} = {89A614EB-5BAB-4923-8963-E8D9B6E05C0F}
+		{1D4B6D4F-E518-46FA-B1C9-190C359AF201} = {89A614EB-5BAB-4923-8963-E8D9B6E05C0F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {682702E6-CB1C-4FCA-AB09-53C4D42B2FD8}

@@ -14,8 +14,8 @@
     <PackageReference Include="Xenko.Video" Version="3.1.0.1-beta01-0430" PrivateAssets="contentfiles;analyzers" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\XenkoToolkit.Physics\XenkoToolkit.Physics.csproj" />
-    <ProjectReference Include="..\..\XenkoToolkit\XenkoToolkit.csproj" />
+    <ProjectReference Include="..\..\Toolkit\XenkoToolkit.Physics\XenkoToolkit.Physics.csproj" />
+    <ProjectReference Include="..\..\Toolkit\XenkoToolkit\XenkoToolkit.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Effects\OutlineEffect.cs">
