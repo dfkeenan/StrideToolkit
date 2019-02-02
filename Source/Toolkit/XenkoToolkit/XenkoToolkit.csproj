@@ -3,15 +3,10 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>A Toolkit for the Xenko game engine.</Description>   
-    <PackageTags>Xenko gamedev Game</PackageTags>   
+    <Description>A Toolkit for the Xenko game engine.</Description>
+    <PackageTags>Xenko gamedev Game</PackageTags>
     <Configurations>Debug;Release;PublicRelease</Configurations>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="Physics\**" />
-    <EmbeddedResource Remove="Physics\**" />
-    <None Remove="Physics\**" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Nerdbank.GitVersioning" Version="2.3.38">
       <PrivateAssets>all</PrivateAssets>
