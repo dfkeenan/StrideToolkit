@@ -69,7 +69,6 @@ Global
 		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.PublicRelease|Any CPU.ActiveCfg = Release|Any CPU
 		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.PublicRelease|Any CPU.Build.0 = Release|Any CPU
 		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.PublicRelease|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.PublicRelease|Mixed Platforms.Build.0 = Release|Any CPU
 		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.PublicRelease|Windows.ActiveCfg = Release|Any CPU
 		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.PublicRelease|Windows.Build.0 = Release|Any CPU
 		{648FECCC-8723-4379-9DE5-EFC1324C3C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -102,7 +101,6 @@ Global
 		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.PublicRelease|Any CPU.ActiveCfg = Release|Any CPU
 		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.PublicRelease|Any CPU.Build.0 = Release|Any CPU
 		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.PublicRelease|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.PublicRelease|Mixed Platforms.Build.0 = Release|Any CPU
 		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.PublicRelease|Windows.ActiveCfg = Release|Any CPU
 		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.PublicRelease|Windows.Build.0 = Release|Any CPU
 		{325E363F-0AA3-4866-BF26-9D1D415BFA86}.Release|Any CPU.ActiveCfg = Release|Any CPU
