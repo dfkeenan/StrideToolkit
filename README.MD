@@ -20,13 +20,15 @@ This table indicates which version of Xenko each version of the toolkit was comp
 
 ## Examples
 
-See [Examples.md](Documentation/Wiki/Examples.md)
+See [Documentation](https://dfkeenan.github.io/XenkoToolit/docs/)
 
 ## Building From Source
 
 ### Prerequisites
 
 1. Xenko (and it's prerequisites for Windows).
+
+Building the documentation requires [Wyam](https://wyam.io/). Install the Wyam.Tool .NET Core Global Tool via dotnet tool install -g Wyam.Tool.
 
 ### Building
 

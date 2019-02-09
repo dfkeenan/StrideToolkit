@@ -1,0 +1,24 @@
+#recipe Docs
+#theme Samson
+
+System.Globalization.CultureInfo.DefaultThreadCurrentCulture
+    = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
+
+
+// Customize your settings and add new ones here
+Settings["SourceUrl"] = @"https://github.com/dfkeenan/XenkoToolkit";
+Settings[Keys.Host] = "dfkeenan.github.io";
+Settings[Keys.LinksUseHttps] = true;
+Settings[DocsKeys.Title] = "XenkoToolkit";
+Settings[DocsKeys.Logo] = "/assets/img/logo.png";
+if (System.Environment.GetEnvironmentVariable("SET_WYAM_LINK_ROOT") == "1")
+{
+    Console.WriteLine("Setting LinkRoot");
+    Settings[Keys.LinkRoot] = "/XenkoToolkit";
+}
+
+
+
+Settings[DocsKeys.IncludeGlobalNamespace] = false;
+Settings[DocsKeys.SourceFiles] = @"../../Source/Toolkit/**/{!bin,!obj,!packages,!*.Tests,}/**/*.cs";
+// Add any pipeline customizations here

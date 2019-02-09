@@ -9,9 +9,9 @@ using XenkoToolkit.Collections;
 namespace XenkoToolkit.Engine
 {
     /// <summary>
-    /// Extensions for <see cref="Entity"/>.
+    /// Extensions for searching for an <see cref="EntityComponent"/> in an <see cref="Entity"/> hierarchy.
     /// </summary>
-    public static class EntityExtensions
+    public static class EntityComponentSearchExtensions
     {
 
         /// <summary>
