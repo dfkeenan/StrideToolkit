@@ -1,1 +1,1 @@
-wyam build -o ..\docs -p -w
+wyam build -p -w
