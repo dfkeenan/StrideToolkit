@@ -20,7 +20,7 @@ This table indicates which version of Xenko each version of the toolkit was comp
 
 ## Examples
 
-See [Documentation](https://dfkeenan.github.io/XenkoToolit/docs/)
+See [Documentation](https://dfkeenan.github.io/XenkoToolkit/docs/)
 
 ## Building From Source
 
