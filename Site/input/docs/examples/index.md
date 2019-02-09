@@ -1,5 +1,3 @@
-# Examples
-
 ## Entity Extensions
 Find `Component`s more easily:
 ```csharp
