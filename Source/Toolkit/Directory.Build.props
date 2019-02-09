@@ -8,7 +8,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageIconUrl>Images/PackageIcon.png</PackageIconUrl>
  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'PublicRelease' ">
+  <!--<PropertyGroup Condition=" '$(Configuration)' == 'PublicRelease' ">
     <PublicRelease>true</PublicRelease>
-  </PropertyGroup>
+  </PropertyGroup>-->
 </Project>

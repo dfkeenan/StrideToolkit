@@ -6,7 +6,6 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>A Physics Toolkit for the Xenko game engine.</Description>
     <PackageTags>Xenko gamedev Game Physics</PackageTags>
-    <Configurations>Debug;Release;PublicRelease</Configurations>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
