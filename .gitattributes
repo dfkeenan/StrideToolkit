@@ -111,7 +111,5 @@
 # sprite studio
 *.ssae filter=lfs diff=lfs merge=lfs -text
 
-# Docs
-docs/**/*.jpg   binary
-docs/**/*.png   binary
-docs/**/*.gif   binary
+# Exclude docs from lfs
+docs/** -filter=lfs -diff=lfs -merge=lfs -text
