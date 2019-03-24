@@ -2,7 +2,7 @@
  <PropertyGroup>
     <Authors>Daniel Keenan</Authors>
     <PackageProjectUrl>https://github.com/dfkeenan/XenkoToolkit</PackageProjectUrl>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright © 2019</Copyright>
     <RepositoryUrl>https://github.com/dfkeenan/XenkoToolkit.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
