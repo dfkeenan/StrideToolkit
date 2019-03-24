@@ -93,13 +93,31 @@
                     <ul class="treeview-menu">
                         
                 <li class="treeview">
-                    <a href="/XenkoToolkit/docs/examples/toolkit">Toolkit</a> <a href="#" class="expand"></a>
+                    <a href="/XenkoToolkit/docs/examples/entities-and-components">Entites and Components</a> <a href="#" class="expand"></a>
                     <ul class="treeview-menu">
                         
-                <li><a href="/XenkoToolkit/docs/examples/toolkit/entity-extensions.md">Entity Extensions</a></li>
+                <li><a href="/XenkoToolkit/docs/examples/entities-and-components/finding-components">Finding Components</a></li>
 
                     </ul>
                 </li>
+                <li class="treeview">
+                    <a href="/XenkoToolkit/docs/examples/physics">Physics</a> <a href="#" class="expand"></a>
+                    <ul class="treeview-menu">
+                        
+                <li><a href="/XenkoToolkit/docs/examples/physics/pick-and-aim">Pick and aim</a></li>
+
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="/XenkoToolkit/docs/examples/scripts-and-events">Scripts and Events</a> <a href="#" class="expand"></a>
+                    <ul class="treeview-menu">
+                        
+                <li><a href="/XenkoToolkit/docs/examples/scripts-and-events/delay-and-repeat">Delay and repeat.</a></li>
+                <li><a href="/XenkoToolkit/docs/examples/scripts-and-events/handling-events">Handling events.</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="/XenkoToolkit/docs/examples/miscellaneous">Miscellaneous.</a></li>
 
                     </ul>
                 </li>
@@ -119,100 +137,38 @@
 			<h1>Examples</h1>
 		</section>
 	<section class="content">
-		<html><head></head><body><h2 id="entity-extensions">Entity Extensions</h2>
-<p>Find <code>Component</code>s more easily:</p>
-<pre><code class="language-csharp">//Find component in self or children
-var model = this.Entity.GetComponentInChildren&lt;ModelComponent&gt;();
-//Find all components in self and children
-var models = this.Entity.GetComponentsInChildren&lt;ModelComponent&gt;();
-</code></pre>
-<h2 id="physicsinputtransform-extensions">Physics/Input/Transform Extensions</h2>
-<p>Pick and aim at an <code>Entity</code>:</p>
-<pre><code class="language-csharp">if (Input.IsMouseButtonPressed(SiliconStudio.Xenko.Input.MouseButton.Left))
-{   
-    var ray = MainCamera.ScreenToWorldRaySegment(Input.MousePosition);
+		<p>The XenkoToolkit documentation is provided as examples of each of the API features. Like <a href="https://www.xenko.com">Xenko</a>, XenkoToolkit is provided in serveral NuGet packages. The required NuGet package(s) will be listed at the top of each example.</p>
 
-    var hitResult = this.GetSimulation().Raycast(ray);
-    if (hitResult.Succeeded)
-    {
-        target = hitResult.Collider.Entity;
-    }
-}
+			<div class="box">
+				<div class="box-body no-padding">
+					<table class="table table-striped table-hover two-cols-alt table-responsive">
+						
+						<tbody>
+								<tr>
+									<td><strong><a href="/XenkoToolkit/docs/examples/entities-and-components">Entites and Components</a></strong></td>
+									<td>
+Creating, modifying and finding Entites and Components.									</td>
+								</tr>
+								<tr>
+									<td><strong><a href="/XenkoToolkit/docs/examples/physics">Physics</a></strong></td>
+									<td>
+All things Physics.									</td>
+								</tr>
+								<tr>
+									<td><strong><a href="/XenkoToolkit/docs/examples/scripts-and-events">Scripts and Events</a></strong></td>
+									<td>
+Executing scripts and handling events.									</td>
+								</tr>
+								<tr>
+									<td><strong><a href="/XenkoToolkit/docs/examples/miscellaneous">Miscellaneous.</a></strong></td>
+									<td>
+Examples without a home.									</td>
+								</tr>
+						</tbody>				
+					</table>
+				</div>
+			</div> 
 
-if(target != null)
-{
-    MainCamera.Entity.Transform.LookAt(target.Transform, Game.GetDeltaTime() * 3.0f);
-}
-</code></pre>
-<h2 id="script-extensions">Script Extensions</h2>
-<p>Script instance methods used for Actions/Tasks will automatically stop if <code>ScriptComponent</code>/<code>Entity</code> is removed. Other methods may need to be removed manually.</p>
-<pre><code class="language-csharp">public class ReceiverScript : StartupScript
-{
-    private List&lt;MicroThread&gt; tasks;
-
-    public override void Start()
-    {
-        //Keep a list of tasks to stop on cancel
-        tasks = new List&lt;MicroThread&gt;()
-        {
-            //Directly using EventKey so you don't have to declare EventReciever:
-            Script.AddOnEventAction(SenderScript.SomeEvent, (position) =&gt; {
-                //Do something cool!!
-            }),
-            
-        };
-    }
-
-   
-    public override void Cancel()
-    {
-        base.Cancel();
-        //Stop handling event
-        tasks.CancelAll();
-    }    
-}
-</code></pre>
-<p>Execute a method when an event occurs:</p>
-<pre><code class="language-csharp">public class ReceiverScript : StartupScript
-{
-
-    public override void Start()
-    {
-        //Directly using EventKey so you don't have to declare EventReciever:
-        Script.AddOnEventAction(SenderScript.SomeEvent, HandleSomeEvent),
-    }
-
-    private void HandleSomeEvent(Vector2 position)
-    {
-        //Do something cool!!
-    }
-    
-  
-}
-</code></pre>
-<p>Execute methods at a delayed time:</p>
-<pre><code class="language-csharp">Script.AddAction(DelayedAction, TimeSpan.FromSeconds(2));
-//async method
-Script.AddTask(DelayedTask, TimeSpan.FromSeconds(2));
-</code></pre>
-<p>Repeat method execute at a given time span:</p>
-<pre><code class="language-csharp">Script.AddAction(RepeatedAction, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(2));
-//async method
-Script.AddTask(RepeatedTask, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(2));
-</code></pre>
-<h2 id="animationeasing-functions">Animation/Easing Functions</h2>
-<p>Animate a property using an easing function:</p>
-<pre><code class="language-csharp">//Instantiate prefab at a given postion
-var sphere = SpherePrefab.InstantiateSingle(FirstPosition);
-Entity.Scene.Entities.Add(sphere);
-
-Script.AddOverTimeAction((progress) =&gt;
-{
-    sphere.Transform.Position = MathUtilEx.Interpolate(startPosition, endPosition, progress,EasingFunction.ElasticEaseOut);
-
-}, TimeSpan.FromSeconds(2));
-</code></pre>
-</body></html>
 	</section>
                 
             </div>           

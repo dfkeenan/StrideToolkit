@@ -39,28 +39,28 @@ var searchModule = function() {
     a(
         {
             id:0,
-            title:"CameraExtensions",
-            content:"CameraExtensions",
+            title:"DictionaryExtensions",
+            content:"DictionaryExtensions",
             description:'',
             tags:''
         },
         {
-            url:'/XenkoToolkit/api/XenkoToolkit.Engine/CameraExtensions',
-            title:"CameraExtensions",
+            url:'/XenkoToolkit/api/XenkoToolkit.Collections/DictionaryExtensions',
+            title:"DictionaryExtensions",
             description:""
         }
     );
     a(
         {
             id:1,
-            title:"EntityComponentSearchExtensions",
-            content:"EntityComponentSearchExtensions",
+            title:"EntityExtensions",
+            content:"EntityExtensions",
             description:'',
             tags:''
         },
         {
-            url:'/XenkoToolkit/api/XenkoToolkit.Engine/EntityComponentSearchExtensions',
-            title:"EntityComponentSearchExtensions",
+            url:'/XenkoToolkit/api/XenkoToolkit.Engine/EntityExtensions',
+            title:"EntityExtensions",
             description:""
         }
     );
@@ -81,188 +81,6 @@ var searchModule = function() {
     a(
         {
             id:3,
-            title:"RandomExtensions",
-            content:"RandomExtensions",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/XenkoToolkit/api/XenkoToolkit.Mathematics/RandomExtensions',
-            title:"RandomExtensions",
-            description:""
-        }
-    );
-    a(
-        {
-            id:4,
-            title:"GameExtensions",
-            content:"GameExtensions",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/XenkoToolkit/api/XenkoToolkit.Engine/GameExtensions',
-            title:"GameExtensions",
-            description:""
-        }
-    );
-    a(
-        {
-            id:5,
-            title:"MaterialExtensions",
-            content:"MaterialExtensions",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/XenkoToolkit/api/XenkoToolkit.Rendering/MaterialExtensions',
-            title:"MaterialExtensions",
-            description:""
-        }
-    );
-    a(
-        {
-            id:6,
-            title:"ModelComponentExtensions",
-            content:"ModelComponentExtensions",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/XenkoToolkit/api/XenkoToolkit.Engine/ModelComponentExtensions',
-            title:"ModelComponentExtensions",
-            description:""
-        }
-    );
-    a(
-        {
-            id:7,
-            title:"CollectionExtensions",
-            content:"CollectionExtensions",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/XenkoToolkit/api/XenkoToolkit.Collections/CollectionExtensions',
-            title:"CollectionExtensions",
-            description:""
-        }
-    );
-    a(
-        {
-            id:8,
-            title:"MathUtilEx",
-            content:"MathUtilEx",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/XenkoToolkit/api/XenkoToolkit.Mathematics/MathUtilEx',
-            title:"MathUtilEx",
-            description:""
-        }
-    );
-    a(
-        {
-            id:9,
-            title:"EntityExtensions",
-            content:"EntityExtensions",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/XenkoToolkit/api/XenkoToolkit.Engine/EntityExtensions',
-            title:"EntityExtensions",
-            description:""
-        }
-    );
-    a(
-        {
-            id:10,
-            title:"RaySegment",
-            content:"RaySegment",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/XenkoToolkit/api/XenkoToolkit.Mathematics/RaySegment',
-            title:"RaySegment",
-            description:""
-        }
-    );
-    a(
-        {
-            id:11,
-            title:"Easing",
-            content:"Easing",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/XenkoToolkit/api/XenkoToolkit.Mathematics/Easing',
-            title:"Easing",
-            description:""
-        }
-    );
-    a(
-        {
-            id:12,
-            title:"EasingFunction",
-            content:"EasingFunction",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/XenkoToolkit/api/XenkoToolkit.Mathematics/EasingFunction',
-            title:"EasingFunction",
-            description:""
-        }
-    );
-    a(
-        {
-            id:13,
-            title:"EntityComponentCollectionExtensions",
-            content:"EntityComponentCollectionExtensions",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/XenkoToolkit/api/XenkoToolkit.Engine/EntityComponentCollectionExtensions',
-            title:"EntityComponentCollectionExtensions",
-            description:""
-        }
-    );
-    a(
-        {
-            id:14,
-            title:"DictionaryExtensions",
-            content:"DictionaryExtensions",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/XenkoToolkit/api/XenkoToolkit.Collections/DictionaryExtensions',
-            title:"DictionaryExtensions",
-            description:""
-        }
-    );
-    a(
-        {
-            id:15,
-            title:"ListStackExtensions",
-            content:"ListStackExtensions",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/XenkoToolkit/api/XenkoToolkit.Collections/ListStackExtensions',
-            title:"ListStackExtensions",
-            description:""
-        }
-    );
-    a(
-        {
-            id:16,
             title:"SimulationExtensions",
             content:"SimulationExtensions",
             description:'',
@@ -276,21 +94,49 @@ var searchModule = function() {
     );
     a(
         {
-            id:17,
-            title:"PrefabExtensions",
-            content:"PrefabExtensions",
+            id:4,
+            title:"CameraExtensions",
+            content:"CameraExtensions",
             description:'',
             tags:''
         },
         {
-            url:'/XenkoToolkit/api/XenkoToolkit.Engine/PrefabExtensions',
-            title:"PrefabExtensions",
+            url:'/XenkoToolkit/api/XenkoToolkit.Engine/CameraExtensions',
+            title:"CameraExtensions",
             description:""
         }
     );
     a(
         {
-            id:18,
+            id:5,
+            title:"CollectionExtensions",
+            content:"CollectionExtensions",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/XenkoToolkit/api/XenkoToolkit.Collections/CollectionExtensions',
+            title:"CollectionExtensions",
+            description:""
+        }
+    );
+    a(
+        {
+            id:6,
+            title:"EnumerableExtensions",
+            content:"EnumerableExtensions",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/XenkoToolkit/api/XenkoToolkit.Collections/EnumerableExtensions',
+            title:"EnumerableExtensions",
+            description:""
+        }
+    );
+    a(
+        {
+            id:7,
             title:"TransformExtensions",
             content:"TransformExtensions",
             description:'',
@@ -304,21 +150,105 @@ var searchModule = function() {
     );
     a(
         {
-            id:19,
-            title:"Space",
-            content:"Space",
+            id:8,
+            title:"EasingFunction",
+            content:"EasingFunction",
             description:'',
             tags:''
         },
         {
-            url:'/XenkoToolkit/api/XenkoToolkit.Engine/Space',
-            title:"Space",
+            url:'/XenkoToolkit/api/XenkoToolkit.Mathematics/EasingFunction',
+            title:"EasingFunction",
             description:""
         }
     );
     a(
         {
-            id:20,
+            id:9,
+            title:"GameExtensions",
+            content:"GameExtensions",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/XenkoToolkit/api/XenkoToolkit.Engine/GameExtensions',
+            title:"GameExtensions",
+            description:""
+        }
+    );
+    a(
+        {
+            id:10,
+            title:"EntityComponentSearchExtensions",
+            content:"EntityComponentSearchExtensions",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/XenkoToolkit/api/XenkoToolkit.Engine/EntityComponentSearchExtensions',
+            title:"EntityComponentSearchExtensions",
+            description:""
+        }
+    );
+    a(
+        {
+            id:11,
+            title:"MathUtilEx",
+            content:"MathUtilEx",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/XenkoToolkit/api/XenkoToolkit.Mathematics/MathUtilEx',
+            title:"MathUtilEx",
+            description:""
+        }
+    );
+    a(
+        {
+            id:12,
+            title:"MaterialExtensions",
+            content:"MaterialExtensions",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/XenkoToolkit/api/XenkoToolkit.Rendering/MaterialExtensions',
+            title:"MaterialExtensions",
+            description:""
+        }
+    );
+    a(
+        {
+            id:13,
+            title:"RaySegment",
+            content:"RaySegment",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/XenkoToolkit/api/XenkoToolkit.Mathematics/RaySegment',
+            title:"RaySegment",
+            description:""
+        }
+    );
+    a(
+        {
+            id:14,
+            title:"Easing",
+            content:"Easing",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/XenkoToolkit/api/XenkoToolkit.Mathematics/Easing',
+            title:"Easing",
+            description:""
+        }
+    );
+    a(
+        {
+            id:15,
             title:"RandomListExtensions",
             content:"RandomListExtensions",
             description:'',
@@ -332,15 +262,85 @@ var searchModule = function() {
     );
     a(
         {
-            id:21,
-            title:"EnumerableExtensions",
-            content:"EnumerableExtensions",
+            id:16,
+            title:"ModelComponentExtensions",
+            content:"ModelComponentExtensions",
             description:'',
             tags:''
         },
         {
-            url:'/XenkoToolkit/api/XenkoToolkit.Collections/EnumerableExtensions',
-            title:"EnumerableExtensions",
+            url:'/XenkoToolkit/api/XenkoToolkit.Engine/ModelComponentExtensions',
+            title:"ModelComponentExtensions",
+            description:""
+        }
+    );
+    a(
+        {
+            id:17,
+            title:"ListStackExtensions",
+            content:"ListStackExtensions",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/XenkoToolkit/api/XenkoToolkit.Collections/ListStackExtensions',
+            title:"ListStackExtensions",
+            description:""
+        }
+    );
+    a(
+        {
+            id:18,
+            title:"Space",
+            content:"Space",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/XenkoToolkit/api/XenkoToolkit.Engine/Space',
+            title:"Space",
+            description:""
+        }
+    );
+    a(
+        {
+            id:19,
+            title:"EntityComponentCollectionExtensions",
+            content:"EntityComponentCollectionExtensions",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/XenkoToolkit/api/XenkoToolkit.Engine/EntityComponentCollectionExtensions',
+            title:"EntityComponentCollectionExtensions",
+            description:""
+        }
+    );
+    a(
+        {
+            id:20,
+            title:"PrefabExtensions",
+            content:"PrefabExtensions",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/XenkoToolkit/api/XenkoToolkit.Engine/PrefabExtensions',
+            title:"PrefabExtensions",
+            description:""
+        }
+    );
+    a(
+        {
+            id:21,
+            title:"RandomExtensions",
+            content:"RandomExtensions",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/XenkoToolkit/api/XenkoToolkit.Mathematics/RandomExtensions',
+            title:"RandomExtensions",
             description:""
         }
     );

@@ -1,3 +1,0 @@
-Title: Documentation
----
-Something
