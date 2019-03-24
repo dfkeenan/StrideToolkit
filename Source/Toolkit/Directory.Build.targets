@@ -26,8 +26,12 @@
 
   <Target Name="CopyPackage"  AfterTargets="Pack" Condition=" '$(Configuration)'=='Release' ">
     <ItemGroup>
+      <OldNuGetPackage Include="$(NuGetDestionationPath)\$(PackageId).*.nupkg" />
+    </ItemGroup>
+    <ItemGroup>
       <NewNugetFile Include="$(OutputPath)..\$(PackageId).$(PackageVersion).nupkg" />
     </ItemGroup>
+    <Delete Files="@(OldNuGetPackage)" />
     <Copy SourceFiles="@(NewNugetFile)" DestinationFolder="$(NuGetDestionationPath)"/>
   </Target>
 </Project>
