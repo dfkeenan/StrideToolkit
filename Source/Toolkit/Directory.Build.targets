@@ -23,4 +23,11 @@
       <Message Text="Git raw url '$(GitRawUrlBase)'"></Message>
       <Message Text="Git media url '$(GitMediaUrlBase)'"></Message>
     </Target>
+
+  <Target Name="CopyPackage"  AfterTargets="Pack" Condition=" '$(Configuration)'=='Release' ">
+    <ItemGroup>
+      <NewNugetFile Include="$(OutputPath)..\$(PackageId).$(PackageVersion).nupkg" />
+    </ItemGroup>
+    <Copy SourceFiles="@(NewNugetFile)" DestinationFolder="$(NuGetDestionationPath)"/>
+  </Target>
 </Project>

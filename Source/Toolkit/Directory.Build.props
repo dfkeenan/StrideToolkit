@@ -1,13 +1,16 @@
 <Project>
  <PropertyGroup>
     <Authors>Daniel Keenan</Authors>
-    <PackageProjectUrl>https://github.com/dfkeenan/XenkoToolkit</PackageProjectUrl>
+    <PackageProjectUrl>https://dfkeenan.github.io/XenkoToolkit/</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright © 2019</Copyright>
     <RepositoryUrl>https://github.com/dfkeenan/XenkoToolkit.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageIconUrl>Images/PackageIcon.png</PackageIconUrl>
  </PropertyGroup>
+  <PropertyGroup>
+    <NuGetDestionationPath>$(MSBuildThisFileDirectory)..\..\Build\Packages</NuGetDestionationPath>
+  </PropertyGroup>
   <!--<PropertyGroup Condition=" '$(Configuration)' == 'PublicRelease' ">
     <PublicRelease>true</PublicRelease>
   </PropertyGroup>-->
