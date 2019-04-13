@@ -77,7 +77,7 @@ Hierarchy:
                         Id: 7b180d1c-46ab-49d7-a079-491a4c372474
                         Name: null
                         Projection: Perspective
-                        Slot: 7923e9c2-35a8-420c-8ea0-d2ece0e289f6
+                        Slot: 2b69f45f-9d53-42a3-9beb-a6373c0150c2
                     ceb9bc2ee3145a7faab49993d732d624: !XenkoToolkit.Demo.BasicCameraController,XenkoToolkit.Demo.Game
                         Id: 811df10e-9ab3-4e7d-8118-fdfbeefb15c5
                         KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}

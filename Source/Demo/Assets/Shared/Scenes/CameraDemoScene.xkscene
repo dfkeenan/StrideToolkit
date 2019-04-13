@@ -193,7 +193,7 @@ Hierarchy:
                     84f348b6425d355db5710a27013a2a01: !XenkoToolkit.Demo.Outline.OutlineManager,XenkoToolkit.Demo.Game
                         Id: e1848128-2518-4486-8d30-a759fc549419
                         OutlinePrefab: 7d54f947-6c02-45e7-a9ed-c88cac3f1e36:Outline/OutlineEntity
-                        OutlineGraphicsCompositor: ed8582d4-1037-467b-b027-109026da4c14:Outline/OutlineGraphicsCompositor
+                        OutlineGraphicsCompositor: ed8582d4-1037-467b-b027-109026da4c14:GraphicsCompositor
                         HoverMaterial: a04c9cfb-2726-4596-96da-1767970d5b84:Outline/HoverOutlineMaterial
                         SelectMaterial: 90b9f2b1-703e-4db7-98ce-a27a6c0369dc:Outline/SelectOutlineMaterial
         -   Entity:

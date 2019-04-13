@@ -9,7 +9,7 @@ Meta:
     Dependencies: null
 AssetFolders:
     -   Path: !dir ../Assets/Shared
-    -   Path: !dir ../XenkoToolkit.Demo.Game/Effects
+    -   Path: !dir Effects
 ResourceFolders: []
 OutputGroupDirectories: {}
 ExplicitFolders: []

@@ -16,33 +16,25 @@ namespace XenkoToolkit.Demo.Outline
     public class OutlineManager : SyncScript
     {
 
-        private GraphicsCompositor originalGraphicsCompositor;
         private Entity hoverEntity;
         private Entity selectEntity;
         private EventReceiver<Entity> entitySelected;
         private EventReceiver<Entity> entityHover;
 
         public Prefab OutlinePrefab { get; set; }
-        public GraphicsCompositor OutlineGraphicsCompositor { get; set; }
         public Material HoverMaterial { get; set; }
         public Material SelectMaterial { get; set; }
 
         public override void Start()
         {
-            if (OutlineGraphicsCompositor != null)
-            {
-                originalGraphicsCompositor = SceneSystem.GraphicsCompositor;
-                SceneSystem.GraphicsCompositor = OutlineGraphicsCompositor;
+            hoverEntity = OutlinePrefab.InstantiateSingle();
+            hoverEntity.Get<OutlineEntity>().Material = HoverMaterial;
 
-                hoverEntity = OutlinePrefab.InstantiateSingle();
-                hoverEntity.Get<OutlineEntity>().Material = HoverMaterial;
-
-                selectEntity = OutlinePrefab.InstantiateSingle();
-                selectEntity.Get<OutlineEntity>().Material = SelectMaterial;
-            }
+            selectEntity = OutlinePrefab.InstantiateSingle();
+            selectEntity.Get<OutlineEntity>().Material = SelectMaterial;
 
             entitySelected = new EventReceiver<Entity>(CameraExtensionsDemo.EntitySelected);
-            entityHover = new EventReceiver<Entity>(CameraExtensionsDemo.EntityHover);
+            entityHover = new EventReceiver<Entity>(CameraExtensionsDemo.EntityHover);            
         }
 
         public override void Update()
@@ -61,10 +53,7 @@ namespace XenkoToolkit.Demo.Outline
 
         public override void Cancel()
         {
-            if (OutlineGraphicsCompositor != null)
-            {
-                SceneSystem.GraphicsCompositor = originalGraphicsCompositor;
-            }
+           
         }
     }
 }
