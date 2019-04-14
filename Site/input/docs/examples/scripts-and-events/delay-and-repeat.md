@@ -2,6 +2,9 @@ Title: Delay and repeat.
 Description: Use ScriptSystem extensions to delay or repeat executtion of methods. 
 Order: 1
 ---
+### Packages
+- <?# nuget "XenkoToolkit" /?>
+
 Execute methods at a delayed time:
 ```csharp
 Script.AddAction(DelayedAction, TimeSpan.FromSeconds(2));

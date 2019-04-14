@@ -2,6 +2,10 @@ Title: Pick and aim
 Description: Use camera, physics and transform extensions to look at selected entity. 
 Order: 1
 ---
+### Packages
+- <?# nuget "XenkoToolkit" /?>
+- <?# nuget "XenkoToolkit.Physics" /?>
+
 ## Physics/Input/Transform Extensions
 Pick and aim at an `Entity`:
 

@@ -2,6 +2,8 @@ Title: Handling events.
 Description: Use ScriptSystem extensions to handle EventKey<T> events. 
 Order: 1
 ---
+### Packages
+- <?# nuget "XenkoToolkit" /?>
 
 ## Script Extensions
 Script instance methods used for Actions/Tasks will automatically stop if `ScriptComponent`/`Entity` is removed. Other methods may need to be removed manually.

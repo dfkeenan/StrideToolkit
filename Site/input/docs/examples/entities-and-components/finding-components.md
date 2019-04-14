@@ -2,6 +2,9 @@ Title: Finding Components
 Description: Searching entity hierarchy for components. 
 Order: 1
 ---
+### Packages
+- <?# nuget "XenkoToolkit" /?>
+
 ## Entity Component Search Extensions
 Find `Component` in children and self:
 ```csharp

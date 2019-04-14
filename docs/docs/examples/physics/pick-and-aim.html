@@ -137,7 +137,14 @@
 			<h1>Pick and aim</h1>
 		</section>
 	<section class="content">
-		<html><head></head><body><h2 id="physicsinputtransform-extensions">Physics/Input/Transform Extensions</h2>
+		<h3 id="packages">Packages</h3>
+<ul>
+<li><a href="https://www.nuget.org/packages/XenkoToolkit/" target="_blank"><img alt="Nuget (with prereleases)" src="https://img.shields.io/nuget/v/XenkoToolkit.svg?label=XenkoToolkit"></a>
+</li>
+<li><a href="https://www.nuget.org/packages/XenkoToolkit.Physics/" target="_blank"><img alt="Nuget (with prereleases)" src="https://img.shields.io/nuget/v/XenkoToolkit.Physics.svg?label=XenkoToolkit.Physics"></a>
+</li>
+</ul>
+<h2 id="physicsinputtransform-extensions">Physics/Input/Transform Extensions</h2>
 <p>Pick and aim at an <code>Entity</code>:</p>
 <pre><code class="language-csharp">if (Input.IsMouseButtonPressed(SiliconStudio.Xenko.Input.MouseButton.Left))
 {   
@@ -155,7 +162,7 @@ if(target != null)
     MainCamera.Entity.Transform.LookAt(target.Transform, Game.GetDeltaTime() * 3.0f);
 }
 </code></pre>
-</body></html>
+
 	</section>
                 
             </div>           

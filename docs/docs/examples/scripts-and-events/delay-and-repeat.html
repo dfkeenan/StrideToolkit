@@ -137,7 +137,12 @@
 			<h1>Delay and repeat.</h1>
 		</section>
 	<section class="content">
-		<html><head></head><body><p>Execute methods at a delayed time:</p>
+		<h3 id="packages">Packages</h3>
+<ul>
+<li><a href="https://www.nuget.org/packages/XenkoToolkit/" target="_blank"><img alt="Nuget (with prereleases)" src="https://img.shields.io/nuget/v/XenkoToolkit.svg?label=XenkoToolkit"></a>
+</li>
+</ul>
+<p>Execute methods at a delayed time:</p>
 <pre><code class="language-csharp">Script.AddAction(DelayedAction, TimeSpan.FromSeconds(2));
 //async method
 Script.AddTask(DelayedTask, TimeSpan.FromSeconds(2));
@@ -147,7 +152,7 @@ Script.AddTask(DelayedTask, TimeSpan.FromSeconds(2));
 //async method
 Script.AddTask(RepeatedTask, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(2));
 </code></pre>
-</body></html>
+
 	</section>
                 
             </div>           

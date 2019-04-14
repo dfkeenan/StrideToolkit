@@ -137,14 +137,19 @@
 			<h1>Finding Components</h1>
 		</section>
 	<section class="content">
-		<html><head></head><body><h2 id="entity-component-search-extensions">Entity Component Search Extensions</h2>
+		<h3 id="packages">Packages</h3>
+<ul>
+<li><a href="https://www.nuget.org/packages/XenkoToolkit/" target="_blank"><img alt="Nuget (with prereleases)" src="https://img.shields.io/nuget/v/XenkoToolkit.svg?label=XenkoToolkit"></a>
+</li>
+</ul>
+<h2 id="entity-component-search-extensions">Entity Component Search Extensions</h2>
 <p>Find <code>Component</code> in children and self:</p>
 <pre><code class="language-csharp">//Find component in self or children
 var model = this.Entity.GetComponentInChildrenAndSelf&lt;ModelComponent&gt;();
 //Find all components in self and children
 var models = this.Entity.GetComponentInChildrenAndSelf&lt;ModelComponent&gt;();
 </code></pre>
-</body></html>
+
 	</section>
                 
             </div>           

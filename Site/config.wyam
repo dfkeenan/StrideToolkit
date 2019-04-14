@@ -22,3 +22,15 @@ if (System.Environment.GetEnvironmentVariable("SET_WYAM_LINK_ROOT") == "1")
 Settings[DocsKeys.IncludeGlobalNamespace] = false;
 Settings[DocsKeys.SourceFiles] = @"../../Source/Toolkit/**/{!bin,!obj,!packages,!*.Tests,}/**/*.cs";
 // Add any pipeline customizations here
+
+ShortcodeCollection.Add("NuGet", (KeyValuePair<string, string>[] arguments, IExecutionContext context) => 
+{
+    ConvertingDictionary args = arguments.ToDictionary(
+                context,
+                "Package",
+                "Pre");
+    var package = args.String("Package");
+    var version = args.Bool("Pre",false) ? "vpre" : "v";
+
+    return $"<a href=\"https://www.nuget.org/packages/{package}/\" target=\"_blank\"><img alt=\"Nuget (with prereleases)\" src=\"https://img.shields.io/nuget/{version}/{package}.svg?label={package}\"></a>";
+});

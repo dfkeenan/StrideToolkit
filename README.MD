@@ -4,8 +4,6 @@ Xenko Toolkit is a .NET Standard library for use with the [Xenko Game Engine](ht
 
 # Installing
 
-Coming Soon&trade;
-
     Install-Package XenkoToolkit -Prerelease
 
     Install-Package XenkoToolkit.Physics -Prerelease
