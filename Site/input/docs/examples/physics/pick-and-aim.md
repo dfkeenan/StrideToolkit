@@ -10,7 +10,7 @@ Order: 1
 Pick and aim at an `Entity`:
 
 ```csharp
-if (Input.IsMouseButtonPressed(SiliconStudio.Xenko.Input.MouseButton.Left))
+if (Input.IsMouseButtonPressed(Xenko.Input.MouseButton.Left))
 {   
     var ray = MainCamera.ScreenToWorldRaySegment(Input.MousePosition);
 
