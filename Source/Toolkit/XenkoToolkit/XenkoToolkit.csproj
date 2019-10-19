@@ -15,13 +15,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.0.6-beta">
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.1.13-beta">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Xenko.Core" Version="3.1.0.1-beta02-0550" PrivateAssets="contentfiles;analyzers" />
-    <PackageReference Include="Xenko.Engine" Version="3.1.0.1-beta02-0550" PrivateAssets="contentfiles;analyzers" />
-    <PackageReference Include="Xenko.Physics" Version="3.1.0.1-beta02-0550" PrivateAssets="contentfiles;analyzers" />
+    <PackageReference Include="Xenko.Core" Version="3.1.0.1-beta02-0752" PrivateAssets="contentfiles;analyzers" />
+    <PackageReference Include="Xenko.Engine" Version="3.1.0.1-beta02-0752" PrivateAssets="contentfiles;analyzers" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Engine\EntityExtensions.GetComponents.tt">
