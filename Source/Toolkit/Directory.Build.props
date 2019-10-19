@@ -6,7 +6,7 @@
     <Copyright>Copyright © 2019</Copyright>
     <RepositoryUrl>https://github.com/dfkeenan/XenkoToolkit.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageIconUrl>Images/PackageIcon-Red.png</PackageIconUrl>
+    <PackageIcon>PackageIcon-Red.png</PackageIcon>
  </PropertyGroup>
   <PropertyGroup>
     <NuGetDestionationPath>$(MSBuildThisFileDirectory)..\..\Build\Packages</NuGetDestionationPath>
