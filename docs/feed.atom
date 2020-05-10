@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-	<id>https://dfkeenan.github.io/XenkoToolkit</id>
-	<title>XenkoToolkit</title>
-	<link rel="self" href="https://dfkeenan.github.io/XenkoToolkit" />
-	<rights>2019</rights>
-	<updated>2019-04-19T01:03:29Z</updated>
+	<id>https://dfkeenan.github.io/StrideToolkit</id>
+	<title>StrideToolkit</title>
+	<link rel="self" href="https://dfkeenan.github.io/StrideToolkit" />
+	<rights>2020</rights>
+	<updated>2020-05-10T10:31:29Z</updated>
 </feed>

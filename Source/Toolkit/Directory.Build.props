@@ -1,10 +1,10 @@
 <Project>
  <PropertyGroup>
     <Authors>Daniel Keenan</Authors>
-    <PackageProjectUrl>https://dfkeenan.github.io/XenkoToolkit/</PackageProjectUrl>
+    <PackageProjectUrl>https://dfkeenan.github.io/StrideToolkit/</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Copyright>Copyright © 2019</Copyright>
-    <RepositoryUrl>https://github.com/dfkeenan/XenkoToolkit.git</RepositoryUrl>
+    <Copyright>Copyright © 2020</Copyright>
+    <RepositoryUrl>https://github.com/dfkeenan/StrideToolkit.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>PackageIcon-Red.png</PackageIcon>
  </PropertyGroup>

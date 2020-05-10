@@ -19,7 +19,7 @@ This table indicates which version of Stride each version of the toolkit was com
 
 ## Examples
 
-See [Documentation](https://dfkeenan.github.io/XenkoToolkit/docs/)
+See [Documentation](https://dfkeenan.github.io/StrideToolkit/docs/)
 
 ## Building From Source
 
