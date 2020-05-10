@@ -14,7 +14,7 @@ This table indicates which version of Stride each version of the toolkit was com
 
 |Branch|NuGet|Engine Version|
 |:--:|:--:|:--:|
-|master|TBD|Stride 4.0.0.1-beta02-0926|
+|master|0.9.0.0-alpha|Stride 4.0.0.1-beta02-0926|
 |Xenko|0.8.0.0-alpha|Xenko 3.2.0.1-beta01|
 
 ## Examples
