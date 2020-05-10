@@ -3,7 +3,7 @@ Description: Searching entity hierarchy for components.
 Order: 1
 ---
 ### Packages
-- <?# nuget "XenkoToolkit" /?>
+- <?# nuget "StrideToolkit" /?>
 
 ## Entity Component Search Extensions
 Find `Component` in children and self:

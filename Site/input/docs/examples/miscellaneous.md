@@ -3,7 +3,7 @@ Description: Examples without a home.
 Order: 1000
 ---
 ### Packages
-- <?# nuget "XenkoToolkit" /?>
+- <?# nuget "StrideToolkit" /?>
 
 ## Animation/Easing Functions
 Animate a property using an easing function:

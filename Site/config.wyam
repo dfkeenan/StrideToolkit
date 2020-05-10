@@ -6,15 +6,15 @@ System.Globalization.CultureInfo.DefaultThreadCurrentCulture
 
 
 // Customize your settings and add new ones here
-Settings["SourceUrl"] = @"https://github.com/dfkeenan/XenkoToolkit";
+Settings["SourceUrl"] = @"https://github.com/dfkeenan/StrideToolkit";
 Settings[Keys.Host] = "dfkeenan.github.io";
 Settings[Keys.LinksUseHttps] = true;
-Settings[DocsKeys.Title] = "XenkoToolkit";
+Settings[DocsKeys.Title] = "StrideToolkit";
 Settings[DocsKeys.Logo] = "/assets/img/logo.png";
 if (System.Environment.GetEnvironmentVariable("SET_WYAM_LINK_ROOT") == "1")
 {
     Console.WriteLine("Setting LinkRoot");
-    Settings[Keys.LinkRoot] = "/XenkoToolkit";
+    Settings[Keys.LinkRoot] = "/StrideToolkit";
 }
 
 

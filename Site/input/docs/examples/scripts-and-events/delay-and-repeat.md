@@ -3,7 +3,7 @@ Description: Use ScriptSystem extensions to delay or repeat executtion of method
 Order: 1
 ---
 ### Packages
-- <?# nuget "XenkoToolkit" /?>
+- <?# nuget "StrideToolkit" /?>
 
 Execute methods at a delayed time:
 ```csharp
