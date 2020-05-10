@@ -1,6 +1,6 @@
 # Stride Toolkit
 
-Stride Toolkit is a .NET Standard library for use with the [Stride Game Engine](https://https://stride3d.net//). It's goal is to add extra extensions and utilites to make things a bit easier.
+Stride Toolkit is a .NET Standard library for use with the [Stride Game Engine](https://stride3d.net//). It's goal is to add extra extensions and utilites to make things a bit easier.
 
 # Installing
 
