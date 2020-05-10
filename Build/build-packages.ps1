@@ -1,1 +1,1 @@
-msbuild ..\Source\XenkoToolkit.sln /p:Configuration="Release" /p:Platform="Any CPU" /p:PublicRelease=true
+msbuild ..\Source\StrideToolkit.sln /p:Configuration="Release" /p:Platform="Any CPU" /p:PublicRelease=true

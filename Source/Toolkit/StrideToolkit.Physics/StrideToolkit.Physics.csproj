@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>A Physics Toolkit for the Stride game engine.</Description>
+    <PackageTags>Stride gamedev Game Physics</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.1.13-beta">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Stride.Physics" Version="4.0.0.1-beta02-0926" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StrideToolkit\StrideToolkit.csproj" />
+  </ItemGroup>
+</Project>

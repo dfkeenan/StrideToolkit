@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>A Toolkit for the Stride game engine.</Description>
+    <PackageTags>Stride gamedev Game</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="Engine\EntityExtensions.GetComponents.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EntityExtensions.GetComponents.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.1.13-beta">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Stride.Core" Version="4.0.0.1-beta02-0926" PrivateAssets="contentfiles;analyzers" />
+    <PackageReference Include="Stride.Engine" Version="4.0.0.1-beta02-0926" PrivateAssets="contentfiles;analyzers" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Engine\EntityExtensions.GetComponents.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EntityExtensions.GetComponents.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Engine\EntityExtensions.GetComponents.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EntityExtensions.GetComponents.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

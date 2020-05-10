@@ -1,0 +1,30 @@
+!PrefabAsset
+Id: fc3d61d4-fa41-47b4-b0c5-39e5affaf404
+SerializedVersion: {Stride: 3.1.0.1}
+Tags: []
+Hierarchy:
+    RootParts:
+        - ref!! db53157c-c333-4b5a-ab6d-a8bc76f1d0bf
+    Parts:
+        -   Entity:
+                Id: db53157c-c333-4b5a-ab6d-a8bc76f1d0bf
+                Name: Back
+                Components:
+                    ddefadbca1f45ddcdcbe6359433fb860: !TransformComponent
+                        Id: 61ca3ee8-0389-4ad6-bb7d-72ae5b01e4a9
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    d08d65c392c05230413b4175ee1b529f: !UIComponent
+                        Id: e3f3edf4-e80f-49f8-8f19-7ed6e5509cd3
+                        Page: c7439e8f-602b-4591-8c58-1534d0a9d368:Scenes/BackButton
+                        Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
+                        Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                    638259d25610b3d8622bcdb316d3ddba: !StrideToolkit.Engine.Navigation.Components.NavigationButtonHandler,StrideToolkit.Demo.Game
+                        Id: bad40bbc-0a6b-4283-b94f-fbc13de80f40
+                        Page: c7439e8f-602b-4591-8c58-1534d0a9d368:Scenes/BackButton
+                        ButtonName: BackButton
+                        ButtonAction: !StrideToolkit.Engine.Navigation.Components.NavigateBack,StrideToolkit.Demo.Game
+                            KeepLoaded: false
+                            RememberCurrent: true

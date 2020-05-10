@@ -1,0 +1,118 @@
+!UIPageAsset
+Id: 86968678-6552-4ca9-90fd-fbfafa0598db
+SerializedVersion: {Stride: 2.1.0.1}
+Tags: []
+Design:
+    Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
+Hierarchy:
+    RootParts:
+        - !Grid ref!! 0409329a-22b4-46a6-8440-bfe8d5cfaa65
+    Parts:
+        -   UIElement: !Grid
+                Id: 0409329a-22b4-46a6-8440-bfe8d5cfaa65
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Margin: {}
+                Children:
+                    f2439003fd1b8cd36f8efcdd62c36ae7: !StackPanel ref!! a278acf7-d072-408e-8f0a-f4c0f33ca056
+                RowDefinitions: {}
+                ColumnDefinitions: {}
+                LayerDefinitions: {}
+        -   UIElement: !TextBlock
+                Id: 2327a966-721f-49ff-bd59-c9801813a6e7
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                HorizontalAlignment: Center
+                VerticalAlignment: Center
+                Margin: {}
+                Text: Camera Demo
+                Font: c90f3988-0544-4cbe-993f-13af7d9c23c6:StrideDefaultFont
+                TextSize: 20.0
+                TextColor: {R: 240, G: 240, B: 240, A: 255}
+        -   UIElement: !Button
+                Id: 33659faa-b1ca-4cdc-bfa7-ab958ab4209f
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                DrawLayerNumber: 2
+                Margin: {}
+                Name: CameraDemo
+                Content: !TextBlock ref!! 2327a966-721f-49ff-bd59-c9801813a6e7
+                PressedImage: !SpriteFromSheet
+                    Sheet: 1be3340c-b797-4557-bff7-d9be92dfdb42:StrideUIDesigns
+                    CurrentFrame: 2
+                NotPressedImage: !SpriteFromSheet
+                    Sheet: 1be3340c-b797-4557-bff7-d9be92dfdb42:StrideUIDesigns
+                    CurrentFrame: 1
+                MouseOverImage: !SpriteFromSheet
+                    Sheet: 1be3340c-b797-4557-bff7-d9be92dfdb42:StrideUIDesigns
+        -   UIElement: !Button
+                Id: 6ada6f7a-0c81-436f-b293-19befb7f0833
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                DrawLayerNumber: 2
+                Margin: {}
+                MaximumWidth: 3.40282347E+38
+                MaximumHeight: 3.40282347E+38
+                MaximumDepth: 3.40282347E+38
+                Name: EventDemo
+                Content: !TextBlock ref!! 6df3429e-41de-4c56-86f1-810bc9dbe7e1
+                PressedImage: !SpriteFromSheet
+                    Sheet: 1be3340c-b797-4557-bff7-d9be92dfdb42:StrideUIDesigns
+                    CurrentFrame: 2
+                NotPressedImage: !SpriteFromSheet
+                    Sheet: 1be3340c-b797-4557-bff7-d9be92dfdb42:StrideUIDesigns
+                    CurrentFrame: 1
+                MouseOverImage: !SpriteFromSheet
+                    Sheet: 1be3340c-b797-4557-bff7-d9be92dfdb42:StrideUIDesigns
+        -   UIElement: !TextBlock
+                Id: 6df3429e-41de-4c56-86f1-810bc9dbe7e1
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                HorizontalAlignment: Center
+                VerticalAlignment: Center
+                Margin: {}
+                Text: Event Demo
+                Font: c90f3988-0544-4cbe-993f-13af7d9c23c6:StrideDefaultFont
+                TextSize: 20.0
+                TextColor: {R: 240, G: 240, B: 240, A: 255}
+        -   UIElement: !TextBlock
+                Id: 89690528-9cba-42f0-bb79-95b4d0d067ef
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                HorizontalAlignment: Center
+                VerticalAlignment: Center
+                Margin: {}
+                Text: Easing Demo
+                Font: c90f3988-0544-4cbe-993f-13af7d9c23c6:StrideDefaultFont
+                TextSize: 20.0
+                TextColor: {R: 240, G: 240, B: 240, A: 255}
+        -   UIElement: !Button
+                Id: 99d739d0-feb8-4559-9036-83270729c090
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                DrawLayerNumber: 2
+                Margin: {}
+                Name: EasingDemo
+                Content: !TextBlock ref!! 89690528-9cba-42f0-bb79-95b4d0d067ef
+                PressedImage: !SpriteFromSheet
+                    Sheet: 1be3340c-b797-4557-bff7-d9be92dfdb42:StrideUIDesigns
+                    CurrentFrame: 2
+                NotPressedImage: !SpriteFromSheet
+                    Sheet: 1be3340c-b797-4557-bff7-d9be92dfdb42:StrideUIDesigns
+                    CurrentFrame: 1
+                MouseOverImage: !SpriteFromSheet
+                    Sheet: 1be3340c-b797-4557-bff7-d9be92dfdb42:StrideUIDesigns
+        -   UIElement: !StackPanel
+                Id: a278acf7-d072-408e-8f0a-f4c0f33ca056
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Width: 527.0
+                Height: 696.0
+                Margin: {Left: 300.0, Top: 30.0, Right: 300.0}
+                MaximumWidth: 3.40282347E+38
+                MaximumHeight: 3.40282347E+38
+                MaximumDepth: 3.40282347E+38
+                Children:
+                    b742fbb11682cd32c3597cdc84b9d3b0: !Button ref!! 33659faa-b1ca-4cdc-bfa7-ab958ab4209f
+                    a3ee6963778ea8519add533b6f90b7d5: !Button ref!! 99d739d0-feb8-4559-9036-83270729c090
+                    7ae3e7decb5c6d87707284fa2391eafa: !Button ref!! 6ada6f7a-0c81-436f-b293-19befb7f0833

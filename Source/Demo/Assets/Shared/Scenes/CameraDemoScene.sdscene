@@ -1,0 +1,223 @@
+!SceneAsset
+Id: 3993c2cc-c601-4ac2-8240-4b58cd53bba6
+SerializedVersion: {Stride: 3.1.0.1}
+Tags: []
+ChildrenIds: []
+Offset: {X: 0.0, Y: 0.0, Z: 0.0}
+Hierarchy:
+    RootParts:
+        - ref!! af7e1e04-a5a1-4097-ab01-14d95f8cff1d
+        - ref!! e1cc1033-3caa-4c15-87a0-7635fb781aab
+        - ref!! 31b11245-03d8-4b01-983f-4111d26b21db
+        - ref!! 2abcce26-fd2d-4cfb-9962-2be1cd4ffe3f
+        - ref!! f6b06a97-a9c1-433b-8753-90d92001f5bd
+        - ref!! 931765e4-4608-4ca2-95ee-5e6381ac3b0b
+        - ref!! 069bcb41-41cb-4070-826f-beb074b479eb
+        - ref!! 93ea5f41-5258-4a5a-87ef-b676cc8ce168
+    Parts:
+        -   Entity:
+                Id: 069bcb41-41cb-4070-826f-beb074b479eb
+                Name: Back
+                Components:
+                    ddefadbca1f45ddcdcbe6359433fb860: !TransformComponent
+                        Id: 24c4d9b1-f6bf-4db1-8990-22d67cbc1197
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    d08d65c392c05230413b4175ee1b529f: !UIComponent
+                        Id: e33dd7ec-98da-4325-9a82-6fdfc964123a
+                        Page: c7439e8f-602b-4591-8c58-1534d0a9d368:Scenes/BackButton
+                        Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
+                        Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                    638259d25610b3d8622bcdb316d3ddba: !StrideToolkit.Engine.Navigation.Components.NavigationButtonHandler,StrideToolkit.Demo.Game
+                        Id: 6088eaca-ff6d-499e-a867-860ef46a55b0
+                        Page*: c7439e8f-602b-4591-8c58-1534d0a9d368:Scenes/BackButton
+                        ButtonName: BackButton
+                        ButtonAction: !StrideToolkit.Engine.Navigation.Components.NavigateBack,StrideToolkit.Demo.Game
+                            KeepLoaded: false
+                            RememberCurrent: true
+            Base:
+                BasePartAsset: fc3d61d4-fa41-47b4-b0c5-39e5affaf404:Scenes/Back
+                BasePartId: db53157c-c333-4b5a-ab6d-a8bc76f1d0bf
+                InstanceId: 84682266-e168-4b2c-be25-1cb8e941bd09
+        -   Entity:
+                Id: 2abcce26-fd2d-4cfb-9962-2be1cd4ffe3f
+                Name: Skybox
+                Components:
+                    f941e35fbe942905e26e83ececbcd48a: !TransformComponent
+                        Id: fbb59c56-bf27-4baa-a28d-4ab206f975cd
+                        Position: {X: 0.0, Y: 2.0, Z: -2.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    141fa5a52f001009e03210dfea4fab7a: !BackgroundComponent
+                        Id: b8fb3028-c644-4b77-8d41-37fd02b805f1
+                        Texture: 30639d53-951f-48d9-833b-6c0c7e03a753:Skybox texture
+                    e6a242134c8dab1ef447cc058b572e27: !LightComponent
+                        Id: 148871f8-c29f-47aa-947f-6acf97f4a0e6
+                        Type: !LightSkybox
+                            Skybox: 390fe0c0-b69d-4421-93b5-9894e27cfefe:Skybox
+        -   Entity:
+                Id: 31b11245-03d8-4b01-983f-4111d26b21db
+                Name: Directional light
+                Components:
+                    be854e31a74be8109a2b5f2599ca315f: !TransformComponent
+                        Id: 903e014d-e69d-42ef-904b-e72d2d4800e0
+                        Position: {X: 0.0, Y: 2.0, Z: 0.0}
+                        Rotation: {X: 1.131334E-08, Y: -0.9659258, Z: -0.258819044, W: -4.222196E-08}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    ae45cb01295a9ac581174179a2a20d15: !LightComponent
+                        Id: 49a3bd3b-2c6d-4165-8d7e-c7ecbca2a452
+                        Type: !LightDirectional
+                            Color: !ColorRgbProvider
+                                Value: {R: 1.0, G: 1.0, B: 1.0}
+                            Shadow:
+                                Enabled: true
+                                Filter: !LightShadowMapFilterTypePcf
+                                    FilterSize: Filter5x5
+                                Size: Large
+                                DepthRange: {}
+                                PartitionMode: !LightDirectionalShadowMap.PartitionLogarithmic {}
+                                ComputeTransmittance: false
+                                BiasParameters: {}
+                        Intensity: 20.0
+        -   Entity:
+                Id: 931765e4-4608-4ca2-95ee-5e6381ac3b0b
+                Name: Sphere
+                Components:
+                    9403b3e7d52e531a9cdac93bc9fc51d3: !TransformComponent
+                        Id: f88dc210-93a3-4a9b-8ba1-f61fc7f97288
+                        Position: {X: 0.0, Y: 0.5, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    fcbfed33d4046e1c11a361c1dd0e41d8: !ModelComponent
+                        Id: e56d2e5a-0e5b-4b6e-b1fe-eea7c2abe353
+                        Model: cbc4a0b1-dc7f-46dc-9fae-e5262f18c70b:Models/Sphere
+                        Materials: {}
+                    15b656306263f2fba445570bfc8c88cd: !RigidbodyComponent
+                        Id: dd4238ef-9bce-4cff-a75e-27f94c9b5087
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: true
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            c7331cbf25df203926e7079ae84519d9: !SphereColliderShapeDesc
+                                Is2D: false
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+        -   Entity:
+                Id: 93ea5f41-5258-4a5a-87ef-b676cc8ce168
+                Name: Cube
+                Components:
+                    f9ec3313c5fccfaba306fde24704199b: !TransformComponent
+                        Id: 8014622b-a0f8-4918-b970-d3535d004969
+                        Position: {X: -2.4304657, Y: 1.47333515, Z: -0.800136566}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.401625156, W: 0.915804148}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    5252504cad8bdf7d9076b36852507b92: !ModelComponent
+                        Id: e55c4374-39de-4426-a97f-5c21a092f771
+                        Model: 57cfa179-f5da-405a-be99-19f203516257:Models/Cube
+                        Materials: {}
+                    bab46daca705b522da6789f20b337c8b: !RigidbodyComponent
+                        Id: 41ab8996-f7e9-4a1d-a4d9-eaab9bbaf2ad
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: true
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            7e80309acfc5e1293845839b7b14b866: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Entity:
+                Id: 943bbe1e-ea5c-4159-9cec-1e2ed4fb5baa
+                Name: Camera
+                Components:
+                    33bdee1a4151e3394ecc606dab095d43: !TransformComponent
+                        Id: c24566b0-429f-44a9-84b4-e65e3e44aac6
+                        Position: {X: 2.6, Y: 0.6, Z: -1.0}
+                        Rotation: {X: 0.0, Y: 0.829037547, Z: 0.0, W: 0.5591929}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    0f02d0ef67a133e20bc4fe46cfece388: !CameraComponent
+                        Id: 24c830a8-6ea0-402a-a7a3-8dda224d0459
+                        Name: null
+                        Projection: Perspective
+                        Slot: 2b69f45f-9d53-42a3-9beb-a6373c0150c2
+                    2f0e40f190f7afa96166638fa6a24fe9: !StrideToolkit.Demo.BasicCameraController,StrideToolkit.Demo.Game
+                        Id: 3e89a844-8c80-4d4e-93de-dc5b307c444f
+                        KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}
+                        TouchMovementSpeed: {X: 40.0, Y: 40.0, Z: 20.0}
+                        SpeedFactor: 5.0
+                        KeyboardRotationSpeed: {X: 3.0, Y: 3.0}
+                        MouseRotationSpeed: {X: 90.0, Y: 60.0}
+                        TouchRotationSpeed: {X: 60.0, Y: 40.0}
+        -   Entity:
+                Id: af7e1e04-a5a1-4097-ab01-14d95f8cff1d
+                Name: CameraExtensionsDemo
+                Components:
+                    ebbafaee76a218d1efd0ae8371159013: !TransformComponent
+                        Id: 4d2b6a71-c6dd-42fb-b52c-315adb9862fd
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    974e81cb69bf5da8314e2e1708f3bf3d: !StrideToolkit.Demo.CameraExtensionsDemo,StrideToolkit.Demo.Game
+                        Id: 1834ef38-0f2a-4e8b-9766-0b1d9dc0fe1b
+                        MainCamera: ref!! 24c830a8-6ea0-402a-a7a3-8dda224d0459
+                        Cube: ref!! 93ea5f41-5258-4a5a-87ef-b676cc8ce168
+                    84f348b6425d355db5710a27013a2a01: !StrideToolkit.Demo.Outline.OutlineManager,StrideToolkit.Demo.Game
+                        Id: e1848128-2518-4486-8d30-a759fc549419
+                        OutlinePrefab: 7d54f947-6c02-45e7-a9ed-c88cac3f1e36:Outline/OutlineEntity
+                        OutlineGraphicsCompositor: ed8582d4-1037-467b-b027-109026da4c14:GraphicsCompositor
+                        HoverMaterial: a04c9cfb-2726-4596-96da-1767970d5b84:Outline/HoverOutlineMaterial
+                        SelectMaterial: 90b9f2b1-703e-4db7-98ce-a27a6c0369dc:Outline/SelectOutlineMaterial
+        -   Entity:
+                Id: e1cc1033-3caa-4c15-87a0-7635fb781aab
+                Name: CameraParent
+                Components:
+                    7a0cbb32e8b2b284b4a044726156348d: !TransformComponent
+                        Id: e7d2d58a-621e-461a-819d-bce4d935904f
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            219598cbd3c2ea11fde4cb71d997e3d6: ref!! c24566b0-429f-44a9-84b4-e65e3e44aac6
+        -   Entity:
+                Id: f6b06a97-a9c1-433b-8753-90d92001f5bd
+                Name: Ground
+                Components:
+                    9348689018638e7e77e1849feb6c9a0c: !TransformComponent
+                        Id: 486bc121-399c-4893-ad6b-e6da8114ee2c
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    3017eeade8c661c5d6b012212642235e: !ModelComponent
+                        Id: 837b525f-1d34-488b-bb5d-584358ce066e
+                        Model: 09e48f79-4c79-404c-a396-224ab0f9ab4b:Models/Ground
+                        Materials: {}

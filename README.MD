@@ -1,20 +1,21 @@
-# Xenko Toolkit
+# Stride Toolkit
 
-Xenko Toolkit is a .NET Standard library for use with the [Xenko Game Engine](https://xenko.com/). It's goal is to add extra extensions and utilites to make things a bit easier.
+Stride Toolkit is a .NET Standard library for use with the [Stride Game Engine](https://https://stride3d.net//). It's goal is to add extra extensions and utilites to make things a bit easier.
 
 # Installing
 
-    Install-Package XenkoToolkit -Prerelease
+    Install-Package StrideToolkit -Prerelease
 
-    Install-Package XenkoToolkit.Physics -Prerelease
+    Install-Package StrideToolkit.Physics -Prerelease
 
-## NuGet Package - Xenko Engine compatibility
+## NuGet Package - Stride Engine compatibility
 
-This table indicates which version of Xenko each version of the toolkit was compiled against.
+This table indicates which version of Stride each version of the toolkit was compiled against.
 
-|Branch|NuGet|Xenko|
+|Branch|NuGet|Engine Version|
 |:--:|:--:|:--:|
-|master|0.8.0.0-alpha|3.2.0.1-beta01|
+|master|TBD|Stride 4.0.0.1-beta02-0926|
+|Xenko|0.8.0.0-alpha|Xenko 3.2.0.1-beta01|
 
 ## Examples
 
@@ -24,7 +25,7 @@ See [Documentation](https://dfkeenan.github.io/XenkoToolkit/docs/)
 
 ### Prerequisites
 
-1. Xenko (and it's prerequisites for Windows).
+1. Stride (and it's prerequisites for Windows).
 
 Building the documentation requires [Wyam](https://wyam.io/). Install the Wyam.Tool .NET Core Global Tool via dotnet tool install -g Wyam.Tool.
 

@@ -1,0 +1,105 @@
+!SceneAsset
+Id: f0a5552d-7e69-464c-bd70-fc1b083c8780
+SerializedVersion: {Stride: 3.1.0.1}
+Tags: []
+ChildrenIds: []
+Offset: {X: 0.0, Y: 0.0, Z: 0.0}
+Hierarchy:
+    RootParts:
+        - ref!! 13d41521-4953-4aad-beb8-dc69fe92fb83
+        - ref!! 23da5357-d127-4e34-aa95-10a47ab1a2e9
+        - ref!! fc3cb7f4-ea69-49a7-84ce-162ed3899da5
+        - ref!! f7d738e2-2021-42d3-8c49-4d7b630cfa8a
+    Parts:
+        -   Entity:
+                Id: 13d41521-4953-4aad-beb8-dc69fe92fb83
+                Name: EasingDemo
+                Components:
+                    a0c234c09e5706bad2d48227776c94df: !TransformComponent
+                        Id: 25381269-6cac-40ff-bd4d-bc865642aa0a
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    2450f8eadc24379615f4b04ca62c4a53: !StrideToolkit.Demo.EasingDemo,StrideToolkit.Demo.Game
+                        Id: c041ef69-8fd7-4b96-8a08-e7b6156404ec
+                        FirstPosition: {X: -16.0, Y: 7.0, Z: 0.0}
+                        Height: 14.0
+                        SpherePrefab: b2640431-d706-44f0-9324-b495810303f7:Scenes/Sphere
+        -   Entity:
+                Id: 23da5357-d127-4e34-aa95-10a47ab1a2e9
+                Name: Back
+                Components:
+                    b92a16f33fd77e90873a35e462166715: !TransformComponent
+                        Id: 6416e48b-c1e3-4252-80ae-b0151588dfe7
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            c3fac0173759c5ff39e1c9882bcdd4ee: ref!! 5311ad11-9e98-4f49-89ff-459705219298
+        -   Entity:
+                Id: 985f7081-5897-407b-b7c3-db9f26f4d608
+                Name: Back
+                Components:
+                    ddefadbca1f45ddcdcbe6359433fb860: !TransformComponent
+                        Id: 5311ad11-9e98-4f49-89ff-459705219298
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    d08d65c392c05230413b4175ee1b529f: !UIComponent
+                        Id: 090c2a54-cfa0-4b24-a99b-0aaa92f702f3
+                        Page: c7439e8f-602b-4591-8c58-1534d0a9d368:Scenes/BackButton
+                        Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
+                        Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                    638259d25610b3d8622bcdb316d3ddba: !StrideToolkit.Engine.Navigation.Components.NavigationButtonHandler,StrideToolkit.Demo.Game
+                        Id: 5d3089c5-8ab9-4005-80d7-d4b3bcccbb38
+                        Page: c7439e8f-602b-4591-8c58-1534d0a9d368:Scenes/BackButton
+                        ButtonName: BackButton
+                        ButtonAction: !StrideToolkit.Engine.Navigation.Components.NavigateBack,StrideToolkit.Demo.Game
+                            KeepLoaded: false
+                            RememberCurrent: true
+            Base:
+                BasePartAsset: fc3d61d4-fa41-47b4-b0c5-39e5affaf404:Scenes/Back
+                BasePartId: db53157c-c333-4b5a-ab6d-a8bc76f1d0bf
+                InstanceId: 54f9b779-7266-47f6-ba24-3e33ae561754
+        -   Entity:
+                Id: f7d738e2-2021-42d3-8c49-4d7b630cfa8a
+                Name: Camera
+                Components:
+                    7078b0de7a0c34abb545fd3720e5c234: !TransformComponent
+                        Id: 71a5878d-548d-4508-83df-7ca00b74b14e
+                        Position: {X: 0.0, Y: 0.0, Z: 25.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    978ad307c7e52bc07df93d2308e67d98: !CameraComponent
+                        Id: 7b180d1c-46ab-49d7-a079-491a4c372474
+                        Name: null
+                        Projection: Perspective
+                        Slot: 2b69f45f-9d53-42a3-9beb-a6373c0150c2
+                    ceb9bc2ee3145a7faab49993d732d624: !StrideToolkit.Demo.BasicCameraController,StrideToolkit.Demo.Game
+                        Id: 811df10e-9ab3-4e7d-8118-fdfbeefb15c5
+                        KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}
+                        TouchMovementSpeed: {X: 40.0, Y: 40.0, Z: 20.0}
+                        SpeedFactor: 5.0
+                        KeyboardRotationSpeed: {X: 3.0, Y: 3.0}
+                        MouseRotationSpeed: {X: 90.0, Y: 60.0}
+                        TouchRotationSpeed: {X: 60.0, Y: 40.0}
+        -   Entity:
+                Id: fc3cb7f4-ea69-49a7-84ce-162ed3899da5
+                Name: Skybox light
+                Components:
+                    5a2f3157bc8c7511c1cd67c1197e1d16: !TransformComponent
+                        Id: fcab5c53-f7cf-4005-adb3-bfec25e95bea
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    d9ff727f70060a9654a722ff768194aa: !LightComponent
+                        Id: bb698517-6751-44fe-8e23-c555050f8a62
+                        Type: !LightSkybox
+                            Skybox: 390fe0c0-b69d-4421-93b5-9894e27cfefe:Skybox
+                    51167e586caab62fc6595c2e23db03af: !BackgroundComponent
+                        Id: a78d2b05-05dc-4fc9-be00-be321de0f1fe
+                        Texture: 30639d53-951f-48d9-833b-6c0c7e03a753:Skybox texture
