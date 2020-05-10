@@ -14,7 +14,7 @@ This table indicates which version of Xenko each version of the toolkit was comp
 
 |Branch|NuGet|Xenko|
 |:--:|:--:|:--:|
-|master|0.7.0.0-alpha|3.1.0.1-beta02-0752|
+|master|0.8.0.0-alpha|3.2.0.1-beta01|
 
 ## Examples
 
