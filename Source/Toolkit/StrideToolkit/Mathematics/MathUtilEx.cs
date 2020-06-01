@@ -43,7 +43,7 @@ namespace StrideToolkit.Mathematics
         /// <param name="value">The Value.</param>
         /// <returns>Value clamped between 0 and 1.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float Clamp01(float value) => MathUtil.Clamp(0, 1, value);
+        public static float Clamp01(float value) => MathUtil.Clamp(value, 0, 1);
 
         /// <summary>
         /// Orthonormalizes 2 vectors.
