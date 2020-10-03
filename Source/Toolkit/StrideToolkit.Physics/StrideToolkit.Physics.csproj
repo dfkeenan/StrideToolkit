@@ -8,11 +8,11 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.1.13-beta">
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.2.31">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Stride.Physics" Version="4.0.0.1-beta02-0926" />
+    <PackageReference Include="Stride.Physics" Version="4.0.0.1-beta04-1265" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StrideToolkit\StrideToolkit.csproj" />

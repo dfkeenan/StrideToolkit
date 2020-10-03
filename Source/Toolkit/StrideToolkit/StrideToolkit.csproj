@@ -15,12 +15,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.1.13-beta">
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.2.31">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Stride.Core" Version="4.0.0.1-beta02-0926" PrivateAssets="contentfiles;analyzers" />
-    <PackageReference Include="Stride.Engine" Version="4.0.0.1-beta02-0926" PrivateAssets="contentfiles;analyzers" />
+    <PackageReference Include="Stride.Core" Version="4.0.0.1-beta04-1265" PrivateAssets="contentfiles;analyzers" />
+    <PackageReference Include="Stride.Engine" Version="4.0.0.1-beta04-1265" PrivateAssets="contentfiles;analyzers" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Engine\EntityExtensions.GetComponents.tt">
