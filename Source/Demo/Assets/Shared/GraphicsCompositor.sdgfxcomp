@@ -92,6 +92,7 @@ RenderFeatures:
                             ShadowCasterRenderStage: ref!! 58b84934-93bb-4504-9774-11a3c873faf8
                         d59ef45dd99e49d3af3887763d153aa7: !Stride.Rendering.Shadows.LightPointShadowMapRendererCubeMap,Stride.Rendering
                             ShadowCasterRenderStage: ref!! b4ce10f1-512c-489f-8868-4988984e756c
+            42be209952db58294c9f06c58809b8ca: !Stride.Rendering.InstancingRenderFeature,Stride.Rendering {}
     28e9bf54a5adbe063f59fb17acb2723e: !Stride.Rendering.Sprites.SpriteRenderFeature,Stride.Rendering
         RenderStageSelectors:
             d74665cff080638a2439c4422e542d85: !Stride.Rendering.Sprites.SpriteTransparentRenderStageSelector,Stride.Rendering
@@ -120,12 +121,14 @@ SharedRenderers:
         Id: 29bfd3f1-deb2-41ec-9445-0b92ff550b14
         Clear:
             Id: 4bc4b2ca-027e-4e4a-94cb-2912709bef5f
-            Color: {R: 0.40491876, G: 0.411895424, B: 0.43775, A: 1.0}
+            Color: {R: 0.40491876, G: 0.41189542, B: 0.43775, A: 1.0}
         LightProbes: true
         OpaqueRenderStage: ref!! 6e3a45ed-1a6f-463c-ba0a-7746f227b2d0
         TransparentRenderStage: ref!! 91ff0d4b-62d4-46da-a6e2-660bce737c30
         ShadowMapRenderStages:
             fc4d1e0de5c2b0bbc27bcf96e9a848fd: ref!! f6e28c3f-e204-41fa-bfb3-398875a4cb47
+            87ff1d9cdd52418daf76385176a0e316: ref!! 58b84934-93bb-4504-9774-11a3c873faf8
+            5e059d4cc2db4ee8a1f28a40f4ac3ae8: ref!! b4ce10f1-512c-489f-8868-4988984e756c
         GBufferRenderStage: ref!! 4cee2ef2-b8c9-4118-ae2b-ab082bff165a
         PostEffects: !PostProcessingEffects ref!! 8f995c3d-c083-4c6f-8b9a-2818badc444c
         LightShafts: null
@@ -140,12 +143,14 @@ SharedRenderers:
         Id: 4eeaf4c5-dcd8-4fea-a807-00e315c37fb3
         Clear:
             Id: 66a42307-1985-4316-871a-768449238c11
-            Color: {R: 0.40491876, G: 0.411895424, B: 0.43775, A: 1.0}
+            Color: {R: 0.40491876, G: 0.41189542, B: 0.43775, A: 1.0}
         LightProbes: true
         OpaqueRenderStage: ref!! 6e3a45ed-1a6f-463c-ba0a-7746f227b2d0
         TransparentRenderStage: ref!! 91ff0d4b-62d4-46da-a6e2-660bce737c30
         ShadowMapRenderStages:
             2323a99a8a983e182f318e55604659b0: ref!! f6e28c3f-e204-41fa-bfb3-398875a4cb47
+            61b557b74893400898c007d5ece5e87f: ref!! 58b84934-93bb-4504-9774-11a3c873faf8
+            5c382f66ee524c498d26d9aaf19fc9c3: ref!! b4ce10f1-512c-489f-8868-4988984e756c
         GBufferRenderStage: ref!! 4cee2ef2-b8c9-4118-ae2b-ab082bff165a
         PostEffects: null
         LightShafts: null
