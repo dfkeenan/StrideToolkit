@@ -1,3 +1,6 @@
+### This project is not being maintained. All the NuGet packages have been deprecated. The APIs in this project have been added to the [Stride Community Toolkit](https://github.com/stride3d/stride-community-toolkit). Please go check it out and try the [Stride.CommunityToolkit](https://www.nuget.org/packages/Stride.CommunityToolkit) NuGet package.  
+
+
 # Stride Toolkit
 
 Stride Toolkit is a .NET Standard library for use with the [Stride Game Engine](https://stride3d.net//). It's goal is to add extra extensions and utilites to make things a bit easier.
